@@ -1518,11 +1518,10 @@
     localStorage.setItem('kmd_lang', lang);
   }
 
-  // Init language from localStorage or browser
+  // Init language — always default to Polish
   (function() {
     const saved = localStorage.getItem('kmd_lang');
-    const browser = (navigator.language || '').slice(0, 2).toLowerCase();
-    const lang = saved || (['en','de'].includes(browser) ? browser : 'pl');
+    const lang = saved || 'pl';
     if (lang !== 'pl') setLanguage(lang);
   })();
 
