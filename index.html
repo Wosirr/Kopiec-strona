@@ -728,6 +728,21 @@
       .mob-menu a { font-size: 1.8rem; }
     }
 
+    /* ════════════════════════════════════════════
+       LANGUAGE SWITCHER
+    ════════════════════════════════════════════ */
+    .lang-switcher { display: flex; align-items: center; gap: 3px; margin-left: 16px; }
+    .lang-btn {
+      font-family: var(--ff-label); font-size: 0.6rem; letter-spacing: 0.1em;
+      padding: 4px 8px; border: 1px solid rgba(255,255,255,0.16);
+      color: rgba(255,255,255,0.4); background: none; cursor: pointer;
+      transition: all 0.2s; text-transform: uppercase; line-height: 1;
+    }
+    .lang-btn.active { border-color: var(--gold); color: var(--gold); }
+    .lang-btn:hover:not(.active) { color: var(--white); border-color: rgba(255,255,255,0.38); }
+    .mob-lang { display: flex; gap: 8px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.07); }
+    .mob-lang .lang-btn { font-size: 0.72rem; padding: 6px 14px; }
+
 
     /* ════════════════════════════════════════════
        GALLERY MODAL
@@ -807,22 +822,32 @@
       </div>
     </a>
     <ul class="nav-links">
-      <li><a href="#offer">Oferta</a></li>
-      <li><a href="#about">O nas</a></li>
-      <li><a href="#process">Jak działamy</a></li>
-      <li><a href="#contact">Kontakt</a></li>
+      <li><a href="#offer" data-i18n="nav.offer">Oferta</a></li>
+      <li><a href="#about" data-i18n="nav.about">O nas</a></li>
+      <li><a href="#process" data-i18n="nav.process">Jak działamy</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">Kontakt</a></li>
     </ul>
-    <a href="#contact" class="nav-cta">Wyceń projekt</a>
+    <a href="#contact" class="nav-cta" data-i18n="nav.cta">Wyceń projekt</a>
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="pl" onclick="setLanguage('pl')">PL</button>
+      <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+      <button class="lang-btn" data-lang="de" onclick="setLanguage('de')">DE</button>
+    </div>
     <button class="hamburger" id="hbg" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 <div class="mob-menu" id="mobMenu">
-  <a href="#offer"    onclick="closeMob()">Oferta</a>
-  <a href="#about" onclick="closeMob()">O nas</a>
-  <a href="#process"  onclick="closeMob()">Jak działamy</a>
-  <a href="#contact"  onclick="closeMob()">Kontakt</a>
+  <a href="#offer"   onclick="closeMob()" data-i18n="nav.offer">Oferta</a>
+  <a href="#about"   onclick="closeMob()" data-i18n="nav.about">O nas</a>
+  <a href="#process" onclick="closeMob()" data-i18n="nav.process">Jak działamy</a>
+  <a href="#contact" onclick="closeMob()" data-i18n="nav.contact">Kontakt</a>
+  <div class="mob-lang">
+    <button class="lang-btn active" data-lang="pl" onclick="setLanguage('pl')">PL</button>
+    <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+    <button class="lang-btn" data-lang="de" onclick="setLanguage('de')">DE</button>
+  </div>
 </div>
 
 <!-- ══════ HERO ══════ -->
@@ -830,16 +855,11 @@
   <div class="hero-left">
     <img src="Assety marki/LogoBezTła.png" alt="" class="hero-logo-bg" aria-hidden="true">
     <p class="hero-eyebrow">Kopiec Metal Design — Mechnica</p>
-    <h1 class="hero-h1">
-      Wyroby metalowe<br>
-      <em>premium.</em>
-    </h1>
-    <p class="hero-sub">
-      Balustrady, schody, pergole i meble ze stali nierdzewnej — od projektu po montaż.
-    </p>
+    <h1 class="hero-h1" data-i18n="hero.h1">Wyroby metalowe<br><em>premium.</em></h1>
+    <p class="hero-sub" data-i18n="hero.sub">Balustrady, schody, pergole i meble ze stali nierdzewnej — od projektu po montaż.</p>
     <div class="hero-actions">
-      <a href="#offer" class="btn-primary">Poznaj ofertę</a>
-      <a href="#contact" class="btn-outline">Wyceń projekt</a>
+      <a href="#offer" class="btn-primary" data-i18n="hero.btn1">Poznaj ofertę</a>
+      <a href="#contact" class="btn-outline" data-i18n="hero.btn2">Wyceń projekt</a>
     </div>
   </div>
   <div class="hero-bg">
@@ -853,12 +873,12 @@
     <img src="Assety marki/669569635_1527542972709803_9009641036791679525_n.jpg" alt="Stalowe okna i wnętrze" />
   </div>
   <div class="split-body r r-d1">
-    <span class="label">O nas</span>
-    <h2>Metalowe rzemiosło<br><em>nowej generacji.</em></h2>
-    <p>Kopiec Metal Design to polska pracownia specjalizująca się w produkcji wysokiej jakości wyrobów metalowych łączących estetykę industrialną z loftową elegancją.</p>
-    <p>Pracownia wyposażona jest w nowoczesne maszyny CNC i urządzenia spawalnicze — tolerancje ±0,1 mm na każdym etapie produkcji.</p>
+    <span class="label" data-i18n="about.label">O nas</span>
+    <h2 data-i18n="about.h2">Metalowe rzemiosło<br><em>nowej generacji.</em></h2>
+    <p data-i18n="about.p1">Kopiec Metal Design to polska pracownia specjalizująca się w produkcji wysokiej jakości wyrobów metalowych łączących estetykę industrialną z loftową elegancją.</p>
+    <p data-i18n="about.p2">Pracownia wyposażona jest w nowoczesne maszyny CNC i urządzenia spawalnicze — tolerancje ±0,1 mm na każdym etapie produkcji.</p>
     <a href="#offer" class="link-arrow">
-      Poznaj ofertę
+      <span data-i18n="about.link">Poznaj ofertę</span>
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
         <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
       </svg>
@@ -872,12 +892,12 @@
     <img src="Assety marki/492086020_1210893441041426_916811167042147293_n.jpg" alt="Balustrada wewnętrzna" />
   </div>
   <div class="split-body dark r r-d1">
-    <span class="label">Jakość i materiały</span>
-    <h2>Certyfikowane<br><em>materiały premium.</em></h2>
-    <p>Pracujemy wyłącznie z certyfikowaną stalą nierdzewną, aluminium i profilami stalowymi z polskich i europejskich hut z pełną dokumentacją.</p>
-    <p>Każdy element przechodzi kontrolę jakości przed opuszczeniem pracowni — spawy badane wg EN ISO 9606.</p>
+    <span class="label" data-i18n="quality.label">Jakość i materiały</span>
+    <h2 data-i18n="quality.h2">Certyfikowane<br><em>materiały premium.</em></h2>
+    <p data-i18n="quality.p1">Pracujemy wyłącznie z certyfikowaną stalą nierdzewną, aluminium i profilami stalowymi z polskich i europejskich hut z pełną dokumentacją.</p>
+    <p data-i18n="quality.p2">Każdy element przechodzi kontrolę jakości przed opuszczeniem pracowni — spawy badane wg EN ISO 9606.</p>
     <a href="#contact" class="link-arrow">
-      Zapytaj o projekt
+      <span data-i18n="quality.link">Zapytaj o projekt</span>
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
         <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
       </svg>
@@ -889,8 +909,8 @@
 <section class="offer" id="offer">
   <div class="offer-header">
     <div class="offer-header-text">
-      <h2 class="r">Poznaj naszą<br><em>ofertę.</em></h2>
-      <p class="r r-d1">Realizujemy projekty metalowe w każdej skali — od elementów dekoracyjnych po konstrukcje nośne.</p>
+      <h2 class="r" data-i18n="offer.h2">Poznaj naszą<br><em>ofertę.</em></h2>
+      <p class="r r-d1" data-i18n="offer.sub">Realizujemy projekty metalowe w każdej skali — od elementów dekoracyjnych po konstrukcje nośne.</p>
     </div>
   </div>
   <div class="offer-grid">
@@ -899,54 +919,54 @@
       <div class="offer-item-overlay"></div>
       <div class="offer-item-info">
         <p class="offer-item-num">01</p>
-        <p class="offer-item-name">Balustrady i Schody</p>
+        <p class="offer-item-name" data-i18n="offer.tile1">Balustrady i Schody</p>
       </div>
-      <span class="offer-item-hint">Zobacz realizacje →</span>
+      <span class="offer-item-hint" data-i18n="offer.hint">Zobacz realizacje →</span>
     </div>
     <div class="offer-item r r-d1" data-gallery="pergole">
       <img src="Assety marki/477174478_3805729763012907_2771894896187015380_n.jpg" alt="Pergole i Zadaszenia" />
       <div class="offer-item-overlay"></div>
       <div class="offer-item-info">
         <p class="offer-item-num">02</p>
-        <p class="offer-item-name">Pergole i Zadaszenia</p>
+        <p class="offer-item-name" data-i18n="offer.tile2">Pergole i Zadaszenia</p>
       </div>
-      <span class="offer-item-hint">Zobacz realizacje →</span>
+      <span class="offer-item-hint" data-i18n="offer.hint">Zobacz realizacje →</span>
     </div>
     <div class="offer-item r r-d2" data-gallery="meble">
       <img src="Assety marki/186517127_2807143706204856_224153185321421818_n.jpg" alt="Meble Metalowe" />
       <div class="offer-item-overlay"></div>
       <div class="offer-item-info">
         <p class="offer-item-num">03</p>
-        <p class="offer-item-name">Meble Metalowe</p>
+        <p class="offer-item-name" data-i18n="offer.tile3">Meble Metalowe</p>
       </div>
-      <span class="offer-item-hint">Zobacz realizacje →</span>
+      <span class="offer-item-hint" data-i18n="offer.hint">Zobacz realizacje →</span>
     </div>
     <div class="offer-item r r-d3" data-gallery="bramy">
       <img src="Assety marki/485847651_1186455803485190_728936701142196843_n.jpg" alt="Bramy i Ogrodzenia" />
       <div class="offer-item-overlay"></div>
       <div class="offer-item-info">
         <p class="offer-item-num">04</p>
-        <p class="offer-item-name">Bramy i Ogrodzenia</p>
+        <p class="offer-item-name" data-i18n="offer.tile4">Bramy i Ogrodzenia</p>
       </div>
-      <span class="offer-item-hint">Zobacz realizacje →</span>
+      <span class="offer-item-hint" data-i18n="offer.hint">Zobacz realizacje →</span>
     </div>
     <div class="offer-item r r-d4" data-gallery="konstrukcje">
       <img src="Assety marki/669938287_1527542996043134_6347202673259123338_n.jpg" alt="Konstrukcje Stalowe" />
       <div class="offer-item-overlay"></div>
       <div class="offer-item-info">
         <p class="offer-item-num">05</p>
-        <p class="offer-item-name">Konstrukcje Stalowe</p>
+        <p class="offer-item-name" data-i18n="offer.tile5">Konstrukcje Stalowe</p>
       </div>
-      <span class="offer-item-hint">Zobacz realizacje →</span>
+      <span class="offer-item-hint" data-i18n="offer.hint">Zobacz realizacje →</span>
     </div>
     <div class="offer-item r r-d4" data-gallery="dekoracyjne">
       <img src="Assety marki/490961438_1210263677771069_8414240532275615548_n.jpg" alt="Elementy Dekoracyjne CNC" />
       <div class="offer-item-overlay"></div>
       <div class="offer-item-info">
         <p class="offer-item-num">06</p>
-        <p class="offer-item-name">Elementy Dekoracyjne CNC</p>
+        <p class="offer-item-name" data-i18n="offer.tile6">Elementy Dekoracyjne CNC</p>
       </div>
-      <span class="offer-item-hint">Zobacz realizacje →</span>
+      <span class="offer-item-hint" data-i18n="offer.hint">Zobacz realizacje →</span>
     </div>
   </div>
 </section>
@@ -955,8 +975,8 @@
 <section class="features" id="features">
   <img src="Assety marki/LogoBezTła.png" class="features-bg-logo" aria-hidden="true" alt="" />
   <div class="features-head r">
-    <h2>Wzorowe usługi<br>na <em>każdym etapie.</em></h2>
-    <p>Dbamy o każdy detal — od pierwszego szkicu po finalne szlifowanie i montaż.</p>
+    <h2 data-i18n="feat.h2">Wzorowe usługi<br>na <em>każdym etapie.</em></h2>
+    <p data-i18n="feat.sub">Dbamy o każdy detal — od pierwszego szkicu po finalne szlifowanie i montaż.</p>
   </div>
   <div class="feat-grid">
     <div class="feat-card r">
@@ -965,15 +985,15 @@
         <line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/>
         <line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/>
       </svg>
-      <h3>Szeroka specjalizacja</h3>
-      <p>Od balustrady po konstrukcję nośną — realizujemy projekty w każdym zakresie obróbki stali i aluminium.</p>
+      <h3 data-i18n="feat.card1.h3">Szeroka specjalizacja</h3>
+      <p data-i18n="feat.card1.p">Od balustrady po konstrukcję nośną — realizujemy projekty w każdym zakresie obróbki stali i aluminium.</p>
     </div>
     <div class="feat-card r r-d1">
       <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
         <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
       </svg>
-      <h3>Projekt na miarę</h3>
-      <p>Każde zlecenie traktujemy indywidualnie — projektujemy od zera zgodnie z wizją klienta.</p>
+      <h3 data-i18n="feat.card2.h3">Projekt na miarę</h3>
+      <p data-i18n="feat.card2.p">Każde zlecenie traktujemy indywidualnie — projektujemy od zera zgodnie z wizją klienta.</p>
     </div>
     <div class="feat-card r r-d2">
       <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
@@ -982,16 +1002,16 @@
         <line x1="3" y1="10" x2="21" y2="10"/>
         <polyline points="9 15 11 17 15 13"/>
       </svg>
-      <h3>Terminowość</h3>
-      <p>Każdy projekt realizujemy zgodnie z harmonogramem. Dotrzymujemy terminów bez wyjątków.</p>
+      <h3 data-i18n="feat.card3.h3">Terminowość</h3>
+      <p data-i18n="feat.card3.p">Każdy projekt realizujemy zgodnie z harmonogramem. Dotrzymujemy terminów bez wyjątków.</p>
     </div>
     <div class="feat-card r r-d3">
       <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
         <polyline points="9 12 11 14 15 10"/>
       </svg>
-      <h3>Materiały premium</h3>
-      <p>Certyfikowana stal nierdzewna i aluminium z polskich i europejskich hut z dokumentacją materiałową.</p>
+      <h3 data-i18n="feat.card4.h3">Materiały premium</h3>
+      <p data-i18n="feat.card4.p">Certyfikowana stal nierdzewna i aluminium z polskich i europejskich hut z dokumentacją materiałową.</p>
     </div>
   </div>
 </section>
@@ -1001,15 +1021,15 @@
   <div class="stats-inner">
     <div class="stat-cell r">
       <div class="stat-n">150<sup>+</sup></div>
-      <div class="stat-l">Zrealizowanych projektów</div>
+      <div class="stat-l" data-i18n="stats.l1">Zrealizowanych projektów</div>
     </div>
     <div class="stat-cell r r-d1">
       <div class="stat-n">10</div>
-      <div class="stat-l">Lat doświadczenia</div>
+      <div class="stat-l" data-i18n="stats.l2">Lat doświadczenia</div>
     </div>
     <div class="stat-cell r r-d2">
       <div class="stat-n">100<sup>%</sup></div>
-      <div class="stat-l">Satysfakcji klientów</div>
+      <div class="stat-l" data-i18n="stats.l3">Satysfakcji klientów</div>
     </div>
   </div>
 </div>
@@ -1017,29 +1037,29 @@
 <!-- ══════ PROCESS ══════ -->
 <section class="process" id="process">
   <div class="process-head r">
-    <span class="label" style="color:var(--muted);">Jak działamy</span>
-    <h2>Prosty proces,<br><em>pewny rezultat.</em></h2>
+    <span class="label" style="color:var(--muted);" data-i18n="process.label">Jak działamy</span>
+    <h2 data-i18n="process.h2">Prosty proces,<br><em>pewny rezultat.</em></h2>
   </div>
   <div class="steps">
     <div class="step r">
       <div class="step-n">01</div>
-      <h3>Konsultacja</h3>
-      <p>Omawiamy projekt, wymagania techniczne i estetyczne. Bezpłatna wycena w ciągu 24 godzin.</p>
+      <h3 data-i18n="process.s1.h3">Konsultacja</h3>
+      <p data-i18n="process.s1.p">Omawiamy projekt, wymagania techniczne i estetyczne. Bezpłatna wycena w ciągu 24 godzin.</p>
     </div>
     <div class="step r r-d1">
       <div class="step-n">02</div>
-      <h3>Projektowanie</h3>
-      <p>Dokumentacja techniczna i wizualizacje 3D do akceptacji przed rozpoczęciem produkcji.</p>
+      <h3 data-i18n="process.s2.h3">Projektowanie</h3>
+      <p data-i18n="process.s2.p">Dokumentacja techniczna i wizualizacje 3D do akceptacji przed rozpoczęciem produkcji.</p>
     </div>
     <div class="step r r-d2">
       <div class="step-n">03</div>
-      <h3>Produkcja</h3>
-      <p>Precyzyjna obróbka CNC, spawanie certyfikowane wg EN ISO 9606, kontrola jakości każdego elementu.</p>
+      <h3 data-i18n="process.s3.h3">Produkcja</h3>
+      <p data-i18n="process.s3.p">Precyzyjna obróbka CNC, spawanie certyfikowane wg EN ISO 9606, kontrola jakości każdego elementu.</p>
     </div>
     <div class="step r r-d3">
       <div class="step-n">04</div>
-      <h3>Montaż</h3>
-      <p>Profesjonalny montaż na obiekcie z pełnym zabezpieczeniem i protokołem odbioru technicznego.</p>
+      <h3 data-i18n="process.s4.h3">Montaż</h3>
+      <p data-i18n="process.s4.p">Profesjonalny montaż na obiekcie z pełnym zabezpieczeniem i protokołem odbioru technicznego.</p>
     </div>
   </div>
 </section>
@@ -1049,10 +1069,10 @@
   <img src="Assety marki/LogoBezTła.png" alt="" class="cta-deco cta-deco-right" aria-hidden="true">
   <img src="Assety marki/LogoBezTła.png" alt="" class="cta-deco cta-deco-left"  aria-hidden="true">
   <div class="wrap">
-    <h2 class="r">Sprawdź co możemy<br><em>dla Ciebie zrobić.</em></h2>
-    <p class="r r-d1">Skontaktuj się z nami. Pomożemy zrealizować Twój pomysł.</p>
+    <h2 class="r" data-i18n="cta.h2">Sprawdź co możemy<br><em>dla Ciebie zrobić.</em></h2>
+    <p class="r r-d1" data-i18n="cta.p">Skontaktuj się z nami. Pomożemy zrealizować Twój pomysł.</p>
     <a href="#contact" class="btn-primary r r-d2">
-      Skontaktuj się
+      <span data-i18n="cta.btn">Skontaktuj się</span>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:6px;">
         <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
       </svg>
@@ -1064,58 +1084,58 @@
 <section class="contact" id="contact">
   <div class="contact-inner">
     <div class="r">
-      <span class="label" style="color:var(--muted);">Kontakt</span>
-      <h2>Porozmawiajmy<br>o <em>projekcie.</em></h2>
-      <p>Opisz swój projekt, a my przygotujemy bezpłatną wycenę. Odpowiadamy w ciągu 24 godzin roboczych.</p>
+      <span class="label" style="color:var(--muted);" data-i18n="contact.label">Kontakt</span>
+      <h2 data-i18n="contact.h2">Porozmawiajmy<br>o <em>projekcie.</em></h2>
+      <p data-i18n="contact.p">Opisz swój projekt, a my przygotujemy bezpłatną wycenę. Odpowiadamy w ciągu 24 godzin roboczych.</p>
       <div class="cinfo">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <div><strong>Adres</strong><span>Krapkowicka 12, Mechnica 47-214</span></div>
+        <div><strong data-i18n="contact.addr">Adres</strong><span>Krapkowicka 12, Mechnica 47-214</span></div>
       </div>
       <div class="cinfo">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 15.6 15.6 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-        <div><strong>Telefon</strong><span>+48 694 421 702</span></div>
+        <div><strong data-i18n="contact.phone">Telefon</strong><span>+48 694 421 702</span></div>
       </div>
       <div class="cinfo">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        <div><strong>Email</strong><span>kopiecmd@gmail.com</span></div>
+        <div><strong data-i18n="contact.email">Email</strong><span>kopiecmd@gmail.com</span></div>
       </div>
     </div>
     <div class="r r-d1">
       <form class="cform" id="cForm" novalidate>
         <div class="form-row">
           <div class="fg">
-            <label for="fn">Imię i nazwisko</label>
-            <input type="text" id="fn" name="name" placeholder="Jan Kowalski" />
+            <label for="fn" data-i18n="form.name.label">Imię i nazwisko</label>
+            <input type="text" id="fn" name="name" placeholder="Jan Kowalski" data-i18n-ph="form.name.ph" />
           </div>
           <div class="fg">
-            <label for="fp">Telefon</label>
-            <input type="tel" id="fp" name="phone" placeholder="+48 694 421 702" />
+            <label for="fp" data-i18n="form.phone.label">Telefon</label>
+            <input type="tel" id="fp" name="phone" placeholder="+48 694 421 702" data-i18n-ph="form.phone.ph" />
           </div>
         </div>
         <div class="fg">
-          <label for="fe">Adres email</label>
-          <input type="email" id="fe" name="email" placeholder="jan@firma.pl" />
+          <label for="fe" data-i18n="form.email.label">Adres email</label>
+          <input type="email" id="fe" name="email" placeholder="jan@firma.pl" data-i18n-ph="form.email.ph" />
         </div>
         <div class="fg">
-          <label for="fs">Rodzaj usługi</label>
+          <label for="fs" data-i18n="form.service.label">Rodzaj usługi</label>
           <select id="fs" name="service" onchange="this.classList.add('filled')">
-            <option value="" disabled selected>Wybierz kategorię</option>
-            <option>Balustrady i Schody</option>
-            <option>Pergole i Zadaszenia</option>
-            <option>Meble Metalowe</option>
-            <option>Bramy i Ogrodzenia</option>
-            <option>Konstrukcje Stalowe</option>
-            <option>Elementy Dekoracyjne CNC</option>
-            <option>Inny projekt</option>
+            <option value="" disabled selected data-i18n="form.service.ph">Wybierz kategorię</option>
+            <option data-i18n="offer.tile1">Balustrady i Schody</option>
+            <option data-i18n="offer.tile2">Pergole i Zadaszenia</option>
+            <option data-i18n="offer.tile3">Meble Metalowe</option>
+            <option data-i18n="offer.tile4">Bramy i Ogrodzenia</option>
+            <option data-i18n="offer.tile5">Konstrukcje Stalowe</option>
+            <option data-i18n="offer.tile6">Elementy Dekoracyjne CNC</option>
+            <option data-i18n="form.other">Inny projekt</option>
           </select>
         </div>
         <div class="fg">
-          <label for="fm">Opis projektu</label>
-          <textarea id="fm" name="message" placeholder="Opisz wymiary, materiał, termin realizacji..."></textarea>
+          <label for="fm" data-i18n="form.msg.label">Opis projektu</label>
+          <textarea id="fm" name="message" placeholder="Opisz wymiary, materiał, termin realizacji..." data-i18n-ph="form.msg.ph"></textarea>
         </div>
         <div id="fMsg" class="form-msg"></div>
         <button type="submit" class="submit-btn">
-          Wyślij zapytanie
+          <span data-i18n="form.submit">Wyślij zapytanie</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
           </svg>
@@ -1137,19 +1157,19 @@
           <span>METAL DESIGN</span>
         </div>
       </div>
-      <p>Producent wyrobów metalowych premium. Łączymy twardość stali z elegancją loftu — od projektu po montaż.</p>
+      <p data-i18n="footer.brand.p">Producent wyrobów metalowych premium. Łączymy twardość stali z elegancją loftu — od projektu po montaż.</p>
     </div>
     <div class="fcol">
-      <h4>Strona</h4>
+      <h4 data-i18n="footer.nav.h4">Strona</h4>
       <ul>
-        <li><a href="#about">O nas</a></li>
-        <li><a href="#offer">Oferta</a></li>
-        <li><a href="#process">Jak działamy</a></li>
-        <li><a href="#contact">Kontakt</a></li>
+        <li><a href="#about" data-i18n="nav.about">O nas</a></li>
+        <li><a href="#offer" data-i18n="nav.offer">Oferta</a></li>
+        <li><a href="#process" data-i18n="nav.process">Jak działamy</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Kontakt</a></li>
       </ul>
     </div>
     <div class="fcol">
-      <h4>Usługi</h4>
+      <h4 data-i18n="footer.services.h4">Usługi</h4>
       <ul>
         <li><a href="#offer">Balustrady i Schody</a></li>
         <li><a href="#offer">Pergole i Zadaszenia</a></li>
@@ -1159,7 +1179,7 @@
       </ul>
     </div>
     <div class="fcol">
-      <h4>Kontakt</h4>
+      <h4 data-i18n="footer.contact.h4">Kontakt</h4>
       <ul>
         <li><a href="tel:+48694421702">+48 694 421 702</a></li>
         <li><a href="mailto:kopiecmd@gmail.com">kopiecmd@gmail.com</a></li>
@@ -1168,10 +1188,10 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© <span id="yr"></span> Kopiec Metal Design. Wszelkie prawa zastrzeżone.</p>
+    <p class="footer-copy">© <span id="yr"></span> Kopiec Metal Design. <span data-i18n="footer.copy">Wszelkie prawa zastrzeżone.</span></p>
     <div class="footer-legal">
-      <a href="polityka-prywatnosci.html">Polityka prywatności</a>
-      <a href="regulamin.html">Regulamin</a>
+      <a href="polityka-prywatnosci.html" data-i18n="footer.privacy">Polityka prywatności</a>
+      <a href="regulamin.html" data-i18n="footer.terms">Regulamin</a>
     </div>
   </div>
   <div class="footer-adsavvy">
@@ -1347,6 +1367,159 @@
 
   // Dynamic copyright year
   document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // ── Language switcher ──────────────────────────────
+  const T = {
+    pl: {
+      'nav.offer':'Oferta','nav.about':'O nas','nav.process':'Jak działamy','nav.contact':'Kontakt','nav.cta':'Wyceń projekt',
+      'hero.h1':'Wyroby metalowe<br><em>premium.</em>',
+      'hero.sub':'Balustrady, schody, pergole i meble ze stali nierdzewnej — od projektu po montaż.',
+      'hero.btn1':'Poznaj ofertę','hero.btn2':'Wyceń projekt',
+      'about.label':'O nas','about.h2':'Metalowe rzemiosło<br><em>nowej generacji.</em>',
+      'about.p1':'Kopiec Metal Design to polska pracownia specjalizująca się w produkcji wysokiej jakości wyrobów metalowych łączących estetykę industrialną z loftową elegancją.',
+      'about.p2':'Pracownia wyposażona jest w nowoczesne maszyny CNC i urządzenia spawalnicze — tolerancje ±0,1 mm na każdym etapie produkcji.',
+      'about.link':'Poznaj ofertę',
+      'quality.label':'Jakość i materiały','quality.h2':'Certyfikowane<br><em>materiały premium.</em>',
+      'quality.p1':'Pracujemy wyłącznie z certyfikowaną stalą nierdzewną, aluminium i profilami stalowymi z polskich i europejskich hut z pełną dokumentacją.',
+      'quality.p2':'Każdy element przechodzi kontrolę jakości przed opuszczeniem pracowni — spawy badane wg EN ISO 9606.',
+      'quality.link':'Zapytaj o projekt',
+      'offer.h2':'Poznaj naszą<br><em>ofertę.</em>','offer.sub':'Realizujemy projekty metalowe w każdej skali — od elementów dekoracyjnych po konstrukcje nośne.',
+      'offer.hint':'Zobacz realizacje →','offer.tile1':'Balustrady i Schody','offer.tile2':'Pergole i Zadaszenia',
+      'offer.tile3':'Meble Metalowe','offer.tile4':'Bramy i Ogrodzenia','offer.tile5':'Konstrukcje Stalowe','offer.tile6':'Elementy Dekoracyjne CNC',
+      'feat.h2':'Wzorowe usługi<br>na <em>każdym etapie.</em>','feat.sub':'Dbamy o każdy detal — od pierwszego szkicu po finalne szlifowanie i montaż.',
+      'feat.card1.h3':'Szeroka specjalizacja','feat.card1.p':'Od balustrady po konstrukcję nośną — realizujemy projekty w każdym zakresie obróbki stali i aluminium.',
+      'feat.card2.h3':'Projekt na miarę','feat.card2.p':'Każde zlecenie traktujemy indywidualnie — projektujemy od zera zgodnie z wizją klienta.',
+      'feat.card3.h3':'Terminowość','feat.card3.p':'Każdy projekt realizujemy zgodnie z harmonogramem. Dotrzymujemy terminów bez wyjątków.',
+      'feat.card4.h3':'Materiały premium','feat.card4.p':'Certyfikowana stal nierdzewna i aluminium z polskich i europejskich hut z dokumentacją materiałową.',
+      'stats.l1':'Zrealizowanych projektów','stats.l2':'Lat doświadczenia','stats.l3':'Satysfakcji klientów',
+      'process.label':'Jak działamy','process.h2':'Prosty proces,<br><em>pewny rezultat.</em>',
+      'process.s1.h3':'Konsultacja','process.s1.p':'Omawiamy projekt, wymagania techniczne i estetyczne. Bezpłatna wycena w ciągu 24 godzin.',
+      'process.s2.h3':'Projektowanie','process.s2.p':'Dokumentacja techniczna i wizualizacje 3D do akceptacji przed rozpoczęciem produkcji.',
+      'process.s3.h3':'Produkcja','process.s3.p':'Precyzyjna obróbka CNC, spawanie certyfikowane wg EN ISO 9606, kontrola jakości każdego elementu.',
+      'process.s4.h3':'Montaż','process.s4.p':'Profesjonalny montaż na obiekcie z pełnym zabezpieczeniem i protokołem odbioru technicznego.',
+      'cta.h2':'Sprawdź co możemy<br><em>dla Ciebie zrobić.</em>','cta.p':'Skontaktuj się z nami. Pomożemy zrealizować Twój pomysł.','cta.btn':'Skontaktuj się',
+      'contact.label':'Kontakt','contact.h2':'Porozmawiajmy<br>o <em>projekcie.</em>',
+      'contact.p':'Opisz swój projekt, a my przygotujemy bezpłatną wycenę. Odpowiadamy w ciągu 24 godzin roboczych.',
+      'contact.addr':'Adres','contact.phone':'Telefon','contact.email':'Email',
+      'form.name.label':'Imię i nazwisko','form.name.ph':'Jan Kowalski',
+      'form.phone.label':'Telefon','form.phone.ph':'+48 694 421 702',
+      'form.email.label':'Adres email','form.email.ph':'jan@firma.pl',
+      'form.service.label':'Rodzaj usługi','form.service.ph':'Wybierz kategorię',
+      'form.msg.label':'Opis projektu','form.msg.ph':'Opisz wymiary, materiał, termin realizacji...','form.other':'Inny projekt',
+      'form.submit':'Wyślij zapytanie',
+      'footer.brand.p':'Producent wyrobów metalowych premium. Łączymy twardość stali z elegancją loftu — od projektu po montaż.',
+      'footer.nav.h4':'Strona','footer.services.h4':'Usługi','footer.contact.h4':'Kontakt',
+      'footer.copy':'Wszelkie prawa zastrzeżone.','footer.privacy':'Polityka prywatności','footer.terms':'Regulamin',
+    },
+    en: {
+      'nav.offer':'Offer','nav.about':'About us','nav.process':'How we work','nav.contact':'Contact','nav.cta':'Get a quote',
+      'hero.h1':'Premium<br><em>metalwork.</em>',
+      'hero.sub':'Railings, stairs, pergolas and metal furniture in stainless steel — from design to installation.',
+      'hero.btn1':'Our offer','hero.btn2':'Get a quote',
+      'about.label':'About us','about.h2':'Metal craftsmanship<br><em>of a new generation.</em>',
+      'about.p1':'Kopiec Metal Design is a Polish workshop specialising in the production of high-quality metal products combining industrial aesthetics with loft elegance.',
+      'about.p2':'The workshop is equipped with modern CNC machines and welding equipment — tolerances of ±0.1 mm at every stage of production.',
+      'about.link':'Explore our offer',
+      'quality.label':'Quality & materials','quality.h2':'Certified<br><em>premium materials.</em>',
+      'quality.p1':'We work exclusively with certified stainless steel, aluminium and steel profiles from Polish and European mills with full documentation.',
+      'quality.p2':'Every element undergoes quality control before leaving the workshop — welds tested to EN ISO 9606.',
+      'quality.link':'Ask about a project',
+      'offer.h2':'Explore our<br><em>offer.</em>','offer.sub':'We carry out metal projects of every scale — from decorative elements to load-bearing structures.',
+      'offer.hint':'View projects →','offer.tile1':'Railings & Stairs','offer.tile2':'Pergolas & Canopies',
+      'offer.tile3':'Metal Furniture','offer.tile4':'Gates & Fencing','offer.tile5':'Steel Structures','offer.tile6':'CNC Decorative Elements',
+      'feat.h2':'Exemplary service<br>at <em>every stage.</em>','feat.sub':'We care about every detail — from the first sketch to final finishing and installation.',
+      'feat.card1.h3':'Wide specialisation','feat.card1.p':'From railings to load-bearing structures — we work across the full range of steel and aluminium fabrication.',
+      'feat.card2.h3':'Custom design','feat.card2.p':'Every order is treated individually — we design from scratch in line with the client\'s vision.',
+      'feat.card3.h3':'On time, every time','feat.card3.p':'Every project is delivered to schedule. We meet deadlines without exception.',
+      'feat.card4.h3':'Premium materials','feat.card4.p':'Certified stainless steel and aluminium from Polish and European mills with full material documentation.',
+      'stats.l1':'Completed projects','stats.l2':'Years of experience','stats.l3':'Customer satisfaction',
+      'process.label':'How we work','process.h2':'Simple process,<br><em>reliable result.</em>',
+      'process.s1.h3':'Consultation','process.s1.p':'We discuss the project and technical requirements. Free quote within 24 hours.',
+      'process.s2.h3':'Design','process.s2.p':'Technical documentation and 3D visualisations for approval before production begins.',
+      'process.s3.h3':'Production','process.s3.p':'Precision CNC machining, welding certified to EN ISO 9606, quality control of every element.',
+      'process.s4.h3':'Installation','process.s4.p':'Professional on-site installation with full protection and a technical acceptance protocol.',
+      'cta.h2':'See what we can<br><em>do for you.</em>','cta.p':'Get in touch. We\'ll help bring your idea to life.','cta.btn':'Contact us',
+      'contact.label':'Contact','contact.h2':'Let\'s talk about<br><em>your project.</em>',
+      'contact.p':'Describe your project and we\'ll prepare a free quote. We respond within 24 business hours.',
+      'contact.addr':'Address','contact.phone':'Phone','contact.email':'Email',
+      'form.name.label':'Full name','form.name.ph':'John Smith',
+      'form.phone.label':'Phone','form.phone.ph':'+48 694 421 702',
+      'form.email.label':'Email address','form.email.ph':'john@company.com',
+      'form.service.label':'Type of service','form.service.ph':'Select category',
+      'form.msg.label':'Project description','form.msg.ph':'Describe dimensions, material, deadline...','form.other':'Other project',
+      'form.submit':'Send inquiry',
+      'footer.brand.p':'Premium metalwork manufacturer. We combine the strength of steel with loft elegance — from design to installation.',
+      'footer.nav.h4':'Navigation','footer.services.h4':'Services','footer.contact.h4':'Contact',
+      'footer.copy':'All rights reserved.','footer.privacy':'Privacy Policy','footer.terms':'Terms & Conditions',
+    },
+    de: {
+      'nav.offer':'Angebot','nav.about':'Über uns','nav.process':'Wie wir arbeiten','nav.contact':'Kontakt','nav.cta':'Angebot anfragen',
+      'hero.h1':'Premium<br><em>Metallarbeiten.</em>',
+      'hero.sub':'Geländer, Treppen, Pergolen und Metallmöbel aus Edelstahl — vom Entwurf bis zur Montage.',
+      'hero.btn1':'Unser Angebot','hero.btn2':'Angebot anfragen',
+      'about.label':'Über uns','about.h2':'Metallhandwerk<br><em>der neuen Generation.</em>',
+      'about.p1':'Kopiec Metal Design ist eine polnische Werkstatt, die sich auf die Herstellung hochwertiger Metallprodukte spezialisiert hat, die Industrieästhetik mit Loft-Eleganz verbinden.',
+      'about.p2':'Die Werkstatt ist mit modernen CNC-Maschinen und Schweißgeräten ausgestattet — Toleranzen von ±0,1 mm in jeder Produktionsphase.',
+      'about.link':'Unser Angebot',
+      'quality.label':'Qualität & Materialien','quality.h2':'Zertifizierte<br><em>Premiummaterialien.</em>',
+      'quality.p1':'Wir arbeiten ausschließlich mit zertifiziertem Edelstahl, Aluminium und Stahlprofilen aus polnischen und europäischen Werken mit vollständiger Dokumentation.',
+      'quality.p2':'Jedes Element wird vor dem Verlassen der Werkstatt einer Qualitätskontrolle unterzogen — Schweißnähte geprüft nach EN ISO 9606.',
+      'quality.link':'Projekt anfragen',
+      'offer.h2':'Entdecken Sie<br><em>unser Angebot.</em>','offer.sub':'Wir realisieren Metallprojekte jeder Größenordnung — von dekorativen Elementen bis zu tragenden Konstruktionen.',
+      'offer.hint':'Projekte ansehen →','offer.tile1':'Geländer & Treppen','offer.tile2':'Pergolen & Überdachungen',
+      'offer.tile3':'Metallmöbel','offer.tile4':'Tore & Zäune','offer.tile5':'Stahlkonstruktionen','offer.tile6':'CNC-Dekorelemente',
+      'feat.h2':'Vorbildlicher Service<br>in <em>jeder Phase.</em>','feat.sub':'Wir kümmern uns um jedes Detail — vom ersten Entwurf bis zur finalen Montage.',
+      'feat.card1.h3':'Breite Spezialisierung','feat.card1.p':'Von Geländern bis zu tragenden Konstruktionen — wir arbeiten im gesamten Bereich der Stahl- und Aluminiumverarbeitung.',
+      'feat.card2.h3':'Maßgefertigtes Design','feat.card2.p':'Jeder Auftrag wird individuell behandelt — wir gestalten von Grund auf nach der Vision des Kunden.',
+      'feat.card3.h3':'Termintreue','feat.card3.p':'Jedes Projekt wird nach Zeitplan umgesetzt. Wir halten Termine ohne Ausnahme ein.',
+      'feat.card4.h3':'Premiummaterialien','feat.card4.p':'Zertifizierter Edelstahl und Aluminium aus polnischen und europäischen Werken mit vollständiger Materialdokumentation.',
+      'stats.l1':'Abgeschlossene Projekte','stats.l2':'Jahre Erfahrung','stats.l3':'Kundenzufriedenheit',
+      'process.label':'Wie wir arbeiten','process.h2':'Einfacher Prozess,<br><em>sicheres Ergebnis.</em>',
+      'process.s1.h3':'Beratung','process.s1.p':'Wir besprechen das Projekt und die technischen Anforderungen. Kostenloses Angebot innerhalb von 24 Stunden.',
+      'process.s2.h3':'Planung','process.s2.p':'Technische Dokumentation und 3D-Visualisierungen zur Freigabe vor Produktionsbeginn.',
+      'process.s3.h3':'Produktion','process.s3.p':'Präzise CNC-Bearbeitung, Schweißen nach EN ISO 9606 zertifiziert, Qualitätskontrolle jedes Elements.',
+      'process.s4.h3':'Montage','process.s4.p':'Professionelle Montage vor Ort mit vollständigem Schutz und technischem Abnahmeprotokoll.',
+      'cta.h2':'Erfahren Sie, was wir<br><em>für Sie tun können.</em>','cta.p':'Kontaktieren Sie uns. Wir helfen Ihnen, Ihre Idee zu verwirklichen.','cta.btn':'Kontakt aufnehmen',
+      'contact.label':'Kontakt','contact.h2':'Sprechen wir über<br><em>Ihr Projekt.</em>',
+      'contact.p':'Beschreiben Sie Ihr Projekt und wir erstellen ein kostenloses Angebot. Wir antworten innerhalb von 24 Geschäftsstunden.',
+      'contact.addr':'Adresse','contact.phone':'Telefon','contact.email':'E-Mail',
+      'form.name.label':'Vor- und Nachname','form.name.ph':'Max Mustermann',
+      'form.phone.label':'Telefon','form.phone.ph':'+48 694 421 702',
+      'form.email.label':'E-Mail-Adresse','form.email.ph':'max@firma.de',
+      'form.service.label':'Art der Dienstleistung','form.service.ph':'Kategorie wählen',
+      'form.msg.label':'Projektbeschreibung','form.msg.ph':'Abmessungen, Material, Termin beschreiben...','form.other':'Anderes Projekt',
+      'form.submit':'Anfrage senden',
+      'footer.brand.p':'Hersteller von Premium-Metallprodukten. Wir verbinden die Stärke von Stahl mit Loft-Eleganz — vom Entwurf bis zur Montage.',
+      'footer.nav.h4':'Navigation','footer.services.h4':'Leistungen','footer.contact.h4':'Kontakt',
+      'footer.copy':'Alle Rechte vorbehalten.','footer.privacy':'Datenschutz','footer.terms':'AGB',
+    }
+  };
+
+  function setLanguage(lang) {
+    const d = T[lang];
+    if (!d) return;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const v = d[el.dataset.i18n];
+      if (v !== undefined) el.innerHTML = v;
+    });
+    document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+      const v = d[el.dataset.i18nPh];
+      if (v !== undefined) el.placeholder = v;
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+    document.documentElement.lang = lang;
+    localStorage.setItem('kmd_lang', lang);
+  }
+
+  // Init language from localStorage or browser
+  (function() {
+    const saved = localStorage.getItem('kmd_lang');
+    const browser = (navigator.language || '').slice(0, 2).toLowerCase();
+    const lang = saved || (['en','de'].includes(browser) ? browser : 'pl');
+    if (lang !== 'pl') setLanguage(lang);
+  })();
 
   document.getElementById('cForm').addEventListener('submit', function(e) {
     e.preventDefault();
