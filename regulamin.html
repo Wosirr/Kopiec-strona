@@ -9,76 +9,41 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --antracyt: #1a1c22;
-      --gold: #B8A265;
-      --white: #ffffff;
-      --light: #f4f4f2;
-      --muted: rgba(26,28,34,0.52);
-      --ff: 'Montserrat', sans-serif;
-      --ff-label: 'Michroma', sans-serif;
+      --antracyt: #1a1c22; --gold: #B8A265; --white: #ffffff;
+      --light: #f4f4f2; --muted: rgba(26,28,34,0.52);
+      --ff: 'Montserrat', sans-serif; --ff-label: 'Michroma', sans-serif;
     }
     html { font-size: 62.5%; scroll-behavior: smooth; }
     body { font-family: var(--ff); font-size: 1.6rem; background: var(--light); color: var(--antracyt); line-height: 1.7; }
-
-    .topbar {
-      background: var(--antracyt);
-      padding: 20px 0;
-      border-bottom: 1px solid rgba(184,162,101,0.2);
-    }
-    .topbar-inner {
-      max-width: 1000px; margin: 0 auto; padding: 0 48px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
+    .topbar { background: var(--antracyt); padding: 20px 0; border-bottom: 1px solid rgba(184,162,101,0.2); }
+    .topbar-inner { max-width: 1000px; margin: 0 auto; padding: 0 48px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
     .logo-link { display: flex; align-items: center; gap: 12px; text-decoration: none; }
     .logo-link img { height: 36px; width: auto; }
     .logo-link div { display: flex; flex-direction: column; line-height: 1.1; }
     .logo-link strong { font-size: 1.3rem; font-weight: 800; color: var(--white); letter-spacing: 0.08em; }
     .logo-link span { font-family: var(--ff-label); font-size: 0.7rem; color: var(--gold); letter-spacing: 0.2em; }
-    .back-link {
-      font-family: var(--ff-label); font-size: 0.72rem; letter-spacing: 0.15em;
-      color: var(--gold); text-decoration: none; text-transform: uppercase;
-      transition: opacity 0.2s;
-    }
+    .topbar-right { display: flex; align-items: center; gap: 20px; }
+    .back-link { font-family: var(--ff-label); font-size: 0.72rem; letter-spacing: 0.15em; color: var(--gold); text-decoration: none; text-transform: uppercase; transition: opacity 0.2s; }
     .back-link:hover { opacity: 0.7; }
-
-    .content {
-      max-width: 1000px; margin: 0 auto; padding: 72px 48px 100px;
-    }
-    .page-label {
-      font-family: var(--ff-label); font-size: 0.72rem; letter-spacing: 0.2em;
-      color: var(--gold); text-transform: uppercase; margin-bottom: 16px;
-    }
-    h1 {
-      font-size: clamp(3rem, 4vw, 5rem); font-weight: 800;
-      line-height: 1.1; letter-spacing: -0.03em;
-      color: var(--antracyt); margin-bottom: 12px;
-    }
-    .last-updated {
-      font-size: 1.3rem; color: var(--muted); margin-bottom: 56px;
-      padding-bottom: 40px; border-bottom: 1px solid rgba(26,28,34,0.1);
-    }
-    h2 {
-      font-size: 2rem; font-weight: 700; color: var(--antracyt);
-      margin: 48px 0 16px; letter-spacing: -0.01em;
-    }
-    h2::before {
-      content: ''; display: inline-block;
-      width: 24px; height: 2px; background: var(--gold);
-      vertical-align: middle; margin-right: 12px;
-    }
+    .lang-switcher { display: flex; align-items: center; gap: 3px; }
+    .lang-btn { font-family: var(--ff-label); font-size: 0.6rem; letter-spacing: 0.1em; padding: 4px 8px; border: 1px solid rgba(255,255,255,0.16); color: rgba(255,255,255,0.4); background: none; cursor: pointer; transition: all 0.2s; text-transform: uppercase; line-height: 1; }
+    .lang-btn.active { border-color: var(--gold); color: var(--gold); }
+    .lang-btn:hover:not(.active) { color: var(--white); border-color: rgba(255,255,255,0.38); }
+    .content { max-width: 1000px; margin: 0 auto; padding: 72px 48px 100px; }
+    .page-label { font-family: var(--ff-label); font-size: 0.72rem; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; }
+    h1 { font-size: clamp(3rem, 4vw, 5rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; color: var(--antracyt); margin-bottom: 12px; }
+    .last-updated { font-size: 1.3rem; color: var(--muted); margin-bottom: 56px; padding-bottom: 40px; border-bottom: 1px solid rgba(26,28,34,0.1); }
+    h2 { font-size: 2rem; font-weight: 700; color: var(--antracyt); margin: 48px 0 16px; letter-spacing: -0.01em; }
+    h2::before { content: ''; display: inline-block; width: 24px; height: 2px; background: var(--gold); vertical-align: middle; margin-right: 12px; }
     p { color: var(--antracyt); opacity: 0.75; margin-bottom: 16px; font-size: 1.55rem; }
     ul { margin: 0 0 16px 24px; }
     ul li { color: var(--antracyt); opacity: 0.75; font-size: 1.55rem; margin-bottom: 8px; }
     strong { font-weight: 700; opacity: 1; color: var(--antracyt); }
-
-    .footer-simple {
-      background: var(--antracyt); text-align: center;
-      padding: 28px; font-size: 1.2rem; color: rgba(255,255,255,0.25);
-    }
-
+    .footer-simple { background: var(--antracyt); text-align: center; padding: 28px; font-size: 1.2rem; color: rgba(255,255,255,0.25); }
     @media (max-width: 640px) {
       .topbar-inner, .content { padding-left: 24px; padding-right: 24px; }
       h1 { font-size: 2.8rem; }
+      .back-link { display: none; }
     }
   </style>
 </head>
@@ -88,110 +53,233 @@
   <div class="topbar-inner">
     <a href="index.html" class="logo-link">
       <img src="Assety marki/LogoBezTła.png" alt="Kopiec Metal Design" />
-      <div>
-        <strong>KOPIEC</strong>
-        <span>METAL DESIGN</span>
-      </div>
+      <div><strong>KOPIEC</strong><span>METAL DESIGN</span></div>
     </a>
-    <a href="index.html" class="back-link">← Wróć na stronę główną</a>
+    <div class="topbar-right">
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="pl" onclick="setLang('pl')">PL</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" data-lang="de" onclick="setLang('de')">DE</button>
+      </div>
+      <a href="index.html" class="back-link" data-i18n="back">← Wróć na stronę główną</a>
+    </div>
   </div>
 </div>
 
 <div class="content">
-  <p class="page-label">Dokument prawny</p>
-  <h1>Regulamin</h1>
-  <p class="last-updated">Ostatnia aktualizacja: 1 stycznia 2025 r.</p>
+  <p class="page-label" data-i18n="label">Dokument prawny</p>
+  <h1 data-i18n="title">Regulamin</h1>
+  <p class="last-updated" data-i18n="updated">Ostatnia aktualizacja: 1 stycznia 2025 r.</p>
 
-  <h2>§1. Postanowienia ogólne</h2>
-  <p>Niniejszy regulamin określa zasady korzystania z serwisu internetowego dostępnego pod adresem domeny obsługiwanej przez <strong>Kopiec Metal Design</strong> z siedzibą przy ul. Krapkowickiej 12, 47-214 Mechnica, Polska (zwanego dalej „Serwisem").</p>
-  <p>Korzystanie z Serwisu jest równoznaczne z akceptacją niniejszego regulaminu. W razie braku akceptacji prosimy o niekorzystanie z Serwisu.</p>
+  <h2 data-i18n="s1.h">§1. Postanowienia ogólne</h2>
+  <p data-i18n="s1.p1">Niniejszy regulamin określa zasady korzystania z serwisu internetowego dostępnego pod adresem domeny obsługiwanej przez <strong>Kopiec Metal Design</strong> z siedzibą przy ul. Krapkowickiej 12, 47-214 Mechnica, Polska (zwanego dalej „Serwisem").</p>
+  <p data-i18n="s1.p2">Korzystanie z Serwisu jest równoznaczne z akceptacją niniejszego regulaminu. W razie braku akceptacji prosimy o niekorzystanie z Serwisu.</p>
 
-  <h2>§2. Definicje</h2>
-  <ul>
-    <li><strong>Usługodawca</strong> — Kopiec Metal Design, Krapkowicka 12, 47-214 Mechnica.</li>
-    <li><strong>Użytkownik</strong> — każda osoba fizyczna lub prawna korzystająca z Serwisu.</li>
-    <li><strong>Serwis</strong> — strona internetowa prowadzona przez Usługodawcę.</li>
-    <li><strong>Usługi</strong> — wszelkie usługi metalowe oferowane przez Usługodawcę, w tym wykonanie balustrad, schodów, pergoli, mebli metalowych, bram, ogrodzeń oraz konstrukcji stalowych.</li>
-  </ul>
+  <h2 data-i18n="s2.h">§2. Definicje</h2>
+  <ul data-i18n-list="s2.list"></ul>
 
-  <h2>§3. Zakres działalności</h2>
-  <p>Kopiec Metal Design świadczy usługi w zakresie projektowania i wykonywania wyrobów metalowych, w szczególności:</p>
-  <ul>
-    <li>balustrad wewnętrznych i zewnętrznych,</li>
-    <li>schodów metalowych i schodo-balustrad,</li>
-    <li>pergoli i zadaszeń stalowych,</li>
-    <li>mebli i elementów wyposażenia wnętrz z metalu,</li>
-    <li>bram wjazdowych i furtek,</li>
-    <li>ogrodzeń i płotów,</li>
-    <li>konstrukcji stalowych i nośnych,</li>
-    <li>elementów dekoracyjnych wycinanych laserowo i CNC.</li>
-  </ul>
-  <p>Serwis pełni wyłącznie funkcję informacyjną i umożliwia nawiązanie kontaktu z Usługodawcą. Zamówienia realizowane są wyłącznie po indywidualnym ustaleniu warunków współpracy.</p>
+  <h2 data-i18n="s3.h">§3. Zakres działalności</h2>
+  <p data-i18n="s3.p">Kopiec Metal Design świadczy usługi w zakresie projektowania i wykonywania wyrobów metalowych, w szczególności:</p>
+  <ul data-i18n-list="s3.list"></ul>
+  <p data-i18n="s3.p2">Serwis pełni wyłącznie funkcję informacyjną i umożliwia nawiązanie kontaktu z Usługodawcą. Zamówienia realizowane są wyłącznie po indywidualnym ustaleniu warunków współpracy.</p>
 
-  <h2>§4. Zasady składania zapytań i zamówień</h2>
-  <p>Zapytania ofertowe można kierować za pośrednictwem:</p>
-  <ul>
-    <li>formularza kontaktowego dostępnego na stronie,</li>
-    <li>adresu e-mail: <strong>kopiecmd@gmail.com</strong>,</li>
-    <li>telefonicznie: <strong>+48 694 421 702</strong>.</li>
-  </ul>
-  <p>Każde zapytanie jest traktowane indywidualnie. Usługodawca zastrzega sobie prawo do odmowy realizacji zamówienia bez podania przyczyny.</p>
-  <p>Umowa o realizację usługi zostaje zawarta po pisemnym lub e-mailowym potwierdzeniu warunków przez obie strony oraz wpłacie zaliczki w uzgodnionej wysokości.</p>
+  <h2 data-i18n="s4.h">§4. Zasady składania zapytań i zamówień</h2>
+  <p data-i18n="s4.p">Zapytania ofertowe można kierować za pośrednictwem:</p>
+  <ul data-i18n-list="s4.list"></ul>
+  <p data-i18n="s4.p2">Każde zapytanie jest traktowane indywidualnie. Usługodawca zastrzega sobie prawo do odmowy realizacji zamówienia bez podania przyczyny.</p>
+  <p data-i18n="s4.p3">Umowa o realizację usługi zostaje zawarta po pisemnym lub e-mailowym potwierdzeniu warunków przez obie strony oraz wpłacie zaliczki w uzgodnionej wysokości.</p>
 
-  <h2>§5. Wycena i płatności</h2>
-  <p>Wycena usług jest bezpłatna i niezobowiązująca. Ostateczna cena ustalana jest indywidualnie po zapoznaniu się ze szczegółami projektu.</p>
-  <p>Zasady płatności:</p>
-  <ul>
-    <li>zaliczka w wysokości od 30% do 50% wartości zamówienia — przed przystąpieniem do realizacji,</li>
-    <li>pozostała część należności — przy odbiorze gotowego produktu lub zgodnie z harmonogramem płatności ustalonym w umowie,</li>
-    <li>płatność przelewem bankowym na wskazany rachunek lub gotówką.</li>
-  </ul>
+  <h2 data-i18n="s5.h">§5. Wycena i płatności</h2>
+  <p data-i18n="s5.p">Wycena usług jest bezpłatna i niezobowiązująca. Ostateczna cena ustalana jest indywidualnie po zapoznaniu się ze szczegółami projektu.</p>
+  <p data-i18n="s5.p2">Zasady płatności:</p>
+  <ul data-i18n-list="s5.list"></ul>
 
-  <h2>§6. Terminy realizacji</h2>
-  <p>Termin realizacji ustalany jest indywidualnie dla każdego zamówienia i zależy od jego złożoności, dostępności materiałów oraz aktualnego obłożenia pracowni. Usługodawca dokłada wszelkich starań, aby dotrzymywać uzgodnionych terminów, jednak nie ponosi odpowiedzialności za opóźnienia wynikające z okoliczności niezależnych od niego (np. opóźnienia dostaw materiałów, siła wyższa).</p>
+  <h2 data-i18n="s6.h">§6. Terminy realizacji</h2>
+  <p data-i18n="s6.p">Termin realizacji ustalany jest indywidualnie dla każdego zamówienia i zależy od jego złożoności, dostępności materiałów oraz aktualnego obłożenia pracowni. Usługodawca dokłada wszelkich starań, aby dotrzymywać uzgodnionych terminów, jednak nie ponosi odpowiedzialności za opóźnienia wynikające z okoliczności niezależnych od niego (np. opóźnienia dostaw materiałów, siła wyższa).</p>
 
-  <h2>§7. Reklamacje i gwarancja</h2>
-  <p>Usługodawca udziela gwarancji na wykonane usługi na okres <strong>24 miesięcy</strong> od daty odbioru, obejmującej wady materiałowe i wykonawcze.</p>
-  <p>Reklamacje należy zgłaszać pisemnie lub e-mailowo na adres: <strong>kopiecmd@gmail.com</strong>, wraz z opisem wady i dokumentacją fotograficzną.</p>
-  <p>Usługodawca rozpatruje reklamacje w terminie 14 dni roboczych od ich otrzymania.</p>
-  <p>Gwarancja nie obejmuje:</p>
-  <ul>
-    <li>uszkodzeń mechanicznych powstałych z winy Użytkownika,</li>
-    <li>naturalnego zużycia materiałów,</li>
-    <li>uszkodzeń wynikających z nieprawidłowej eksploatacji lub konserwacji,</li>
-    <li>szkód powstałych wskutek działania czynników zewnętrznych (grad, powódź, wandalizm).</li>
-  </ul>
+  <h2 data-i18n="s7.h">§7. Reklamacje i gwarancja</h2>
+  <p data-i18n="s7.p1">Usługodawca udziela gwarancji na wykonane usługi na okres <strong>24 miesięcy</strong> od daty odbioru, obejmującej wady materiałowe i wykonawcze.</p>
+  <p data-i18n="s7.p2">Reklamacje należy zgłaszać pisemnie lub e-mailowo na adres: <strong>kopiecmd@gmail.com</strong>, wraz z opisem wady i dokumentacją fotograficzną.</p>
+  <p data-i18n="s7.p3">Usługodawca rozpatruje reklamacje w terminie 14 dni roboczych od ich otrzymania.</p>
+  <p data-i18n="s7.p4">Gwarancja nie obejmuje:</p>
+  <ul data-i18n-list="s7.list"></ul>
 
-  <h2>§8. Własność intelektualna</h2>
-  <p>Wszelkie treści zamieszczone w Serwisie, w tym grafiki, zdjęcia, teksty, logotypy i projekty, stanowią własność Usługodawcy lub podmiotów, które udzieliły licencji na ich wykorzystanie.</p>
-  <p>Zabrania się kopiowania, reprodukowania lub wykorzystywania jakichkolwiek materiałów ze strony bez pisemnej zgody Usługodawcy.</p>
+  <h2 data-i18n="s8.h">§8. Własność intelektualna</h2>
+  <p data-i18n="s8.p1">Wszelkie treści zamieszczone w Serwisie, w tym grafiki, zdjęcia, teksty, logotypy i projekty, stanowią własność Usługodawcy lub podmiotów, które udzieliły licencji na ich wykorzystanie.</p>
+  <p data-i18n="s8.p2">Zabrania się kopiowania, reprodukowania lub wykorzystywania jakichkolwiek materiałów ze strony bez pisemnej zgody Usługodawcy.</p>
 
-  <h2>§9. Odpowiedzialność</h2>
-  <p>Usługodawca nie ponosi odpowiedzialności za:</p>
-  <ul>
-    <li>przerwy w dostępności Serwisu wynikające z prac technicznych lub awarii,</li>
-    <li>szkody wynikłe z korzystania z Serwisu przez Użytkownika w sposób niezgodny z jego przeznaczeniem,</li>
-    <li>treści zamieszczane przez Użytkowników za pośrednictwem formularza kontaktowego.</li>
-  </ul>
+  <h2 data-i18n="s9.h">§9. Odpowiedzialność</h2>
+  <p data-i18n="s9.p">Usługodawca nie ponosi odpowiedzialności za:</p>
+  <ul data-i18n-list="s9.list"></ul>
 
-  <h2>§10. Zmiany regulaminu</h2>
-  <p>Usługodawca zastrzega sobie prawo do zmiany niniejszego regulaminu w dowolnym czasie. Zmiany wchodzą w życie z chwilą ich opublikowania na stronie. Dalsze korzystanie z Serwisu po wprowadzeniu zmian oznacza akceptację nowych postanowień.</p>
+  <h2 data-i18n="s10.h">§10. Zmiany regulaminu</h2>
+  <p data-i18n="s10.p">Usługodawca zastrzega sobie prawo do zmiany niniejszego regulaminu w dowolnym czasie. Zmiany wchodzą w życie z chwilą ich opublikowania na stronie. Dalsze korzystanie z Serwisu po wprowadzeniu zmian oznacza akceptację nowych postanowień.</p>
 
-  <h2>§11. Prawo właściwe i rozstrzyganie sporów</h2>
-  <p>Niniejszy regulamin podlega prawu polskiemu. Wszelkie spory wynikłe z korzystania z Serwisu lub realizacji usług strony zobowiązują się rozstrzygać w pierwszej kolejności polubownie. W przypadku braku porozumienia spory rozstrzygane będą przez sąd właściwy dla siedziby Usługodawcy.</p>
+  <h2 data-i18n="s11.h">§11. Prawo właściwe i rozstrzyganie sporów</h2>
+  <p data-i18n="s11.p">Niniejszy regulamin podlega prawu polskiemu. Wszelkie spory wynikłe z korzystania z Serwisu lub realizacji usług strony zobowiązują się rozstrzygać w pierwszej kolejności polubownie. W przypadku braku porozumienia spory rozstrzygane będą przez sąd właściwy dla siedziby Usługodawcy.</p>
 
-  <h2>§12. Kontakt</h2>
-  <p>W sprawach związanych z niniejszym regulaminem prosimy o kontakt:</p>
-  <ul>
-    <li>E-mail: <strong>kopiecmd@gmail.com</strong></li>
-    <li>Telefon: <strong>+48 694 421 702</strong></li>
-    <li>Adres: Krapkowicka 12, 47-214 Mechnica</li>
-  </ul>
+  <h2 data-i18n="s12.h">§12. Kontakt</h2>
+  <p data-i18n="s12.p">W sprawach związanych z niniejszym regulaminem prosimy o kontakt:</p>
+  <ul data-i18n-list="s12.list"></ul>
 </div>
 
 <div class="footer-simple">
-  © <script>document.write(new Date().getFullYear())</script> Kopiec Metal Design. Wszelkie prawa zastrzeżone.
+  © <script>document.write(new Date().getFullYear())</script> Kopiec Metal Design. <span data-i18n="footer">Wszelkie prawa zastrzeżone.</span>
 </div>
 
+<script>
+const T = {
+  pl: {
+    back: '← Wróć na stronę główną', label: 'Dokument prawny', title: 'Regulamin',
+    updated: 'Ostatnia aktualizacja: 1 stycznia 2025 r.', footer: 'Wszelkie prawa zastrzeżone.',
+    's1.h': '§1. Postanowienia ogólne',
+    's1.p1': 'Niniejszy regulamin określa zasady korzystania z serwisu internetowego dostępnego pod adresem domeny obsługiwanej przez <strong>Kopiec Metal Design</strong> z siedzibą przy ul. Krapkowickiej 12, 47-214 Mechnica, Polska (zwanego dalej „Serwisem").',
+    's1.p2': 'Korzystanie z Serwisu jest równoznaczne z akceptacją niniejszego regulaminu. W razie braku akceptacji prosimy o niekorzystanie z Serwisu.',
+    's2.h': '§2. Definicje',
+    's2.list': ['<strong>Usługodawca</strong> — Kopiec Metal Design, Krapkowicka 12, 47-214 Mechnica.','<strong>Użytkownik</strong> — każda osoba fizyczna lub prawna korzystająca z Serwisu.','<strong>Serwis</strong> — strona internetowa prowadzona przez Usługodawcę.','<strong>Usługi</strong> — wszelkie usługi metalowe oferowane przez Usługodawcę.'],
+    's3.h': '§3. Zakres działalności',
+    's3.p': 'Kopiec Metal Design świadczy usługi w zakresie projektowania i wykonywania wyrobów metalowych, w szczególności:',
+    's3.list': ['balustrad wewnętrznych i zewnętrznych,','schodów metalowych i schodo-balustrad,','pergoli i zadaszeń stalowych,','mebli i elementów wyposażenia wnętrz z metalu,','bram wjazdowych i furtek,','ogrodzeń i płotów,','konstrukcji stalowych i nośnych,','elementów dekoracyjnych wycinanych laserowo i CNC.'],
+    's3.p2': 'Serwis pełni wyłącznie funkcję informacyjną i umożliwia nawiązanie kontaktu z Usługodawcą. Zamówienia realizowane są wyłącznie po indywidualnym ustaleniu warunków współpracy.',
+    's4.h': '§4. Zasady składania zapytań i zamówień',
+    's4.p': 'Zapytania ofertowe można kierować za pośrednictwem:',
+    's4.list': ['formularza kontaktowego dostępnego na stronie,','adresu e-mail: <strong>kopiecmd@gmail.com</strong>,','telefonicznie: <strong>+48 694 421 702</strong>.'],
+    's4.p2': 'Każde zapytanie jest traktowane indywidualnie. Usługodawca zastrzega sobie prawo do odmowy realizacji zamówienia bez podania przyczyny.',
+    's4.p3': 'Umowa o realizację usługi zostaje zawarta po pisemnym lub e-mailowym potwierdzeniu warunków przez obie strony oraz wpłacie zaliczki w uzgodnionej wysokości.',
+    's5.h': '§5. Wycena i płatności',
+    's5.p': 'Wycena usług jest bezpłatna i niezobowiązująca. Ostateczna cena ustalana jest indywidualnie po zapoznaniu się ze szczegółami projektu.',
+    's5.p2': 'Zasady płatności:',
+    's5.list': ['zaliczka w wysokości od 30% do 50% wartości zamówienia — przed przystąpieniem do realizacji,','pozostała część należności — przy odbiorze gotowego produktu lub zgodnie z harmonogramem płatności,','płatność przelewem bankowym na wskazany rachunek lub gotówką.'],
+    's6.h': '§6. Terminy realizacji',
+    's6.p': 'Termin realizacji ustalany jest indywidualnie dla każdego zamówienia i zależy od jego złożoności, dostępności materiałów oraz aktualnego obłożenia pracowni. Usługodawca dokłada wszelkich starań, aby dotrzymywać uzgodnionych terminów, jednak nie ponosi odpowiedzialności za opóźnienia wynikające z okoliczności niezależnych od niego (np. opóźnienia dostaw materiałów, siła wyższa).',
+    's7.h': '§7. Reklamacje i gwarancja',
+    's7.p1': 'Usługodawca udziela gwarancji na wykonane usługi na okres <strong>24 miesięcy</strong> od daty odbioru, obejmującej wady materiałowe i wykonawcze.',
+    's7.p2': 'Reklamacje należy zgłaszać pisemnie lub e-mailowo na adres: <strong>kopiecmd@gmail.com</strong>, wraz z opisem wady i dokumentacją fotograficzną.',
+    's7.p3': 'Usługodawca rozpatruje reklamacje w terminie 14 dni roboczych od ich otrzymania.',
+    's7.p4': 'Gwarancja nie obejmuje:',
+    's7.list': ['uszkodzeń mechanicznych powstałych z winy Użytkownika,','naturalnego zużycia materiałów,','uszkodzeń wynikających z nieprawidłowej eksploatacji lub konserwacji,','szkód powstałych wskutek działania czynników zewnętrznych (grad, powódź, wandalizm).'],
+    's8.h': '§8. Własność intelektualna',
+    's8.p1': 'Wszelkie treści zamieszczone w Serwisie, w tym grafiki, zdjęcia, teksty, logotypy i projekty, stanowią własność Usługodawcy lub podmiotów, które udzieliły licencji na ich wykorzystanie.',
+    's8.p2': 'Zabrania się kopiowania, reprodukowania lub wykorzystywania jakichkolwiek materiałów ze strony bez pisemnej zgody Usługodawcy.',
+    's9.h': '§9. Odpowiedzialność',
+    's9.p': 'Usługodawca nie ponosi odpowiedzialności za:',
+    's9.list': ['przerwy w dostępności Serwisu wynikające z prac technicznych lub awarii,','szkody wynikłe z korzystania z Serwisu przez Użytkownika w sposób niezgodny z jego przeznaczeniem,','treści zamieszczane przez Użytkowników za pośrednictwem formularza kontaktowego.'],
+    's10.h': '§10. Zmiany regulaminu',
+    's10.p': 'Usługodawca zastrzega sobie prawo do zmiany niniejszego regulaminu w dowolnym czasie. Zmiany wchodzą w życie z chwilą ich opublikowania na stronie. Dalsze korzystanie z Serwisu po wprowadzeniu zmian oznacza akceptację nowych postanowień.',
+    's11.h': '§11. Prawo właściwe i rozstrzyganie sporów',
+    's11.p': 'Niniejszy regulamin podlega prawu polskiemu. Wszelkie spory wynikłe z korzystania z Serwisu lub realizacji usług strony zobowiązują się rozstrzygać w pierwszej kolejności polubownie. W przypadku braku porozumienia spory rozstrzygane będą przez sąd właściwy dla siedziby Usługodawcy.',
+    's12.h': '§12. Kontakt',
+    's12.p': 'W sprawach związanych z niniejszym regulaminem prosimy o kontakt:',
+    's12.list': ['E-mail: <strong>kopiecmd@gmail.com</strong>','Telefon: <strong>+48 694 421 702</strong>','Adres: Krapkowicka 12, 47-214 Mechnica'],
+  },
+  en: {
+    back: '← Back to homepage', label: 'Legal document', title: 'Terms & Conditions',
+    updated: 'Last updated: 1 January 2025', footer: 'All rights reserved.',
+    's1.h': '§1. General Provisions',
+    's1.p1': 'These Terms & Conditions govern the use of the website operated by <strong>Kopiec Metal Design</strong>, with its registered address at Krapkowicka 12, 47-214 Mechnica, Poland (hereinafter referred to as the "Service").',
+    's1.p2': 'Using the Service constitutes acceptance of these Terms & Conditions. If you do not accept them, please refrain from using the Service.',
+    's2.h': '§2. Definitions',
+    's2.list': ['<strong>Service Provider</strong> — Kopiec Metal Design, Krapkowicka 12, 47-214 Mechnica.','<strong>User</strong> — any natural or legal person using the Service.','<strong>Service</strong> — the website operated by the Service Provider.','<strong>Services</strong> — all metal services offered by the Service Provider.'],
+    's3.h': '§3. Scope of Services',
+    's3.p': 'Kopiec Metal Design provides design and fabrication services for metal products, in particular:',
+    's3.list': ['interior and exterior railings,','metal staircases and stair railings,','steel pergolas and canopies,','metal furniture and interior fittings,','entrance gates and wicket gates,','fencing and railings,','steel and load-bearing structures,','laser-cut and CNC decorative elements.'],
+    's3.p2': 'The Service serves solely as an information and contact platform. Orders are accepted only after individual negotiation of the terms of cooperation.',
+    's4.h': '§4. Enquiries and Orders',
+    's4.p': 'Enquiries may be submitted via:',
+    's4.list': ['the contact form available on the website,','e-mail: <strong>kopiecmd@gmail.com</strong>,','phone: <strong>+48 694 421 702</strong>.'],
+    's4.p2': 'Each enquiry is treated individually. The Service Provider reserves the right to decline an order without giving a reason.',
+    's4.p3': 'A service agreement is concluded after written or e-mail confirmation of the terms by both parties and payment of the agreed deposit.',
+    's5.h': '§5. Pricing and Payment',
+    's5.p': 'Quotes are free of charge and non-binding. The final price is determined individually based on the project details.',
+    's5.p2': 'Payment terms:',
+    's5.list': ['a deposit of 30%–50% of the order value — before work commences,','the remaining balance — upon collection of the finished product or in accordance with the agreed payment schedule,','payment by bank transfer or cash.'],
+    's6.h': '§6. Lead Times',
+    's6.p': 'Lead times are determined individually for each order and depend on its complexity, material availability and the current workload of the workshop. The Service Provider makes every effort to meet agreed deadlines, but accepts no liability for delays caused by circumstances beyond its control (e.g. delivery delays, force majeure).',
+    's7.h': '§7. Complaints and Warranty',
+    's7.p1': 'The Service Provider provides a <strong>24-month warranty</strong> on completed services, covering material and workmanship defects.',
+    's7.p2': 'Complaints must be submitted in writing or by e-mail to <strong>kopiecmd@gmail.com</strong>, with a description of the defect and photographic documentation.',
+    's7.p3': 'The Service Provider will handle complaints within 14 business days of receipt.',
+    's7.p4': 'The warranty does not cover:',
+    's7.list': ['mechanical damage caused by the User,','natural wear of materials,','damage resulting from improper use or maintenance,','damage caused by external factors (hail, flood, vandalism).'],
+    's8.h': '§8. Intellectual Property',
+    's8.p1': 'All content published on the Service, including graphics, photographs, text, logos and designs, is the property of the Service Provider or of parties that have granted a licence for their use.',
+    's8.p2': 'Copying, reproducing or using any materials from the website without the written consent of the Service Provider is prohibited.',
+    's9.h': '§9. Liability',
+    's9.p': 'The Service Provider accepts no liability for:',
+    's9.list': ['interruptions to the availability of the Service due to technical work or failures,','damage resulting from the User\'s use of the Service in a manner contrary to its intended purpose,','content submitted by Users via the contact form.'],
+    's10.h': '§10. Amendments to the Terms',
+    's10.p': 'The Service Provider reserves the right to amend these Terms & Conditions at any time. Changes take effect upon publication on the website. Continued use of the Service after changes have been made constitutes acceptance of the new provisions.',
+    's11.h': '§11. Governing Law and Dispute Resolution',
+    's11.p': 'These Terms & Conditions are governed by Polish law. Any disputes arising from the use of the Service or the performance of services shall first be resolved amicably. If no agreement is reached, disputes shall be settled by the court with jurisdiction over the Service Provider\'s registered address.',
+    's12.h': '§12. Contact',
+    's12.p': 'For matters relating to these Terms & Conditions, please contact us:',
+    's12.list': ['E-mail: <strong>kopiecmd@gmail.com</strong>','Phone: <strong>+48 694 421 702</strong>','Address: Krapkowicka 12, 47-214 Mechnica, Poland'],
+  },
+  de: {
+    back: '← Zurück zur Startseite', label: 'Rechtliches Dokument', title: 'Allgemeine Geschäftsbedingungen',
+    updated: 'Zuletzt aktualisiert: 1. Januar 2025', footer: 'Alle Rechte vorbehalten.',
+    's1.h': '§1. Allgemeine Bestimmungen',
+    's1.p1': 'Diese AGB regeln die Nutzung der Website, die von <strong>Kopiec Metal Design</strong> mit Sitz in der Krapkowicka 12, 47-214 Mechnica, Polen betrieben wird (nachfolgend „Dienst" genannt).',
+    's1.p2': 'Die Nutzung des Dienstes gilt als Zustimmung zu diesen AGB. Falls Sie nicht zustimmen, bitten wir Sie, den Dienst nicht zu nutzen.',
+    's2.h': '§2. Begriffsbestimmungen',
+    's2.list': ['<strong>Dienstanbieter</strong> — Kopiec Metal Design, Krapkowicka 12, 47-214 Mechnica.','<strong>Nutzer</strong> — jede natürliche oder juristische Person, die den Dienst nutzt.','<strong>Dienst</strong> — die vom Dienstanbieter betriebene Website.','<strong>Leistungen</strong> — alle vom Dienstanbieter angebotenen Metallarbeiten.'],
+    's3.h': '§3. Leistungsumfang',
+    's3.p': 'Kopiec Metal Design bietet Planungs- und Fertigungsleistungen für Metallprodukte an, insbesondere:',
+    's3.list': ['Innen- und Außengeländer,','Metalltreppen und Treppengitter,','Stahlpergolen und Überdachungen,','Metallmöbel und Inneneinrichtungselemente,','Einfahrtstore und Gartentore,','Zäune und Einfriedungen,','Stahl- und Tragkonstruktionen,','laser- und CNC-geschnittene Dekorelemente.'],
+    's3.p2': 'Der Dienst dient ausschließlich als Informations- und Kontaktplattform. Aufträge werden erst nach individueller Vereinbarung der Konditionen angenommen.',
+    's4.h': '§4. Anfragen und Bestellungen',
+    's4.p': 'Angebotsanfragen können gestellt werden über:',
+    's4.list': ['das Kontaktformular auf der Website,','E-Mail: <strong>kopiecmd@gmail.com</strong>,','Telefon: <strong>+48 694 421 702</strong>.'],
+    's4.p2': 'Jede Anfrage wird individuell behandelt. Der Dienstanbieter behält sich das Recht vor, einen Auftrag ohne Angabe von Gründen abzulehnen.',
+    's4.p3': 'Ein Dienstleistungsvertrag kommt zustande, nachdem beide Parteien die Bedingungen schriftlich oder per E-Mail bestätigt haben und eine Anzahlung in vereinbarter Höhe geleistet wurde.',
+    's5.h': '§5. Preisgestaltung und Zahlung',
+    's5.p': 'Kostenvoranschläge sind kostenlos und unverbindlich. Der endgültige Preis wird individuell nach Prüfung der Projektdetails festgelegt.',
+    's5.p2': 'Zahlungsbedingungen:',
+    's5.list': ['Anzahlung von 30–50 % des Auftragswertes — vor Beginn der Arbeiten,','Restbetrag — bei Abnahme des fertigen Produkts oder gemäß vereinbartem Zahlungsplan,','Zahlung per Banküberweisung oder bar.'],
+    's6.h': '§6. Lieferzeiten',
+    's6.p': 'Die Lieferzeit wird für jeden Auftrag individuell festgelegt und hängt von der Komplexität, der Materialverfügbarkeit und der aktuellen Auslastung der Werkstatt ab. Der Dienstanbieter ist bestrebt, die vereinbarten Termine einzuhalten, haftet jedoch nicht für Verzögerungen, die auf von ihm unabhängigen Umständen beruhen (z. B. Lieferverzögerungen, höhere Gewalt).',
+    's7.h': '§7. Reklamationen und Garantie',
+    's7.p1': 'Der Dienstanbieter gewährt auf erbrachte Leistungen eine <strong>24-monatige Garantie</strong> ab dem Abnahmedatum, die Material- und Verarbeitungsfehler abdeckt.',
+    's7.p2': 'Reklamationen sind schriftlich oder per E-Mail an <strong>kopiecmd@gmail.com</strong> zu richten, einschließlich einer Beschreibung des Mangels und fotodokumentation.',
+    's7.p3': 'Der Dienstanbieter bearbeitet Reklamationen innerhalb von 14 Werktagen nach Eingang.',
+    's7.p4': 'Die Garantie gilt nicht für:',
+    's7.list': ['mechanische Schäden, die durch den Nutzer verursacht wurden,','natürlichen Materialverschleiß,','Schäden durch unsachgemäße Nutzung oder Wartung,','Schäden durch äußere Einwirkungen (Hagel, Überschwemmung, Vandalismus).'],
+    's8.h': '§8. Geistiges Eigentum',
+    's8.p1': 'Alle auf dem Dienst veröffentlichten Inhalte, einschließlich Grafiken, Fotos, Texte, Logos und Entwürfe, sind Eigentum des Dienstanbieters oder von Parteien, die eine Nutzungslizenz erteilt haben.',
+    's8.p2': 'Das Kopieren, Vervielfältigen oder Verwenden von Materialien der Website ohne schriftliche Zustimmung des Dienstanbieters ist untersagt.',
+    's9.h': '§9. Haftung',
+    's9.p': 'Der Dienstanbieter haftet nicht für:',
+    's9.list': ['Unterbrechungen der Dienstverfügbarkeit aufgrund von Wartungsarbeiten oder Störungen,','Schäden, die durch eine nicht bestimmungsgemäße Nutzung des Dienstes entstehen,','Inhalte, die von Nutzern über das Kontaktformular eingestellt werden.'],
+    's10.h': '§10. Änderungen der AGB',
+    's10.p': 'Der Dienstanbieter behält sich das Recht vor, diese AGB jederzeit zu ändern. Änderungen treten mit ihrer Veröffentlichung auf der Website in Kraft. Die weitere Nutzung des Dienstes nach Änderungen gilt als Zustimmung zu den neuen Bestimmungen.',
+    's11.h': '§11. Anwendbares Recht und Streitbeilegung',
+    's11.p': 'Diese AGB unterliegen polnischem Recht. Etwaige Streitigkeiten sollen zunächst gütlich beigelegt werden. Kann keine Einigung erzielt werden, werden Streitigkeiten vor dem für den Sitz des Dienstanbieters zuständigen Gericht entschieden.',
+    's12.h': '§12. Kontakt',
+    's12.p': 'Bei Fragen zu diesen AGB wenden Sie sich bitte an uns:',
+    's12.list': ['E-Mail: <strong>kopiecmd@gmail.com</strong>','Telefon: <strong>+48 694 421 702</strong>','Adresse: Krapkowicka 12, 47-214 Mechnica, Polen'],
+  }
+};
+
+function setLang(lang) {
+  const d = T[lang];
+  if (!d) return;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = d[el.dataset.i18n];
+    if (v !== undefined) el.innerHTML = v;
+  });
+  document.querySelectorAll('[data-i18n-list]').forEach(ul => {
+    const items = d[ul.dataset.i18nList];
+    if (items) ul.innerHTML = items.map(i => `<li>${i}</li>`).join('');
+  });
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  document.documentElement.lang = lang;
+  localStorage.setItem('kmd_lang', lang);
+}
+
+(function() {
+  const saved = localStorage.getItem('kmd_lang') || 'pl';
+  setLang(saved);
+})();
+</script>
 </body>
 </html>

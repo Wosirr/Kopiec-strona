@@ -9,76 +9,41 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --antracyt: #1a1c22;
-      --gold: #B8A265;
-      --white: #ffffff;
-      --light: #f4f4f2;
-      --muted: rgba(26,28,34,0.52);
-      --ff: 'Montserrat', sans-serif;
-      --ff-label: 'Michroma', sans-serif;
+      --antracyt: #1a1c22; --gold: #B8A265; --white: #ffffff;
+      --light: #f4f4f2; --muted: rgba(26,28,34,0.52);
+      --ff: 'Montserrat', sans-serif; --ff-label: 'Michroma', sans-serif;
     }
     html { font-size: 62.5%; scroll-behavior: smooth; }
     body { font-family: var(--ff); font-size: 1.6rem; background: var(--light); color: var(--antracyt); line-height: 1.7; }
-
-    .topbar {
-      background: var(--antracyt);
-      padding: 20px 0;
-      border-bottom: 1px solid rgba(184,162,101,0.2);
-    }
-    .topbar-inner {
-      max-width: 1000px; margin: 0 auto; padding: 0 48px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
+    .topbar { background: var(--antracyt); padding: 20px 0; border-bottom: 1px solid rgba(184,162,101,0.2); }
+    .topbar-inner { max-width: 1000px; margin: 0 auto; padding: 0 48px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
     .logo-link { display: flex; align-items: center; gap: 12px; text-decoration: none; }
     .logo-link img { height: 36px; width: auto; }
     .logo-link div { display: flex; flex-direction: column; line-height: 1.1; }
     .logo-link strong { font-size: 1.3rem; font-weight: 800; color: var(--white); letter-spacing: 0.08em; }
     .logo-link span { font-family: var(--ff-label); font-size: 0.7rem; color: var(--gold); letter-spacing: 0.2em; }
-    .back-link {
-      font-family: var(--ff-label); font-size: 0.72rem; letter-spacing: 0.15em;
-      color: var(--gold); text-decoration: none; text-transform: uppercase;
-      transition: opacity 0.2s;
-    }
+    .topbar-right { display: flex; align-items: center; gap: 20px; }
+    .back-link { font-family: var(--ff-label); font-size: 0.72rem; letter-spacing: 0.15em; color: var(--gold); text-decoration: none; text-transform: uppercase; transition: opacity 0.2s; }
     .back-link:hover { opacity: 0.7; }
-
-    .content {
-      max-width: 1000px; margin: 0 auto; padding: 72px 48px 100px;
-    }
-    .page-label {
-      font-family: var(--ff-label); font-size: 0.72rem; letter-spacing: 0.2em;
-      color: var(--gold); text-transform: uppercase; margin-bottom: 16px;
-    }
-    h1 {
-      font-size: clamp(3rem, 4vw, 5rem); font-weight: 800;
-      line-height: 1.1; letter-spacing: -0.03em;
-      color: var(--antracyt); margin-bottom: 12px;
-    }
-    .last-updated {
-      font-size: 1.3rem; color: var(--muted); margin-bottom: 56px;
-      padding-bottom: 40px; border-bottom: 1px solid rgba(26,28,34,0.1);
-    }
-    h2 {
-      font-size: 2rem; font-weight: 700; color: var(--antracyt);
-      margin: 48px 0 16px; letter-spacing: -0.01em;
-    }
-    h2::before {
-      content: ''; display: inline-block;
-      width: 24px; height: 2px; background: var(--gold);
-      vertical-align: middle; margin-right: 12px;
-    }
+    .lang-switcher { display: flex; align-items: center; gap: 3px; }
+    .lang-btn { font-family: var(--ff-label); font-size: 0.6rem; letter-spacing: 0.1em; padding: 4px 8px; border: 1px solid rgba(255,255,255,0.16); color: rgba(255,255,255,0.4); background: none; cursor: pointer; transition: all 0.2s; text-transform: uppercase; line-height: 1; }
+    .lang-btn.active { border-color: var(--gold); color: var(--gold); }
+    .lang-btn:hover:not(.active) { color: var(--white); border-color: rgba(255,255,255,0.38); }
+    .content { max-width: 1000px; margin: 0 auto; padding: 72px 48px 100px; }
+    .page-label { font-family: var(--ff-label); font-size: 0.72rem; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; }
+    h1 { font-size: clamp(3rem, 4vw, 5rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; color: var(--antracyt); margin-bottom: 12px; }
+    .last-updated { font-size: 1.3rem; color: var(--muted); margin-bottom: 56px; padding-bottom: 40px; border-bottom: 1px solid rgba(26,28,34,0.1); }
+    h2 { font-size: 2rem; font-weight: 700; color: var(--antracyt); margin: 48px 0 16px; letter-spacing: -0.01em; }
+    h2::before { content: ''; display: inline-block; width: 24px; height: 2px; background: var(--gold); vertical-align: middle; margin-right: 12px; }
     p { color: var(--antracyt); opacity: 0.75; margin-bottom: 16px; font-size: 1.55rem; }
     ul { margin: 0 0 16px 24px; }
     ul li { color: var(--antracyt); opacity: 0.75; font-size: 1.55rem; margin-bottom: 8px; }
     strong { font-weight: 700; opacity: 1; color: var(--antracyt); }
-
-    .footer-simple {
-      background: var(--antracyt); text-align: center;
-      padding: 28px; font-size: 1.2rem; color: rgba(255,255,255,0.25);
-    }
-
+    .footer-simple { background: var(--antracyt); text-align: center; padding: 28px; font-size: 1.2rem; color: rgba(255,255,255,0.25); }
     @media (max-width: 640px) {
       .topbar-inner, .content { padding-left: 24px; padding-right: 24px; }
       h1 { font-size: 2.8rem; }
+      .back-link { display: none; }
     }
   </style>
 </head>
@@ -88,92 +53,187 @@
   <div class="topbar-inner">
     <a href="index.html" class="logo-link">
       <img src="Assety marki/LogoBezTła.png" alt="Kopiec Metal Design" />
-      <div>
-        <strong>KOPIEC</strong>
-        <span>METAL DESIGN</span>
-      </div>
+      <div><strong>KOPIEC</strong><span>METAL DESIGN</span></div>
     </a>
-    <a href="index.html" class="back-link">← Wróć na stronę główną</a>
+    <div class="topbar-right">
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="pl" onclick="setLang('pl')">PL</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" data-lang="de" onclick="setLang('de')">DE</button>
+      </div>
+      <a href="index.html" class="back-link" data-i18n="back">← Wróć na stronę główną</a>
+    </div>
   </div>
 </div>
 
 <div class="content">
-  <p class="page-label">Dokument prawny</p>
-  <h1>Polityka prywatności</h1>
-  <p class="last-updated">Ostatnia aktualizacja: 1 stycznia 2025 r.</p>
+  <p class="page-label" data-i18n="label">Dokument prawny</p>
+  <h1 data-i18n="title">Polityka prywatności</h1>
+  <p class="last-updated" data-i18n="updated">Ostatnia aktualizacja: 1 stycznia 2025 r.</p>
 
-  <h2>1. Administrator danych osobowych</h2>
-  <p>Administratorem Twoich danych osobowych jest firma <strong>Kopiec Metal Design</strong>, z siedzibą pod adresem: Krapkowicka 12, 47-214 Mechnica, Polska. Kontakt z administratorem możliwy jest pod adresem e-mail: <strong>kopiecmd@gmail.com</strong> lub telefonicznie: <strong>+48 694 421 702</strong>.</p>
+  <h2 data-i18n="s1.h">1. Administrator danych osobowych</h2>
+  <p data-i18n="s1.p">Administratorem Twoich danych osobowych jest firma <strong>Kopiec Metal Design</strong>, z siedzibą pod adresem: Krapkowicka 12, 47-214 Mechnica, Polska. Kontakt z administratorem możliwy jest pod adresem e-mail: <strong>kopiecmd@gmail.com</strong> lub telefonicznie: <strong>+48 694 421 702</strong>.</p>
 
-  <h2>2. Jakie dane zbieramy</h2>
-  <p>W ramach korzystania z naszej strony internetowej możemy przetwarzać następujące dane osobowe:</p>
-  <ul>
-    <li>imię i nazwisko — podane dobrowolnie w formularzu kontaktowym,</li>
-    <li>adres e-mail — w celu udzielenia odpowiedzi na zapytanie,</li>
-    <li>numer telefonu — jeśli zostanie podany w wiadomości,</li>
-    <li>treść wiadomości — przesłana za pośrednictwem formularza kontaktowego,</li>
-    <li>dane techniczne — adres IP, rodzaj przeglądarki, czas wizyty (zbierane automatycznie przez serwer).</li>
-  </ul>
+  <h2 data-i18n="s2.h">2. Jakie dane zbieramy</h2>
+  <p data-i18n="s2.p">W ramach korzystania z naszej strony internetowej możemy przetwarzać następujące dane osobowe:</p>
+  <ul data-i18n-list="s2.list"></ul>
 
-  <h2>3. Cel i podstawa przetwarzania danych</h2>
-  <p>Twoje dane osobowe przetwarzamy w następujących celach:</p>
-  <ul>
-    <li><strong>Obsługa zapytań kontaktowych</strong> — na podstawie art. 6 ust. 1 lit. b RODO (podjęcie działań przed zawarciem umowy),</li>
-    <li><strong>Realizacja umów</strong> — na podstawie art. 6 ust. 1 lit. b RODO,</li>
-    <li><strong>Prowadzenie korespondencji</strong> — na podstawie art. 6 ust. 1 lit. f RODO (prawnie uzasadniony interes),</li>
-    <li><strong>Wypełnienie obowiązków prawnych</strong> — na podstawie art. 6 ust. 1 lit. c RODO.</li>
-  </ul>
+  <h2 data-i18n="s3.h">3. Cel i podstawa przetwarzania danych</h2>
+  <p data-i18n="s3.p">Twoje dane osobowe przetwarzamy w następujących celach:</p>
+  <ul data-i18n-list="s3.list"></ul>
 
-  <h2>4. Okres przechowywania danych</h2>
-  <p>Dane osobowe przechowujemy przez okres niezbędny do realizacji celów, dla których zostały zebrane:</p>
-  <ul>
-    <li>dane z formularza kontaktowego — do 12 miesięcy od ostatniego kontaktu,</li>
-    <li>dane związane z realizacją umowy — przez okres 5 lat od zakończenia współpracy (wymogi podatkowe i rachunkowe),</li>
-    <li>dane techniczne — do 3 miesięcy.</li>
-  </ul>
+  <h2 data-i18n="s4.h">4. Okres przechowywania danych</h2>
+  <p data-i18n="s4.p">Dane osobowe przechowujemy przez okres niezbędny do realizacji celów, dla których zostały zebrane:</p>
+  <ul data-i18n-list="s4.list"></ul>
 
-  <h2>5. Twoje prawa</h2>
-  <p>W związku z przetwarzaniem Twoich danych osobowych przysługują Ci następujące prawa:</p>
-  <ul>
-    <li>prawo dostępu do swoich danych,</li>
-    <li>prawo do sprostowania danych nieprawidłowych lub niekompletnych,</li>
-    <li>prawo do usunięcia danych („prawo do bycia zapomnianym"),</li>
-    <li>prawo do ograniczenia przetwarzania,</li>
-    <li>prawo do przenoszenia danych,</li>
-    <li>prawo do wniesienia sprzeciwu wobec przetwarzania,</li>
-    <li>prawo do wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych (UODO).</li>
-  </ul>
-  <p>Aby skorzystać z powyższych praw, skontaktuj się z nami pod adresem: <strong>kopiecmd@gmail.com</strong>.</p>
+  <h2 data-i18n="s5.h">5. Twoje prawa</h2>
+  <p data-i18n="s5.p">W związku z przetwarzaniem Twoich danych osobowych przysługują Ci następujące prawa:</p>
+  <ul data-i18n-list="s5.list"></ul>
+  <p data-i18n="s5.p2">Aby skorzystać z powyższych praw, skontaktuj się z nami pod adresem: <strong>kopiecmd@gmail.com</strong>.</p>
 
-  <h2>6. Przekazywanie danych podmiotom trzecim</h2>
-  <p>Twoje dane osobowe nie są sprzedawane ani przekazywane podmiotom trzecim w celach marketingowych. Możemy udostępniać dane wyłącznie:</p>
-  <ul>
-    <li>podmiotom świadczącym usługi hostingowe i techniczne (wyłącznie w zakresie niezbędnym do działania strony),</li>
-    <li>organom państwowym, jeśli wymagają tego obowiązujące przepisy prawa.</li>
-  </ul>
+  <h2 data-i18n="s6.h">6. Przekazywanie danych podmiotom trzecim</h2>
+  <p data-i18n="s6.p">Twoje dane osobowe nie są sprzedawane ani przekazywane podmiotom trzecim w celach marketingowych. Możemy udostępniać dane wyłącznie:</p>
+  <ul data-i18n-list="s6.list"></ul>
 
-  <h2>7. Pliki cookies</h2>
-  <p>Nasza strona internetowa może korzystać z plików cookies (ciasteczek) w celu zapewnienia prawidłowego działania serwisu. Pliki cookies to małe pliki tekstowe zapisywane na urządzeniu użytkownika. Korzystamy wyłącznie z niezbędnych plików cookies — nie stosujemy cookies śledzących ani marketingowych.</p>
-  <p>Możesz w każdej chwili wyłączyć obsługę plików cookies w ustawieniach swojej przeglądarki, jednak może to wpłynąć na funkcjonalność strony.</p>
+  <h2 data-i18n="s7.h">7. Pliki cookies</h2>
+  <p data-i18n="s7.p1">Nasza strona internetowa może korzystać z plików cookies (ciasteczek) w celu zapewnienia prawidłowego działania serwisu. Pliki cookies to małe pliki tekstowe zapisywane na urządzeniu użytkownika. Korzystamy wyłącznie z niezbędnych plików cookies — nie stosujemy cookies śledzących ani marketingowych.</p>
+  <p data-i18n="s7.p2">Możesz w każdej chwili wyłączyć obsługę plików cookies w ustawieniach swojej przeglądarki, jednak może to wpłynąć na funkcjonalność strony.</p>
 
-  <h2>8. Bezpieczeństwo danych</h2>
-  <p>Stosujemy odpowiednie środki techniczne i organizacyjne w celu ochrony Twoich danych osobowych przed nieuprawnionym dostępem, utratą lub zniszczeniem. Dostęp do danych mają wyłącznie upoważnione osoby, zobowiązane do zachowania poufności.</p>
+  <h2 data-i18n="s8.h">8. Bezpieczeństwo danych</h2>
+  <p data-i18n="s8.p">Stosujemy odpowiednie środki techniczne i organizacyjne w celu ochrony Twoich danych osobowych przed nieuprawnionym dostępem, utratą lub zniszczeniem. Dostęp do danych mają wyłącznie upoważnione osoby, zobowiązane do zachowania poufności.</p>
 
-  <h2>9. Zmiany polityki prywatności</h2>
-  <p>Zastrzegamy sobie prawo do wprowadzania zmian w niniejszej polityce prywatności. Wszelkie zmiany będą publikowane na tej stronie wraz z datą ich wejścia w życie. Zalecamy regularne zapoznawanie się z treścią niniejszego dokumentu.</p>
+  <h2 data-i18n="s9.h">9. Zmiany polityki prywatności</h2>
+  <p data-i18n="s9.p">Zastrzegamy sobie prawo do wprowadzania zmian w niniejszej polityce prywatności. Wszelkie zmiany będą publikowane na tej stronie wraz z datą ich wejścia w życie. Zalecamy regularne zapoznawanie się z treścią niniejszego dokumentu.</p>
 
-  <h2>10. Kontakt</h2>
-  <p>W razie pytań dotyczących przetwarzania danych osobowych prosimy o kontakt:</p>
-  <ul>
-    <li>E-mail: <strong>kopiecmd@gmail.com</strong></li>
-    <li>Telefon: <strong>+48 694 421 702</strong></li>
-    <li>Adres: Krapkowicka 12, 47-214 Mechnica</li>
-  </ul>
+  <h2 data-i18n="s10.h">10. Kontakt</h2>
+  <p data-i18n="s10.p">W razie pytań dotyczących przetwarzania danych osobowych prosimy o kontakt:</p>
+  <ul data-i18n-list="s10.list"></ul>
 </div>
 
 <div class="footer-simple">
-  © <script>document.write(new Date().getFullYear())</script> Kopiec Metal Design. Wszelkie prawa zastrzeżone.
+  © <script>document.write(new Date().getFullYear())</script> Kopiec Metal Design. <span data-i18n="footer">Wszelkie prawa zastrzeżone.</span>
 </div>
 
+<script>
+const T = {
+  pl: {
+    back: '← Wróć na stronę główną', label: 'Dokument prawny', title: 'Polityka prywatności',
+    updated: 'Ostatnia aktualizacja: 1 stycznia 2025 r.', footer: 'Wszelkie prawa zastrzeżone.',
+    's1.h': '1. Administrator danych osobowych',
+    's1.p': 'Administratorem Twoich danych osobowych jest firma <strong>Kopiec Metal Design</strong>, z siedzibą pod adresem: Krapkowicka 12, 47-214 Mechnica, Polska. Kontakt z administratorem możliwy jest pod adresem e-mail: <strong>kopiecmd@gmail.com</strong> lub telefonicznie: <strong>+48 694 421 702</strong>.',
+    's2.h': '2. Jakie dane zbieramy',
+    's2.p': 'W ramach korzystania z naszej strony internetowej możemy przetwarzać następujące dane osobowe:',
+    's2.list': ['imię i nazwisko — podane dobrowolnie w formularzu kontaktowym,','adres e-mail — w celu udzielenia odpowiedzi na zapytanie,','numer telefonu — jeśli zostanie podany w wiadomości,','treść wiadomości — przesłana za pośrednictwem formularza kontaktowego,','dane techniczne — adres IP, rodzaj przeglądarki, czas wizyty (zbierane automatycznie przez serwer).'],
+    's3.h': '3. Cel i podstawa przetwarzania danych',
+    's3.p': 'Twoje dane osobowe przetwarzamy w następujących celach:',
+    's3.list': ['<strong>Obsługa zapytań kontaktowych</strong> — na podstawie art. 6 ust. 1 lit. b RODO (podjęcie działań przed zawarciem umowy),','<strong>Realizacja umów</strong> — na podstawie art. 6 ust. 1 lit. b RODO,','<strong>Prowadzenie korespondencji</strong> — na podstawie art. 6 ust. 1 lit. f RODO (prawnie uzasadniony interes),','<strong>Wypełnienie obowiązków prawnych</strong> — na podstawie art. 6 ust. 1 lit. c RODO.'],
+    's4.h': '4. Okres przechowywania danych',
+    's4.p': 'Dane osobowe przechowujemy przez okres niezbędny do realizacji celów, dla których zostały zebrane:',
+    's4.list': ['dane z formularza kontaktowego — do 12 miesięcy od ostatniego kontaktu,','dane związane z realizacją umowy — przez okres 5 lat od zakończenia współpracy (wymogi podatkowe i rachunkowe),','dane techniczne — do 3 miesięcy.'],
+    's5.h': '5. Twoje prawa',
+    's5.p': 'W związku z przetwarzaniem Twoich danych osobowych przysługują Ci następujące prawa:',
+    's5.list': ['prawo dostępu do swoich danych,','prawo do sprostowania danych nieprawidłowych lub niekompletnych,','prawo do usunięcia danych („prawo do bycia zapomnianym"),','prawo do ograniczenia przetwarzania,','prawo do przenoszenia danych,','prawo do wniesienia sprzeciwu wobec przetwarzania,','prawo do wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych (UODO).'],
+    's5.p2': 'Aby skorzystać z powyższych praw, skontaktuj się z nami pod adresem: <strong>kopiecmd@gmail.com</strong>.',
+    's6.h': '6. Przekazywanie danych podmiotom trzecim',
+    's6.p': 'Twoje dane osobowe nie są sprzedawane ani przekazywane podmiotom trzecim w celach marketingowych. Możemy udostępniać dane wyłącznie:',
+    's6.list': ['podmiotom świadczącym usługi hostingowe i techniczne (wyłącznie w zakresie niezbędnym do działania strony),','organom państwowym, jeśli wymagają tego obowiązujące przepisy prawa.'],
+    's7.h': '7. Pliki cookies',
+    's7.p1': 'Nasza strona internetowa może korzystać z plików cookies (ciasteczek) w celu zapewnienia prawidłowego działania serwisu. Pliki cookies to małe pliki tekstowe zapisywane na urządzeniu użytkownika. Korzystamy wyłącznie z niezbędnych plików cookies — nie stosujemy cookies śledzących ani marketingowych.',
+    's7.p2': 'Możesz w każdej chwili wyłączyć obsługę plików cookies w ustawieniach swojej przeglądarki, jednak może to wpłynąć na funkcjonalność strony.',
+    's8.h': '8. Bezpieczeństwo danych',
+    's8.p': 'Stosujemy odpowiednie środki techniczne i organizacyjne w celu ochrony Twoich danych osobowych przed nieuprawnionym dostępem, utratą lub zniszczeniem. Dostęp do danych mają wyłącznie upoważnione osoby, zobowiązane do zachowania poufności.',
+    's9.h': '9. Zmiany polityki prywatności',
+    's9.p': 'Zastrzegamy sobie prawo do wprowadzania zmian w niniejszej polityce prywatności. Wszelkie zmiany będą publikowane na tej stronie wraz z datą ich wejścia w życie. Zalecamy regularne zapoznawanie się z treścią niniejszego dokumentu.',
+    's10.h': '10. Kontakt',
+    's10.p': 'W razie pytań dotyczących przetwarzania danych osobowych prosimy o kontakt:',
+    's10.list': ['E-mail: <strong>kopiecmd@gmail.com</strong>','Telefon: <strong>+48 694 421 702</strong>','Adres: Krapkowicka 12, 47-214 Mechnica'],
+  },
+  en: {
+    back: '← Back to homepage', label: 'Legal document', title: 'Privacy Policy',
+    updated: 'Last updated: 1 January 2025', footer: 'All rights reserved.',
+    's1.h': '1. Data Controller',
+    's1.p': 'The controller of your personal data is <strong>Kopiec Metal Design</strong>, with its registered address at: Krapkowicka 12, 47-214 Mechnica, Poland. You can contact the controller by e-mail at <strong>kopiecmd@gmail.com</strong> or by phone: <strong>+48 694 421 702</strong>.',
+    's2.h': '2. Data We Collect',
+    's2.p': 'When you use our website, we may process the following personal data:',
+    's2.list': ['full name — provided voluntarily in the contact form,','e-mail address — to respond to your enquiry,','phone number — if provided in the message,','message content — submitted via the contact form,','technical data — IP address, browser type, visit time (collected automatically by the server).'],
+    's3.h': '3. Purpose and Legal Basis for Processing',
+    's3.p': 'We process your personal data for the following purposes:',
+    's3.list': ['<strong>Handling contact enquiries</strong> — pursuant to Art. 6(1)(b) GDPR (steps taken prior to entering into a contract),','<strong>Contract performance</strong> — pursuant to Art. 6(1)(b) GDPR,','<strong>Correspondence</strong> — pursuant to Art. 6(1)(f) GDPR (legitimate interest),','<strong>Compliance with legal obligations</strong> — pursuant to Art. 6(1)(c) GDPR.'],
+    's4.h': '4. Data Retention',
+    's4.p': 'We retain personal data for the period necessary to fulfil the purposes for which it was collected:',
+    's4.list': ['contact form data — up to 12 months from the last contact,','data related to contract performance — for 5 years after the end of cooperation (tax and accounting requirements),','technical data — up to 3 months.'],
+    's5.h': '5. Your Rights',
+    's5.p': 'In connection with the processing of your personal data, you have the following rights:',
+    's5.list': ['the right to access your data,','the right to rectification of inaccurate or incomplete data,','the right to erasure ("right to be forgotten"),','the right to restriction of processing,','the right to data portability,','the right to object to processing,','the right to lodge a complaint with the President of the Personal Data Protection Office (UODO).'],
+    's5.p2': 'To exercise the above rights, please contact us at: <strong>kopiecmd@gmail.com</strong>.',
+    's6.h': '6. Sharing Data with Third Parties',
+    's6.p': 'Your personal data is not sold or shared with third parties for marketing purposes. We may share data only with:',
+    's6.list': ['service providers supplying hosting and technical services (only to the extent necessary for the website to function),','public authorities, where required by applicable law.'],
+    's7.h': '7. Cookies',
+    's7.p1': 'Our website may use cookies to ensure the proper functioning of the service. Cookies are small text files stored on the user\'s device. We use only essential cookies — we do not use tracking or marketing cookies.',
+    's7.p2': 'You can disable cookies in your browser settings at any time, although this may affect the functionality of the website.',
+    's8.h': '8. Data Security',
+    's8.p': 'We apply appropriate technical and organisational measures to protect your personal data against unauthorised access, loss or destruction. Access to data is restricted to authorised persons who are bound by confidentiality obligations.',
+    's9.h': '9. Changes to the Privacy Policy',
+    's9.p': 'We reserve the right to amend this privacy policy at any time. Any changes will be published on this page with the date of their entry into force. We recommend reviewing this document regularly.',
+    's10.h': '10. Contact',
+    's10.p': 'If you have any questions regarding the processing of personal data, please contact us:',
+    's10.list': ['E-mail: <strong>kopiecmd@gmail.com</strong>','Phone: <strong>+48 694 421 702</strong>','Address: Krapkowicka 12, 47-214 Mechnica, Poland'],
+  },
+  de: {
+    back: '← Zurück zur Startseite', label: 'Rechtliches Dokument', title: 'Datenschutzerklärung',
+    updated: 'Zuletzt aktualisiert: 1. Januar 2025', footer: 'Alle Rechte vorbehalten.',
+    's1.h': '1. Verantwortlicher für die Datenverarbeitung',
+    's1.p': 'Verantwortlicher für Ihre personenbezogenen Daten ist <strong>Kopiec Metal Design</strong>, mit Sitz unter der Adresse: Krapkowicka 12, 47-214 Mechnica, Polen. Der Verantwortliche ist erreichbar per E-Mail: <strong>kopiecmd@gmail.com</strong> oder telefonisch: <strong>+48 694 421 702</strong>.',
+    's2.h': '2. Welche Daten wir erheben',
+    's2.p': 'Im Rahmen der Nutzung unserer Website können wir folgende personenbezogene Daten verarbeiten:',
+    's2.list': ['Vor- und Nachname — freiwillig im Kontaktformular angegeben,','E-Mail-Adresse — zur Beantwortung Ihrer Anfrage,','Telefonnummer — sofern in der Nachricht angegeben,','Nachrichteninhalt — über das Kontaktformular übermittelt,','Technische Daten — IP-Adresse, Browsertyp, Besuchszeit (automatisch vom Server erfasst).'],
+    's3.h': '3. Zweck und Rechtsgrundlage der Verarbeitung',
+    's3.p': 'Wir verarbeiten Ihre personenbezogenen Daten zu folgenden Zwecken:',
+    's3.list': ['<strong>Bearbeitung von Kontaktanfragen</strong> — gem. Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen),','<strong>Vertragserfüllung</strong> — gem. Art. 6 Abs. 1 lit. b DSGVO,','<strong>Korrespondenz</strong> — gem. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse),','<strong>Erfüllung gesetzlicher Pflichten</strong> — gem. Art. 6 Abs. 1 lit. c DSGVO.'],
+    's4.h': '4. Speicherdauer',
+    's4.p': 'Wir speichern personenbezogene Daten so lange, wie es zur Erfüllung der Zwecke, für die sie erhoben wurden, erforderlich ist:',
+    's4.list': ['Kontaktformulardaten — bis zu 12 Monate nach dem letzten Kontakt,','Vertragsbezogene Daten — 5 Jahre nach Beendigung der Zusammenarbeit (steuerliche und buchhalterische Anforderungen),','Technische Daten — bis zu 3 Monate.'],
+    's5.h': '5. Ihre Rechte',
+    's5.p': 'Im Zusammenhang mit der Verarbeitung Ihrer personenbezogenen Daten stehen Ihnen folgende Rechte zu:',
+    's5.list': ['Recht auf Auskunft über Ihre Daten,','Recht auf Berichtigung unrichtiger oder unvollständiger Daten,','Recht auf Löschung der Daten („Recht auf Vergessenwerden"),','Recht auf Einschränkung der Verarbeitung,','Recht auf Datenübertragbarkeit,','Recht auf Widerspruch gegen die Verarbeitung,','Recht auf Beschwerde bei der zuständigen Aufsichtsbehörde.'],
+    's5.p2': 'Um Ihre Rechte auszuüben, kontaktieren Sie uns bitte unter: <strong>kopiecmd@gmail.com</strong>.',
+    's6.h': '6. Weitergabe von Daten an Dritte',
+    's6.p': 'Ihre personenbezogenen Daten werden nicht zu Marketingzwecken verkauft oder an Dritte weitergegeben. Eine Weitergabe erfolgt ausschließlich an:',
+    's6.list': ['Dienstleister, die Hosting- und technische Dienste erbringen (nur soweit für den Betrieb der Website erforderlich),','Behörden, sofern dies durch geltendes Recht vorgeschrieben ist.'],
+    's7.h': '7. Cookies',
+    's7.p1': 'Unsere Website kann Cookies verwenden, um den ordnungsgemäßen Betrieb des Dienstes zu gewährleisten. Cookies sind kleine Textdateien, die auf dem Gerät des Nutzers gespeichert werden. Wir verwenden ausschließlich technisch notwendige Cookies — wir setzen keine Tracking- oder Marketing-Cookies ein.',
+    's7.p2': 'Sie können die Cookie-Nutzung jederzeit in Ihren Browsereinstellungen deaktivieren, was jedoch die Funktionalität der Website beeinträchtigen kann.',
+    's8.h': '8. Datensicherheit',
+    's8.p': 'Wir treffen geeignete technische und organisatorische Maßnahmen, um Ihre personenbezogenen Daten vor unbefugtem Zugriff, Verlust oder Zerstörung zu schützen. Der Zugang zu den Daten ist auf autorisierte Personen beschränkt, die zur Vertraulichkeit verpflichtet sind.',
+    's9.h': '9. Änderungen der Datenschutzerklärung',
+    's9.p': 'Wir behalten uns das Recht vor, diese Datenschutzerklärung jederzeit zu ändern. Alle Änderungen werden auf dieser Seite mit dem Datum ihres Inkrafttretens veröffentlicht. Wir empfehlen, dieses Dokument regelmäßig zu lesen.',
+    's10.h': '10. Kontakt',
+    's10.p': 'Bei Fragen zur Verarbeitung personenbezogener Daten wenden Sie sich bitte an uns:',
+    's10.list': ['E-Mail: <strong>kopiecmd@gmail.com</strong>','Telefon: <strong>+48 694 421 702</strong>','Adresse: Krapkowicka 12, 47-214 Mechnica, Polen'],
+  }
+};
+
+function setLang(lang) {
+  const d = T[lang];
+  if (!d) return;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = d[el.dataset.i18n];
+    if (v !== undefined) el.innerHTML = v;
+  });
+  document.querySelectorAll('[data-i18n-list]').forEach(ul => {
+    const items = d[ul.dataset.i18nList];
+    if (items) ul.innerHTML = items.map(i => `<li>${i}</li>`).join('');
+  });
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  document.documentElement.lang = lang;
+  localStorage.setItem('kmd_lang', lang);
+}
+
+(function() {
+  const saved = localStorage.getItem('kmd_lang') || 'pl';
+  setLang(saved);
+})();
+</script>
 </body>
 </html>
