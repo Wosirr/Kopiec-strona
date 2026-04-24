@@ -612,7 +612,7 @@
       .wrap { padding: 0 24px; }
 
       /* === Navbar === */
-      .nav-links, .nav-cta { display: none; }
+      .nav-links, .nav-right { display: none; }
       .hamburger { display: flex; }
       .nav-inner { padding: 0 24px; }
 
@@ -731,7 +731,8 @@
     /* ════════════════════════════════════════════
        LANGUAGE SWITCHER
     ════════════════════════════════════════════ */
-    .lang-switcher { display: flex; align-items: center; gap: 3px; margin-left: 16px; }
+    .nav-right { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
+    .lang-switcher { display: flex; align-items: center; gap: 3px; }
     .lang-btn {
       font-family: var(--ff-label); font-size: 0.6rem; letter-spacing: 0.1em;
       padding: 4px 8px; border: 1px solid rgba(255,255,255,0.16);
@@ -827,11 +828,13 @@
       <li><a href="#process" data-i18n="nav.process">Jak działamy</a></li>
       <li><a href="#contact" data-i18n="nav.contact">Kontakt</a></li>
     </ul>
-    <a href="#contact" class="nav-cta" data-i18n="nav.cta">Wyceń projekt</a>
-    <div class="lang-switcher">
-      <button class="lang-btn active" data-lang="pl" onclick="setLanguage('pl')">PL</button>
-      <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
-      <button class="lang-btn" data-lang="de" onclick="setLanguage('de')">DE</button>
+    <div class="nav-right">
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="pl" onclick="setLanguage('pl')">PL</button>
+        <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn" data-lang="de" onclick="setLanguage('de')">DE</button>
+      </div>
+      <a href="#contact" class="nav-cta" data-i18n="nav.cta">Wyceń projekt</a>
     </div>
     <button class="hamburger" id="hbg" aria-label="Menu">
       <span></span><span></span><span></span>
