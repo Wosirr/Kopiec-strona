@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Regulamin — Kopiec Metal Design</title>
+  <link rel="icon" type="image/png" href="Assety marki/LogoBezTła.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --antracyt: #1a1c22;
+      --gold: #B8A265;
+      --white: #ffffff;
+      --light: #f4f4f2;
+      --muted: rgba(26,28,34,0.52);
+      --ff: 'Montserrat', sans-serif;
+      --ff-label: 'Michroma', sans-serif;
+    }
+    html { font-size: 62.5%; scroll-behavior: smooth; }
+    body { font-family: var(--ff); font-size: 1.6rem; background: var(--light); color: var(--antracyt); line-height: 1.7; }
+
+    .topbar {
+      background: var(--antracyt);
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(184,162,101,0.2);
+    }
+    .topbar-inner {
+      max-width: 1000px; margin: 0 auto; padding: 0 48px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo-link { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-link img { height: 36px; width: auto; }
+    .logo-link div { display: flex; flex-direction: column; line-height: 1.1; }
+    .logo-link strong { font-size: 1.3rem; font-weight: 800; color: var(--white); letter-spacing: 0.08em; }
+    .logo-link span { font-family: var(--ff-label); font-size: 0.7rem; color: var(--gold); letter-spacing: 0.2em; }
+    .back-link {
+      font-family: var(--ff-label); font-size: 0.72rem; letter-spacing: 0.15em;
+      color: var(--gold); text-decoration: none; text-transform: uppercase;
+      transition: opacity 0.2s;
+    }
+    .back-link:hover { opacity: 0.7; }
+
+    .content {
+      max-width: 1000px; margin: 0 auto; padding: 72px 48px 100px;
+    }
+    .page-label {
+      font-family: var(--ff-label); font-size: 0.72rem; letter-spacing: 0.2em;
+      color: var(--gold); text-transform: uppercase; margin-bottom: 16px;
+    }
+    h1 {
+      font-size: clamp(3rem, 4vw, 5rem); font-weight: 800;
+      line-height: 1.1; letter-spacing: -0.03em;
+      color: var(--antracyt); margin-bottom: 12px;
+    }
+    .last-updated {
+      font-size: 1.3rem; color: var(--muted); margin-bottom: 56px;
+      padding-bottom: 40px; border-bottom: 1px solid rgba(26,28,34,0.1);
+    }
+    h2 {
+      font-size: 2rem; font-weight: 700; color: var(--antracyt);
+      margin: 48px 0 16px; letter-spacing: -0.01em;
+    }
+    h2::before {
+      content: ''; display: inline-block;
+      width: 24px; height: 2px; background: var(--gold);
+      vertical-align: middle; margin-right: 12px;
+    }
+    p { color: var(--antracyt); opacity: 0.75; margin-bottom: 16px; font-size: 1.55rem; }
+    ul { margin: 0 0 16px 24px; }
+    ul li { color: var(--antracyt); opacity: 0.75; font-size: 1.55rem; margin-bottom: 8px; }
+    strong { font-weight: 700; opacity: 1; color: var(--antracyt); }
+
+    .footer-simple {
+      background: var(--antracyt); text-align: center;
+      padding: 28px; font-size: 1.2rem; color: rgba(255,255,255,0.25);
+    }
+
+    @media (max-width: 640px) {
+      .topbar-inner, .content { padding-left: 24px; padding-right: 24px; }
+      h1 { font-size: 2.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="logo-link">
+      <img src="Assety marki/LogoBezTła.png" alt="Kopiec Metal Design" />
+      <div>
+        <strong>KOPIEC</strong>
+        <span>METAL DESIGN</span>
+      </div>
+    </a>
+    <a href="index.html" class="back-link">← Wróć na stronę główną</a>
+  </div>
+</div>
+
+<div class="content">
+  <p class="page-label">Dokument prawny</p>
+  <h1>Regulamin</h1>
+  <p class="last-updated">Ostatnia aktualizacja: 1 stycznia 2025 r.</p>
+
+  <h2>§1. Postanowienia ogólne</h2>
+  <p>Niniejszy regulamin określa zasady korzystania z serwisu internetowego dostępnego pod adresem domeny obsługiwanej przez <strong>Kopiec Metal Design</strong> z siedzibą przy ul. Krapkowickiej 12, 47-214 Mechnica, Polska (zwanego dalej „Serwisem").</p>
+  <p>Korzystanie z Serwisu jest równoznaczne z akceptacją niniejszego regulaminu. W razie braku akceptacji prosimy o niekorzystanie z Serwisu.</p>
+
+  <h2>§2. Definicje</h2>
+  <ul>
+    <li><strong>Usługodawca</strong> — Kopiec Metal Design, Krapkowicka 12, 47-214 Mechnica.</li>
+    <li><strong>Użytkownik</strong> — każda osoba fizyczna lub prawna korzystająca z Serwisu.</li>
+    <li><strong>Serwis</strong> — strona internetowa prowadzona przez Usługodawcę.</li>
+    <li><strong>Usługi</strong> — wszelkie usługi metalowe oferowane przez Usługodawcę, w tym wykonanie balustrad, schodów, pergoli, mebli metalowych, bram, ogrodzeń oraz konstrukcji stalowych.</li>
+  </ul>
+
+  <h2>§3. Zakres działalności</h2>
+  <p>Kopiec Metal Design świadczy usługi w zakresie projektowania i wykonywania wyrobów metalowych, w szczególności:</p>
+  <ul>
+    <li>balustrad wewnętrznych i zewnętrznych,</li>
+    <li>schodów metalowych i schodo-balustrad,</li>
+    <li>pergoli i zadaszeń stalowych,</li>
+    <li>mebli i elementów wyposażenia wnętrz z metalu,</li>
+    <li>bram wjazdowych i furtek,</li>
+    <li>ogrodzeń i płotów,</li>
+    <li>konstrukcji stalowych i nośnych,</li>
+    <li>elementów dekoracyjnych wycinanych laserowo i CNC.</li>
+  </ul>
+  <p>Serwis pełni wyłącznie funkcję informacyjną i umożliwia nawiązanie kontaktu z Usługodawcą. Zamówienia realizowane są wyłącznie po indywidualnym ustaleniu warunków współpracy.</p>
+
+  <h2>§4. Zasady składania zapytań i zamówień</h2>
+  <p>Zapytania ofertowe można kierować za pośrednictwem:</p>
+  <ul>
+    <li>formularza kontaktowego dostępnego na stronie,</li>
+    <li>adresu e-mail: <strong>kopiecmd@gmail.com</strong>,</li>
+    <li>telefonicznie: <strong>+48 694 421 702</strong>.</li>
+  </ul>
+  <p>Każde zapytanie jest traktowane indywidualnie. Usługodawca zastrzega sobie prawo do odmowy realizacji zamówienia bez podania przyczyny.</p>
+  <p>Umowa o realizację usługi zostaje zawarta po pisemnym lub e-mailowym potwierdzeniu warunków przez obie strony oraz wpłacie zaliczki w uzgodnionej wysokości.</p>
+
+  <h2>§5. Wycena i płatności</h2>
+  <p>Wycena usług jest bezpłatna i niezobowiązująca. Ostateczna cena ustalana jest indywidualnie po zapoznaniu się ze szczegółami projektu.</p>
+  <p>Zasady płatności:</p>
+  <ul>
+    <li>zaliczka w wysokości od 30% do 50% wartości zamówienia — przed przystąpieniem do realizacji,</li>
+    <li>pozostała część należności — przy odbiorze gotowego produktu lub zgodnie z harmonogramem płatności ustalonym w umowie,</li>
+    <li>płatność przelewem bankowym na wskazany rachunek lub gotówką.</li>
+  </ul>
+
+  <h2>§6. Terminy realizacji</h2>
+  <p>Termin realizacji ustalany jest indywidualnie dla każdego zamówienia i zależy od jego złożoności, dostępności materiałów oraz aktualnego obłożenia pracowni. Usługodawca dokłada wszelkich starań, aby dotrzymywać uzgodnionych terminów, jednak nie ponosi odpowiedzialności za opóźnienia wynikające z okoliczności niezależnych od niego (np. opóźnienia dostaw materiałów, siła wyższa).</p>
+
+  <h2>§7. Reklamacje i gwarancja</h2>
+  <p>Usługodawca udziela gwarancji na wykonane usługi na okres <strong>24 miesięcy</strong> od daty odbioru, obejmującej wady materiałowe i wykonawcze.</p>
+  <p>Reklamacje należy zgłaszać pisemnie lub e-mailowo na adres: <strong>kopiecmd@gmail.com</strong>, wraz z opisem wady i dokumentacją fotograficzną.</p>
+  <p>Usługodawca rozpatruje reklamacje w terminie 14 dni roboczych od ich otrzymania.</p>
+  <p>Gwarancja nie obejmuje:</p>
+  <ul>
+    <li>uszkodzeń mechanicznych powstałych z winy Użytkownika,</li>
+    <li>naturalnego zużycia materiałów,</li>
+    <li>uszkodzeń wynikających z nieprawidłowej eksploatacji lub konserwacji,</li>
+    <li>szkód powstałych wskutek działania czynników zewnętrznych (grad, powódź, wandalizm).</li>
+  </ul>
+
+  <h2>§8. Własność intelektualna</h2>
+  <p>Wszelkie treści zamieszczone w Serwisie, w tym grafiki, zdjęcia, teksty, logotypy i projekty, stanowią własność Usługodawcy lub podmiotów, które udzieliły licencji na ich wykorzystanie.</p>
+  <p>Zabrania się kopiowania, reprodukowania lub wykorzystywania jakichkolwiek materiałów ze strony bez pisemnej zgody Usługodawcy.</p>
+
+  <h2>§9. Odpowiedzialność</h2>
+  <p>Usługodawca nie ponosi odpowiedzialności za:</p>
+  <ul>
+    <li>przerwy w dostępności Serwisu wynikające z prac technicznych lub awarii,</li>
+    <li>szkody wynikłe z korzystania z Serwisu przez Użytkownika w sposób niezgodny z jego przeznaczeniem,</li>
+    <li>treści zamieszczane przez Użytkowników za pośrednictwem formularza kontaktowego.</li>
+  </ul>
+
+  <h2>§10. Zmiany regulaminu</h2>
+  <p>Usługodawca zastrzega sobie prawo do zmiany niniejszego regulaminu w dowolnym czasie. Zmiany wchodzą w życie z chwilą ich opublikowania na stronie. Dalsze korzystanie z Serwisu po wprowadzeniu zmian oznacza akceptację nowych postanowień.</p>
+
+  <h2>§11. Prawo właściwe i rozstrzyganie sporów</h2>
+  <p>Niniejszy regulamin podlega prawu polskiemu. Wszelkie spory wynikłe z korzystania z Serwisu lub realizacji usług strony zobowiązują się rozstrzygać w pierwszej kolejności polubownie. W przypadku braku porozumienia spory rozstrzygane będą przez sąd właściwy dla siedziby Usługodawcy.</p>
+
+  <h2>§12. Kontakt</h2>
+  <p>W sprawach związanych z niniejszym regulaminem prosimy o kontakt:</p>
+  <ul>
+    <li>E-mail: <strong>kopiecmd@gmail.com</strong></li>
+    <li>Telefon: <strong>+48 694 421 702</strong></li>
+    <li>Adres: Krapkowicka 12, 47-214 Mechnica</li>
+  </ul>
+</div>
+
+<div class="footer-simple">
+  © <script>document.write(new Date().getFullYear())</script> Kopiec Metal Design. Wszelkie prawa zastrzeżone.
+</div>
+
+</body>
+</html>
