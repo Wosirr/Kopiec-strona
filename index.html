@@ -111,116 +111,99 @@
     .mob-menu a:hover { color: var(--gold); }
 
     /* ════════════════════════════════════════════
-       HERO — full-width photo + vignette overlay
+       HERO
     ════════════════════════════════════════════ */
     .hero {
-      min-height: 100vh;
+      height: 100vh; min-height: 620px;
       position: relative;
-      display: flex; align-items: center;
-      background: var(--antracyt);
-      overflow: hidden;
+      display: flex; flex-direction: column; align-items: stretch;
+      background: var(--antracyt); overflow: hidden;
     }
-    .hero-bg {
-      position: absolute; inset: 0; z-index: 0;
-    }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; }
     .hero-bg img {
-      width: 100%; height: 100%; object-fit: cover;
-      object-position: 52% center;
-      filter: brightness(0.78) saturate(1.12) contrast(1.04);
+      width: 100%; height: 100%; object-fit: cover; object-position: 52% center;
+      filter: brightness(0.3) saturate(1.1);
       transform: scale(1.04);
       animation: heroImgIn 1.8s 0.1s var(--ease) forwards;
     }
-    /* winieta: ciemno z lewej (tekst), prześwit w centrum, ciemno z prawej (ukrywa ścianę) */
     .hero-bg::after {
-      content: '';
-      position: absolute; inset: 0;
-      background:
-        linear-gradient(to right,
-          var(--antracyt)              0%,
-          rgba(26,28,34,0.94)         22%,
-          rgba(26,28,34,0.38)         48%,
-          rgba(26,28,34,0.70)         74%,
-          var(--antracyt)             100%
-        ),
-        linear-gradient(to top,  rgba(26,28,34,0.65) 0%, transparent 22%),
-        linear-gradient(to bottom, rgba(26,28,34,0.45) 0%, transparent 14%);
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(26,28,34,0.7) 0%, rgba(26,28,34,0.1) 50%, rgba(26,28,34,0.15) 100%);
       z-index: 1;
     }
-    /* Hero restructured */
-    .hero { flex-direction: column; align-items: stretch; }
+
+    /* Top heading area */
     .hero-top {
-      flex: 1; display: flex; flex-direction: column; justify-content: center;
-      padding: 140px 88px 48px;
+      flex: 0 0 auto;
+      padding: 106px 88px 32px;
       position: relative; z-index: 2;
-      max-width: 820px;
     }
     .hero-logo-bg {
-      position: absolute; bottom: -8%; right: -12%;
-      width: 72%; opacity: 0.032;
+      position: absolute; bottom: -20%; right: 0;
+      width: 35%; opacity: 0.025;
       pointer-events: none; user-select: none;
     }
 
-    /* Split panels */
+    /* Split — fills remaining viewport height */
     .hero-split {
-      display: flex; flex-shrink: 0;
-      height: clamp(200px, 28vh, 320px);
+      flex: 1; min-height: 0;
+      display: flex;
       position: relative; z-index: 2;
     }
+
+    /* Panels */
     .hero-panel {
-      flex: 1; position: relative; overflow: hidden;
-      display: flex; align-items: flex-end;
-      padding: 28px 36px; text-decoration: none;
-      cursor: pointer;
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 40px 56px;
+      text-decoration: none;
+      transition: flex 0.5s var(--ease);
     }
-    .hero-panel-left {
-      clip-path: polygon(0 0, 100% 0, 82% 100%, 0 100%);
-      margin-right: -4%; z-index: 2;
-    }
-    .hero-panel-right {
-      clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%);
-      justify-content: flex-end; padding-right: 52px;
-    }
-    .hero-panel-img {
-      position: absolute; inset: 0; z-index: 0;
-    }
+    .hero-panel-left  { flex: 1.05; }
+    .hero-panel-right { flex: 0.95; align-items: flex-end; padding-right: 64px; }
+    .hero-panel:hover { flex: 1.15; }
+
+    /* Chevron clip — ">" shape referencing the logo stacked chevrons */
+    .hero-panel-left  { clip-path: polygon(0 0, 52% 0, 65% 50%, 52% 100%, 0 100%); z-index: 2; margin-right: -2%; }
+    .hero-panel-right { clip-path: polygon(48% 0, 100% 0, 100% 100%, 48% 100%, 35% 50%); }
+
+    /* Panel photos */
+    .hero-panel-img { position: absolute; inset: 0; z-index: 0; }
     .hero-panel-img img {
       width: 100%; height: 100%; object-fit: cover;
-      filter: brightness(0.42) saturate(1.1);
-      transition: transform 0.75s var(--ease), filter 0.4s;
+      filter: brightness(0.45) saturate(1.1);
+      transition: transform 0.8s var(--ease), filter 0.4s;
     }
-    .hero-panel:hover .hero-panel-img img {
-      transform: scale(1.06); filter: brightness(0.55);
-    }
+    .hero-panel:hover .hero-panel-img img { transform: scale(1.05); filter: brightness(0.56); }
     .hero-panel::before {
       content: ''; position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.08) 60%);
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.05) 55%);
     }
-    /* Gold diagonal accent */
-    .hero-split::after {
-      content: ''; position: absolute; z-index: 10;
-      top: -10%; bottom: -10%; left: 49%;
-      width: 2px;
-      background: linear-gradient(to bottom, transparent, rgba(184,162,101,0.7) 30%, rgba(184,162,101,0.7) 70%, transparent);
-      transform: rotate(5deg);
-      pointer-events: none;
+
+    /* Gold chevron SVG divider — logo motif */
+    .hero-chevron {
+      position: absolute; top: 0; bottom: 0; left: 0; right: 0;
+      z-index: 15; pointer-events: none;
     }
+
+    /* Panel text */
     .hero-panel-body { position: relative; z-index: 2; }
     .hero-panel-num {
       font-family: var(--ff-label); font-size: 0.58rem;
-      letter-spacing: 0.2em; color: var(--gold); margin-bottom: 8px;
+      letter-spacing: 0.2em; color: var(--gold); margin-bottom: 10px;
     }
     .hero-panel h3 {
-      font-size: clamp(1.8rem, 2.2vw, 2.6rem);
+      font-size: clamp(2.2rem, 2.6vw, 3.2rem);
       font-weight: 800; color: var(--white);
-      line-height: 1.12; letter-spacing: -0.02em; margin-bottom: 14px;
+      line-height: 1.08; letter-spacing: -0.025em; margin-bottom: 18px;
     }
     .hero-panel-cta {
-      display: flex; align-items: center; gap: 8px;
-      font-size: 1.15rem; font-weight: 600;
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 1.2rem; font-weight: 600;
       color: var(--gold); letter-spacing: 0.04em;
       transition: gap 0.28s;
     }
-    .hero-panel:hover .hero-panel-cta { gap: 14px; }
+    .hero-panel:hover .hero-panel-cta { gap: 16px; }
     .hero-eyebrow {
       font-family: var(--ff-label);
       font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase;
@@ -759,23 +742,26 @@
       .nav-inner { padding: 0 24px; }
 
       /* === Hero === */
-      .hero-top { padding: 120px 28px 36px; max-width: 100%; }
+      .hero { height: auto; min-height: 100svh; }
+      .hero-top { padding: 108px 28px 28px; }
       .hero-logo-bg { display: none; }
       .hero-eyebrow { justify-content: center; }
       .hero-eyebrow::before { display: none; }
       .hero-h1 { font-size: 2.6rem; line-height: 1.15; text-align: center; }
       .hero-h1 br { display: none; }
-      .hero-split { flex-direction: column; height: auto; }
+      .hero-split { flex-direction: column; flex: 0 0 auto; }
+      .hero-chevron { display: none; }
       .hero-panel-left {
-        clip-path: polygon(0 0, 100% 0, 100% 82%, 0 100%);
-        margin-right: 0; margin-bottom: -6%; min-height: 185px; z-index: 2;
+        flex: none; clip-path: polygon(0 0, 100% 0, 100% 82%, 0 100%);
+        margin-right: 0; margin-bottom: -6%; min-height: 200px; z-index: 2;
+        align-items: flex-start;
       }
       .hero-panel-right {
-        clip-path: polygon(0 18%, 100% 0, 100% 100%, 0 100%);
-        justify-content: flex-start; padding-left: 28px; padding-right: 28px;
-        min-height: 185px;
+        flex: none; clip-path: polygon(0 18%, 100% 0, 100% 100%, 0 100%);
+        align-items: flex-start; justify-content: flex-start;
+        padding: 52px 28px 36px; min-height: 200px;
       }
-      .hero-split::after { display: none; }
+      .hero-panel:hover { flex: none; }
       /* Adjust hero vignette for mobile */
       .hero-bg::after {
         background:
@@ -1062,6 +1048,12 @@
     <h1 class="hero-h1" data-i18n="hero.h1">Ponadczasowe wyroby <br><em>klasyczne i nowoczesne.</em></h1>
   </div>
   <div class="hero-split">
+    <!-- Gold chevron divider — nawiązanie do logo -->
+    <svg class="hero-chevron" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <polyline points="52,0 65,50 52,100" fill="none" stroke="rgba(184,162,101,0.9)" stroke-width="0.6"/>
+      <polyline points="49,0 62,50 49,100" fill="none" stroke="rgba(184,162,101,0.35)" stroke-width="0.35"/>
+      <polyline points="55,0 68,50 55,100" fill="none" stroke="rgba(184,162,101,0.18)" stroke-width="0.25"/>
+    </svg>
     <a href="#offer" class="hero-panel hero-panel-left r">
       <div class="hero-panel-img">
         <img src="Assety marki/491932192_1210893421041428_6881573093968501487_n.jpg" alt="Oferta dla domu" />
