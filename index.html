@@ -111,99 +111,54 @@
     .mob-menu a:hover { color: var(--gold); }
 
     /* ════════════════════════════════════════════
-       HERO
+       HERO — full-width photo + vignette overlay
     ════════════════════════════════════════════ */
     .hero {
-      height: 100vh; min-height: 620px;
+      min-height: 100vh;
       position: relative;
-      display: flex; flex-direction: column; align-items: stretch;
-      background: var(--antracyt); overflow: hidden;
+      display: flex; align-items: center;
+      background: var(--antracyt);
+      overflow: hidden;
     }
-    .hero-bg { position: absolute; inset: 0; z-index: 0; }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+    }
     .hero-bg img {
-      width: 100%; height: 100%; object-fit: cover; object-position: 52% center;
-      filter: brightness(0.3) saturate(1.1);
+      width: 100%; height: 100%; object-fit: cover;
+      object-position: 52% center;
+      filter: brightness(0.78) saturate(1.12) contrast(1.04);
       transform: scale(1.04);
       animation: heroImgIn 1.8s 0.1s var(--ease) forwards;
     }
+    /* winieta: ciemno z lewej (tekst), prześwit w centrum, ciemno z prawej (ukrywa ścianę) */
     .hero-bg::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to bottom, rgba(26,28,34,0.7) 0%, rgba(26,28,34,0.1) 50%, rgba(26,28,34,0.15) 100%);
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to right,
+          var(--antracyt)              0%,
+          rgba(26,28,34,0.94)         22%,
+          rgba(26,28,34,0.38)         48%,
+          rgba(26,28,34,0.70)         74%,
+          var(--antracyt)             100%
+        ),
+        linear-gradient(to top,  rgba(26,28,34,0.65) 0%, transparent 22%),
+        linear-gradient(to bottom, rgba(26,28,34,0.45) 0%, transparent 14%);
       z-index: 1;
     }
-
-    /* Top heading area */
-    .hero-top {
-      flex: 0 0 auto;
-      padding: 106px 88px 32px;
+    .hero-left {
+      display: flex; flex-direction: column;
+      justify-content: center;
+      padding: 140px 40px 80px 88px;
       position: relative; z-index: 2;
+      max-width: 800px;
     }
+    /* Duży watermark logo w tle lewego panelu */
     .hero-logo-bg {
-      position: absolute; bottom: -20%; right: 0;
-      width: 35%; opacity: 0.025;
+      position: absolute; bottom: -8%; right: -12%;
+      width: 72%; opacity: 0.032;
       pointer-events: none; user-select: none;
     }
-
-    /* Split — fills remaining viewport height */
-    .hero-split {
-      flex: 1; min-height: 0;
-      display: flex;
-      position: relative; z-index: 2;
-    }
-
-    /* Panels */
-    .hero-panel {
-      position: relative; overflow: hidden;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 40px 56px;
-      text-decoration: none;
-      transition: flex 0.5s var(--ease);
-    }
-    .hero-panel-left  { flex: 1.05; }
-    .hero-panel-right { flex: 0.95; align-items: flex-end; padding-right: 64px; }
-    .hero-panel:hover { flex: 1.15; }
-
-    /* Chevron clip — ">" shape referencing the logo stacked chevrons */
-    .hero-panel-left  { clip-path: polygon(0 0, 52% 0, 65% 50%, 52% 100%, 0 100%); z-index: 2; margin-right: -2%; }
-    .hero-panel-right { clip-path: polygon(48% 0, 100% 0, 100% 100%, 48% 100%, 35% 50%); }
-
-    /* Panel photos */
-    .hero-panel-img { position: absolute; inset: 0; z-index: 0; }
-    .hero-panel-img img {
-      width: 100%; height: 100%; object-fit: cover;
-      filter: brightness(0.45) saturate(1.1);
-      transition: transform 0.8s var(--ease), filter 0.4s;
-    }
-    .hero-panel:hover .hero-panel-img img { transform: scale(1.05); filter: brightness(0.56); }
-    .hero-panel::before {
-      content: ''; position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.05) 55%);
-    }
-
-    /* Gold chevron SVG divider — logo motif */
-    .hero-chevron {
-      position: absolute; top: 0; bottom: 0; left: 0; right: 0;
-      z-index: 15; pointer-events: none;
-    }
-
-    /* Panel text */
-    .hero-panel-body { position: relative; z-index: 2; }
-    .hero-panel-num {
-      font-family: var(--ff-label); font-size: 0.58rem;
-      letter-spacing: 0.2em; color: var(--gold); margin-bottom: 10px;
-    }
-    .hero-panel h3 {
-      font-size: clamp(2.2rem, 2.6vw, 3.2rem);
-      font-weight: 800; color: var(--white);
-      line-height: 1.08; letter-spacing: -0.025em; margin-bottom: 18px;
-    }
-    .hero-panel-cta {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-size: 1.2rem; font-weight: 600;
-      color: var(--gold); letter-spacing: 0.04em;
-      transition: gap 0.28s;
-    }
-    .hero-panel:hover .hero-panel-cta { gap: 16px; }
     .hero-eyebrow {
       font-family: var(--ff-label);
       font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase;
@@ -742,31 +697,19 @@
       .nav-inner { padding: 0 24px; }
 
       /* === Hero === */
-      .hero { height: 100svh; min-height: 580px; }
-      .hero-top { padding: 100px 24px 20px; }
+      .hero-left {
+        padding: 128px 28px 80px;
+        max-width: 100%;
+        align-items: center;
+        text-align: center;
+      }
       .hero-logo-bg { display: none; }
-      .hero-eyebrow { justify-content: center; font-size: 0.6rem; }
+      .hero-eyebrow { justify-content: center; }
       .hero-eyebrow::before { display: none; }
-      .hero-h1 { font-size: 2.4rem; line-height: 1.12; text-align: center; }
+      .hero-h1 { font-size: 2.6rem; line-height: 1.15; }
       .hero-h1 br { display: none; }
-      /* Panels stay side-by-side on mobile too */
-      .hero-split { flex-direction: row; }
-      .hero-panel { padding: 18px 18px 24px; }
-      .hero-panel-left {
-        flex: 1.05;
-        clip-path: polygon(0 0, 54% 0, 68% 50%, 54% 100%, 0 100%);
-        margin-right: -2%; z-index: 2;
-        align-items: flex-start;
-      }
-      .hero-panel-right {
-        flex: 0.95;
-        clip-path: polygon(46% 0, 100% 0, 100% 100%, 46% 100%, 32% 50%);
-        align-items: flex-start; justify-content: flex-end;
-        padding-right: 20px;
-      }
-      .hero-panel h3 { font-size: 1.55rem; margin-bottom: 10px; }
-      .hero-panel-cta { font-size: 1rem; gap: 6px; }
-      .hero-panel:hover { flex: 1.05; }
+      .hero-sub { max-width: 100%; color: rgba(255,255,255,0.90); font-size: 1.65rem; }
+      .hero-actions { justify-content: center; flex-wrap: wrap; }
       /* Adjust hero vignette for mobile */
       .hero-bg::after {
         background:
@@ -1044,47 +987,18 @@
 
 <!-- ══════ HERO ══════ -->
 <section class="hero" id="hero">
-  <div class="hero-bg">
-    <img src="Assety marki/492509509_1218235170307253_8496262521151753292_n.jpg" alt="Złota dekoracyjna brama" />
-  </div>
-  <div class="hero-top">
+  <div class="hero-left">
     <img src="Assety marki/LogoBezTła.png" alt="" class="hero-logo-bg" aria-hidden="true">
     <p class="hero-eyebrow">Kopiec Metal Design — Mechnica</p>
     <h1 class="hero-h1" data-i18n="hero.h1">Ponadczasowe wyroby <br><em>klasyczne i nowoczesne.</em></h1>
+    <p class="hero-sub" data-i18n="hero.sub">Balustrady, schody, pergole i meble ze stali nierdzewnej — od projektu po montaż.</p>
+    <div class="hero-actions">
+      <a href="#offer" class="btn-primary" data-i18n="hero.btn1">Poznaj ofertę</a>
+      <a href="#contact" class="btn-outline" data-i18n="hero.btn2">Wyceń projekt</a>
+    </div>
   </div>
-  <div class="hero-split">
-    <!-- Gold chevron divider — nawiązanie do logo -->
-    <svg class="hero-chevron" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <polyline points="52,0 65,50 52,100" fill="none" stroke="rgba(184,162,101,0.9)" stroke-width="0.6"/>
-      <polyline points="49,0 62,50 49,100" fill="none" stroke="rgba(184,162,101,0.35)" stroke-width="0.35"/>
-      <polyline points="55,0 68,50 55,100" fill="none" stroke="rgba(184,162,101,0.18)" stroke-width="0.25"/>
-    </svg>
-    <a href="#offer" class="hero-panel hero-panel-left r">
-      <div class="hero-panel-img">
-        <img src="Assety marki/491932192_1210893421041428_6881573093968501487_n.jpg" alt="Oferta dla domu" />
-      </div>
-      <div class="hero-panel-body">
-        <p class="hero-panel-num">01</p>
-        <h3 data-i18n="hero.p1.h">Oferta<br>dla domu</h3>
-        <span class="hero-panel-cta">
-          <span data-i18n="hero.p1.cta">Poznaj ofertę</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </span>
-      </div>
-    </a>
-    <a href="#commercial" class="hero-panel hero-panel-right r r-d1">
-      <div class="hero-panel-img">
-        <img src="Assety marki/669844370_1525851142878986_3440439279897374695_n.jpg" alt="Obiekty komercyjne" />
-      </div>
-      <div class="hero-panel-body">
-        <p class="hero-panel-num">02</p>
-        <h3 data-i18n="hero.p2.h">Obiekty komercyjne<br>i inwestycyjne</h3>
-        <span class="hero-panel-cta">
-          <span data-i18n="hero.p2.cta">Sprawdź realizacje</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </span>
-      </div>
-    </a>
+  <div class="hero-bg">
+    <img src="Assety marki/492509509_1218235170307253_8496262521151753292_n.jpg" alt="Złota dekoracyjna brama" />
   </div>
 </section>
 
@@ -1660,8 +1574,6 @@
       'hero.h1':'Ponadczasowe wyroby <br><em>klasyczne i nowoczesne.</em>',
       'hero.sub':'Balustrady, schody, pergole i meble ze stali nierdzewnej — od projektu po montaż.',
       'hero.btn1':'Poznaj ofertę','hero.btn2':'Wyceń projekt',
-      'hero.p1.h':'Oferta<br>dla domu','hero.p1.cta':'Poznaj ofertę',
-      'hero.p2.h':'Obiekty komercyjne<br>i inwestycyjne','hero.p2.cta':'Sprawdź realizacje',
       'about.label':'O nas','about.h2':'Metalowe rzemiosło<br><em>nowej generacji.</em>',
       'about.p1':'Kopiec Metal Design to polska pracownia specjalizująca się w produkcji wysokiej jakości wyrobów metalowych łączących estetykę industrialną z loftową elegancją.',
       'about.p2':'Pracownia wyposażona jest w nowoczesne maszyny CNC i urządzenia spawalnicze — tolerancje ±0,1 mm na każdym etapie produkcji.',
@@ -1709,8 +1621,6 @@
       'hero.h1':'Timeless products <br><em>classic &amp; modern.</em>',
       'hero.sub':'Railings, stairs, pergolas and metal furniture in stainless steel — from design to installation.',
       'hero.btn1':'Our offer','hero.btn2':'Get a quote',
-      'hero.p1.h':'Residential<br>offer','hero.p1.cta':'Explore offer',
-      'hero.p2.h':'Commercial &amp;<br>investment projects','hero.p2.cta':'View projects',
       'about.label':'About us','about.h2':'Metal craftsmanship<br><em>of a new generation.</em>',
       'about.p1':'Kopiec Metal Design is a Polish workshop specialising in the production of high-quality metal products combining industrial aesthetics with loft elegance.',
       'about.p2':'The workshop is equipped with modern CNC machines and welding equipment — tolerances of ±0.1 mm at every stage of production.',
@@ -1758,8 +1668,6 @@
       'hero.h1':'Zeitlose Produkte <br><em>klassisch &amp; modern.</em>',
       'hero.sub':'Geländer, Treppen, Pergolen und Metallmöbel aus Edelstahl — vom Entwurf bis zur Montage.',
       'hero.btn1':'Unser Angebot','hero.btn2':'Angebot anfragen',
-      'hero.p1.h':'Angebot<br>für Privatkunden','hero.p1.cta':'Angebot entdecken',
-      'hero.p2.h':'Gewerbe- &amp;<br>Investitionsobjekte','hero.p2.cta':'Projekte ansehen',
       'about.label':'Über uns','about.h2':'Metallhandwerk<br><em>der neuen Generation.</em>',
       'about.p1':'Kopiec Metal Design ist eine polnische Werkstatt, die sich auf die Herstellung hochwertiger Metallprodukte spezialisiert hat, die Industrieästhetik mit Loft-Eleganz verbinden.',
       'about.p2':'Die Werkstatt ist mit modernen CNC-Maschinen und Schweißgeräten ausgestattet — Toleranzen von ±0,1 mm in jeder Produktionsphase.',
