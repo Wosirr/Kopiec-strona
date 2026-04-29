@@ -154,15 +154,15 @@
       background: var(--antracyt);
     }
 
-    /* Złota błyskawica — pełna wysokość kafli */
+    /* Złoty zygzak — geometryczny separator, pełna wysokość */
     .hero-chevron {
       position: absolute;
       top: 0; bottom: 0;
-      left: calc(50% - 28px);
-      width: 56px; height: 100%;
+      left: calc(50% - 36px);
+      width: 72px; height: 100%;
       z-index: 10; pointer-events: none;
       overflow: visible;
-      filter: drop-shadow(0 0 6px rgba(184,162,101,0.55));
+      filter: drop-shadow(0 0 5px rgba(184,162,101,0.45));
     }
 
     /* KAFELKI — proste, bez clip-path */
@@ -1041,12 +1041,12 @@
   <!-- Split panels -->
   <div class="hero-split">
 
-    <!-- Złoty zygzak — 3 segmenty nawiązujące do logo, pełna wysokość -->
-    <svg class="hero-chevron" viewBox="0 0 56 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <polyline points="42,0 14,33 42,67 14,100"
-        fill="none" stroke="#B8A265" stroke-width="4"
+    <!-- Złoty zygzak — ostre narożniki, 3 segmenty jak w logo -->
+    <svg class="hero-chevron" viewBox="0 0 72 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <polyline points="58,0 14,33 58,67 14,100"
+        fill="none" stroke="#B8A265" stroke-width="3"
         vector-effect="non-scaling-stroke"
-        stroke-linecap="round" stroke-linejoin="round"/>
+        stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"/>
     </svg>
 
     <!-- 1 — Oferta dla domu -->
