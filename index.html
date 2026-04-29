@@ -168,7 +168,7 @@
     .hero-panel {
       position: absolute; top: 0; bottom: 0;
       display: flex; flex-direction: column;
-      justify-content: center; align-items: center;
+      align-items: center;
       text-align: center;
       padding: 44px 52px;
       text-decoration: none; overflow: hidden;
@@ -176,6 +176,7 @@
     /* Lewy: rozciąga się 36px za środek, clip wzdłuż zygzaka */
     .hero-panel-left {
       left: 0; width: calc(50% + 36px); z-index: 2;
+      justify-content: flex-start; padding-top: 80px;
       clip-path: polygon(
         0 0,
         calc(100% - 14px) 0%,
@@ -188,6 +189,7 @@
     /* Prawy: rozciąga się 36px za środek w lewo, clip wzdłuż zygzaka */
     .hero-panel-right {
       right: 0; width: calc(50% + 36px);
+      justify-content: flex-end; padding-bottom: 80px;
       clip-path: polygon(
         58px 0,
         100% 0,
@@ -778,8 +780,8 @@
       .hero-h1 { font-size: 2.4rem; line-height: 1.12; }
       .hero-h1 br { display: none; }
       .hero-panel { padding: 16px 16px; }
-      .hero-panel-left { width: calc(50% + 36px); padding-right: 48px; }
-      .hero-panel-right { width: calc(50% + 36px); padding-left: 48px; }
+      .hero-panel-left { width: calc(50% + 36px); padding-right: 48px; justify-content: flex-start; padding-top: 48px; }
+      .hero-panel-right { width: calc(50% + 36px); padding-left: 48px; justify-content: flex-end; padding-bottom: 48px; }
       .hero-panel h3 { font-size: 1.5rem; margin-bottom: 10px; }
       .hero-panel-cta { font-size: 0.95rem; }
 
