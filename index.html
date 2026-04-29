@@ -558,6 +558,84 @@
     .submit-btn:hover { background: transparent; color: var(--antracyt); }
 
     /* ════════════════════════════════════════════
+       COMMERCIAL
+    ════════════════════════════════════════════ */
+    .commercial {
+      background: var(--antracyt-lt);
+      padding: 100px 0;
+      position: relative; overflow: hidden;
+    }
+    .commercial-inner {
+      max-width: 1160px; margin: 0 auto; padding: 0 48px;
+    }
+    .commercial-head {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 40px; align-items: end; margin-bottom: 56px;
+    }
+    .commercial-head h2 {
+      font-size: clamp(2.8rem, 3.6vw, 5rem);
+      font-weight: 800; color: var(--white);
+      line-height: 1.06; letter-spacing: -0.03em;
+    }
+    .commercial-head h2 em { font-style: italic; color: var(--gold); }
+    .commercial-head-right { display: flex; flex-direction: column; gap: 24px; padding-bottom: 6px; }
+    .commercial-head-right p {
+      font-size: 1.5rem; line-height: 1.8;
+      color: rgba(255,255,255,0.45);
+    }
+    .commercial-head-right a {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 1.25rem; font-weight: 600; letter-spacing: 0.04em;
+      color: var(--gold); transition: gap 0.22s; align-self: flex-start;
+    }
+    .commercial-head-right a:hover { gap: 18px; }
+
+    .commercial-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      grid-template-rows: 280px 280px;
+      gap: 4px;
+      margin-bottom: 4px;
+    }
+    .commercial-photo {
+      position: relative; overflow: hidden;
+      background: var(--antracyt-md);
+    }
+    .commercial-photo:first-child { grid-row: span 2; }
+    .commercial-photo img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.8s var(--ease);
+      filter: brightness(0.82) saturate(1.08);
+    }
+    .commercial-photo:hover img { transform: scale(1.04); }
+    .commercial-photo::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%);
+    }
+
+    .commercial-usps {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .commercial-usp {
+      padding: 36px 32px;
+      border-right: 1px solid rgba(255,255,255,0.06);
+    }
+    .commercial-usp:last-child { border-right: none; }
+    .commercial-usp-icon {
+      color: var(--gold); margin-bottom: 16px; opacity: 0.8;
+    }
+    .commercial-usp h4 {
+      font-size: 1.45rem; font-weight: 700; color: var(--white);
+      margin-bottom: 8px; letter-spacing: 0.01em;
+    }
+    .commercial-usp p {
+      font-size: 1.3rem; line-height: 1.65;
+      color: rgba(255,255,255,0.32);
+    }
+
+    /* ════════════════════════════════════════════
        FOOTER
     ════════════════════════════════════════════ */
     .footer { background: var(--antracyt); border-top: 1px solid rgba(184,162,101,0.18); padding: 72px 0 40px; position: relative; overflow: hidden; }
@@ -656,6 +734,15 @@
       .offer-item:nth-child(5) { grid-column: span 1; }
       .offer-item:nth-child(6) { grid-column: span 2; }
 
+      /* === Commercial === */
+      .commercial { padding: 72px 0; }
+      .commercial-inner { padding: 0 28px; }
+      .commercial-head { grid-template-columns: 1fr; gap: 20px; margin-bottom: 36px; }
+      .commercial-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 220px; }
+      .commercial-usps { grid-template-columns: 1fr; }
+      .commercial-usp { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 28px 20px; }
+      .commercial-usp:last-child { border-bottom: none; }
+
       /* === Features === */
       .features { padding: 72px 0; }
       .features-head { flex-direction: column; align-items: flex-start; padding: 0 28px; margin-bottom: 40px; }
@@ -717,6 +804,10 @@
       .offer-grid { grid-template-columns: 1fr; grid-auto-rows: 220px; }
       .offer-item:nth-child(1),
       .offer-item:nth-child(6) { grid-column: span 1; }
+
+      /* === Commercial === */
+      .commercial-grid { grid-template-columns: 1fr; grid-template-rows: repeat(4, 200px); }
+      .commercial-photo:first-child { grid-row: span 1; }
 
       /* === Features === */
       .feat-grid { grid-template-columns: 1fr; }
@@ -1011,6 +1102,64 @@
         <p class="offer-item-name" data-i18n="offer.tile6">Elementy Dekoracyjne CNC</p>
       </div>
       <span class="offer-item-hint" data-i18n="offer.hint">Zobacz realizacje →</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ COMMERCIAL ══════ -->
+<section class="commercial" id="commercial">
+  <div class="commercial-inner">
+    <div class="commercial-head r">
+      <div>
+        <span class="label" data-i18n="com.label">Dla firm i deweloperów</span>
+        <h2 data-i18n="com.h2">Obiekty komercyjne<br><em>i inwestycyjne.</em></h2>
+      </div>
+      <div class="commercial-head-right">
+        <p data-i18n="com.p">Realizujemy kontrakty dla deweloperów, firm budowlanych i zarządców nieruchomości. Duże wolumeny, krótkie terminy, pełna dokumentacja techniczna i certyfikaty materiałowe.</p>
+        <a href="#contact">
+          <span data-i18n="com.cta">Zapytaj o projekt komercyjny</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="commercial-grid">
+      <div class="commercial-photo r">
+        <img src="Assety marki/669844370_1525851142878986_3440439279897374695_n.jpg" alt="Obiekt komercyjny" />
+      </div>
+      <div class="commercial-photo r r-d1">
+        <img src="Assety marki/670281803_1527543059376461_2217950075174361398_n.jpg" alt="Konstrukcja stalowa" />
+      </div>
+      <div class="commercial-photo r r-d2">
+        <img src="Assety marki/488173201_1196026542528116_4715524536187267032_n.jpg" alt="Realizacja inwestycyjna" />
+      </div>
+      <div class="commercial-photo r r-d2">
+        <img src="Assety marki/670907741_1527542976043136_2464942919216827369_n.jpg" alt="Konstrukcja nośna" />
+      </div>
+    </div>
+    <div class="commercial-usps">
+      <div class="commercial-usp r">
+        <svg class="commercial-usp-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+          <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+        <h4 data-i18n="com.usp1.h">Projekty wieloetapowe</h4>
+        <p data-i18n="com.usp1.p">Obsługujemy kontrakty rozłożone w czasie — harmonogramy, etapowanie dostaw i montażu.</p>
+      </div>
+      <div class="commercial-usp r r-d1">
+        <svg class="commercial-usp-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+        </svg>
+        <h4 data-i18n="com.usp2.h">Pełna dokumentacja</h4>
+        <p data-i18n="com.usp2.p">Certyfikaty materiałowe, atesty spawalnicze EN ISO 9606, dokumentacja powykonawcza.</p>
+      </div>
+      <div class="commercial-usp r r-d2">
+        <svg class="commercial-usp-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+          <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
+        </svg>
+        <h4 data-i18n="com.usp3.h">Dedykowany opiekun</h4>
+        <p data-i18n="com.usp3.p">Każdy kontrakt komercyjny prowadzi dedykowany koordynator — jeden punkt kontaktu.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1441,6 +1590,12 @@
       'feat.card2.h3':'Projekt na miarę','feat.card2.p':'Każde zlecenie traktujemy indywidualnie — projektujemy od zera zgodnie z wizją klienta.',
       'feat.card3.h3':'Terminowość','feat.card3.p':'Każdy projekt realizujemy zgodnie z harmonogramem. Dotrzymujemy terminów bez wyjątków.',
       'feat.card4.h3':'Materiały premium','feat.card4.p':'Certyfikowana stal nierdzewna i aluminium z polskich i europejskich hut z dokumentacją materiałową.',
+      'com.label':'Dla firm i deweloperów','com.h2':'Obiekty komercyjne<br><em>i inwestycyjne.</em>',
+      'com.p':'Realizujemy kontrakty dla deweloperów, firm budowlanych i zarządców nieruchomości. Duże wolumeny, krótkie terminy, pełna dokumentacja techniczna i certyfikaty materiałowe.',
+      'com.cta':'Zapytaj o projekt komercyjny',
+      'com.usp1.h':'Projekty wieloetapowe','com.usp1.p':'Obsługujemy kontrakty rozłożone w czasie — harmonogramy, etapowanie dostaw i montażu.',
+      'com.usp2.h':'Pełna dokumentacja','com.usp2.p':'Certyfikaty materiałowe, atesty spawalnicze EN ISO 9606, dokumentacja powykonawcza.',
+      'com.usp3.h':'Dedykowany opiekun','com.usp3.p':'Każdy kontrakt komercyjny prowadzi dedykowany koordynator — jeden punkt kontaktu.',
       'stats.l1':'Zrealizowanych projektów','stats.l2':'Lat doświadczenia','stats.l3':'Satysfakcji klientów',
       'process.label':'Jak działamy','process.h2':'Prosty proces,<br><em>pewny rezultat.</em>',
       'process.s1.h3':'Konsultacja','process.s1.p':'Omawiamy projekt, wymagania techniczne i estetyczne. Bezpłatna wycena w ciągu 24 godzin.',
@@ -1482,6 +1637,12 @@
       'feat.card2.h3':'Custom design','feat.card2.p':'Every order is treated individually — we design from scratch in line with the client\'s vision.',
       'feat.card3.h3':'On time, every time','feat.card3.p':'Every project is delivered to schedule. We meet deadlines without exception.',
       'feat.card4.h3':'Premium materials','feat.card4.p':'Certified stainless steel and aluminium from Polish and European mills with full material documentation.',
+      'com.label':'For businesses & developers','com.h2':'Commercial<br><em>&amp; investment projects.</em>',
+      'com.p':'We deliver contracts for developers, construction companies and property managers. Large volumes, tight deadlines, full technical documentation and material certificates.',
+      'com.cta':'Enquire about a commercial project',
+      'com.usp1.h':'Multi-phase projects','com.usp1.p':'We handle contracts spread over time — scheduling, phased delivery and installation.',
+      'com.usp2.h':'Full documentation','com.usp2.p':'Material certificates, welding qualifications EN ISO 9606, as-built documentation.',
+      'com.usp3.h':'Dedicated coordinator','com.usp3.p':'Every commercial contract is managed by a dedicated coordinator — one point of contact.',
       'stats.l1':'Completed projects','stats.l2':'Years of experience','stats.l3':'Customer satisfaction',
       'process.label':'How we work','process.h2':'Simple process,<br><em>reliable result.</em>',
       'process.s1.h3':'Consultation','process.s1.p':'We discuss the project and technical requirements. Free quote within 24 hours.',
@@ -1523,6 +1684,12 @@
       'feat.card2.h3':'Maßgefertigtes Design','feat.card2.p':'Jeder Auftrag wird individuell behandelt — wir gestalten von Grund auf nach der Vision des Kunden.',
       'feat.card3.h3':'Termintreue','feat.card3.p':'Jedes Projekt wird nach Zeitplan umgesetzt. Wir halten Termine ohne Ausnahme ein.',
       'feat.card4.h3':'Premiummaterialien','feat.card4.p':'Zertifizierter Edelstahl und Aluminium aus polnischen und europäischen Werken mit vollständiger Materialdokumentation.',
+      'com.label':'Für Unternehmen & Entwickler','com.h2':'Gewerbe- und<br><em>Investitionsprojekte.</em>',
+      'com.p':'Wir führen Aufträge für Projektentwickler, Bauunternehmen und Immobilienverwalter aus. Große Mengen, kurze Fristen, vollständige technische Dokumentation und Materialzertifikate.',
+      'com.cta':'Gewerbeprojekt anfragen',
+      'com.usp1.h':'Mehrphasige Projekte','com.usp1.p':'Wir bearbeiten zeitlich gestreckte Aufträge — Terminplanung, phasenweise Lieferung und Montage.',
+      'com.usp2.h':'Vollständige Dokumentation','com.usp2.p':'Materialzertifikate, Schweißerqualifikationen EN ISO 9606, Bestandsdokumentation.',
+      'com.usp3.h':'Persönlicher Koordinator','com.usp3.p':'Jeder Großauftrag wird von einem dedizierten Koordinator betreut — ein Ansprechpartner.',
       'stats.l1':'Abgeschlossene Projekte','stats.l2':'Jahre Erfahrung','stats.l3':'Kundenzufriedenheit',
       'process.label':'Wie wir arbeiten','process.h2':'Einfacher Prozess,<br><em>sicheres Ergebnis.</em>',
       'process.s1.h3':'Beratung','process.s1.p':'Wir besprechen das Projekt und die technischen Anforderungen. Kostenloses Angebot innerhalb von 24 Stunden.',
