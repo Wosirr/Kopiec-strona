@@ -146,12 +146,11 @@
       pointer-events: none; user-select: none;
     }
 
-    /* SPLIT — dwa kafelki obok siebie z odstępem */
+    /* SPLIT */
     .hero-split {
       flex: 1; min-height: 0;
-      display: flex; gap: 3px;
       position: relative; z-index: 2;
-      background: var(--antracyt);
+      display: block;
     }
 
     /* Złoty zygzak — geometryczny separator, pełna wysokość */
@@ -165,14 +164,38 @@
       filter: drop-shadow(0 0 5px rgba(184,162,101,0.45));
     }
 
-    /* KAFELKI — proste, bez clip-path */
+    /* KAFELKI — oba absolutne, nakrywają się w strefie zygzaka */
     .hero-panel {
-      flex: 1; position: relative; overflow: hidden;
+      position: absolute; top: 0; bottom: 0;
       display: flex; flex-direction: column; justify-content: flex-end;
       padding: 44px 52px;
-      text-decoration: none;
+      text-decoration: none; overflow: hidden;
     }
-    .hero-panel-right { align-items: flex-end; }
+    /* Lewy: rozciąga się 36px za środek, clip wzdłuż zygzaka */
+    .hero-panel-left {
+      left: 0; width: calc(50% + 36px); z-index: 2;
+      clip-path: polygon(
+        0 0,
+        calc(100% - 14px) 0%,
+        calc(100% - 58px) 33%,
+        calc(100% - 14px) 67%,
+        calc(100% - 58px) 100%,
+        0 100%
+      );
+    }
+    /* Prawy: rozciąga się 36px za środek w lewo, clip wzdłuż zygzaka */
+    .hero-panel-right {
+      right: 0; width: calc(50% + 36px);
+      align-items: flex-end; padding-right: 56px;
+      clip-path: polygon(
+        58px 0,
+        100% 0,
+        100% 100%,
+        14px 100%,
+        58px 67%,
+        14px 33%
+      );
+    }
 
     /* Zdjęcie tła kafelka */
     .hero-panel-img { position: absolute; inset: 0; z-index: 0; }
@@ -754,7 +777,8 @@
       .hero-h1 { font-size: 2.4rem; line-height: 1.12; }
       .hero-h1 br { display: none; }
       .hero-panel { padding: 16px 14px 28px; }
-      .hero-panel-right { align-items: flex-start; padding-right: 14px; }
+      .hero-panel-left { width: calc(50% + 36px); }
+      .hero-panel-right { width: calc(50% + 36px); align-items: flex-start; padding-right: 14px; }
       .hero-panel h3 { font-size: 1.5rem; margin-bottom: 10px; }
       .hero-panel-cta { font-size: 0.95rem; }
 
