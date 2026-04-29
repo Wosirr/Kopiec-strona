@@ -146,21 +146,23 @@
       pointer-events: none; user-select: none;
     }
 
-    /* SPLIT — dwa kafelki obok siebie */
+    /* SPLIT — dwa kafelki obok siebie z odstępem */
     .hero-split {
       flex: 1; min-height: 0;
-      display: flex;
+      display: flex; gap: 3px;
       position: relative; z-index: 2;
+      background: var(--antracyt);
     }
 
     /* Złota błyskawica między kafelkami */
     .hero-chevron {
       position: absolute;
       top: 0; bottom: 0;
-      left: calc(50% - 16px);
-      width: 32px;
+      left: calc(50% - 22px);
+      width: 44px;
       z-index: 10; pointer-events: none;
       overflow: visible;
+      filter: drop-shadow(0 0 4px rgba(184,162,101,0.6));
     }
 
     /* KAFELKI — proste, bez clip-path */
@@ -1041,7 +1043,7 @@
 
     <!-- Złota błyskawica -->
     <svg class="hero-chevron" viewBox="0 0 32 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <polyline points="24,0 8,50 24,100" fill="none" stroke="#B8A265" stroke-width="2" vector-effect="non-scaling-stroke"/>
+      <polyline points="28,0 8,50 28,100" fill="none" stroke="#B8A265" stroke-width="5" vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
 
     <!-- 1 — Oferta dla domu -->
