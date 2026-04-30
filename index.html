@@ -787,11 +787,15 @@
       .hero-h1 br { display: none; }
       .hero-sub { max-width: 100%; color: rgba(255,255,255,0.90); font-size: 1.65rem; }
       .hero-actions { justify-content: center; flex-wrap: wrap; }
-      /* Zigzag barely visible on mobile — buttons take priority */
-      .hero-bolt { opacity: 0.32; }
-      /* Half-labels on mobile */
-      .hero-half-left  { padding-right: 36px; }
-      .hero-half-right { padding-left: 36px; }
+      /* Zygzak — zanika u góry na mobilce */
+      .hero-bolt {
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 35%);
+        mask-image: linear-gradient(to bottom, transparent 0%, black 35%);
+      }
+      /* Podświetlenie — zanika u góry */
+      .hero-cat::before {
+        background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.09) 40%);
+      }
       .hero-half-h { font-size: 1.4rem; margin-bottom: 10px; }
       .hero-half-num { margin-bottom: 6px; }
       /* Adjust hero vignette for mobile */
