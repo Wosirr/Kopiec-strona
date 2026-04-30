@@ -266,19 +266,25 @@
       padding: 40px 64px 40px 40px;
       text-decoration: none; cursor: pointer;
     }
-    /*
-      Panel sięga do najdalszego punktu zygzaka → clip-path wycina wzdłuż linii.
-      Górny: height = calc(50% + 3px). 100% = niski punkt, 100%-8px = wysoki punkt.
-      Dolny: height = calc(50% + 5px), bottom:0. 0 = wysoki punkt, 8px = niski punkt.
-    */
     .hero-cat-top    { top: 0;    height: 50%; }
     .hero-cat-bottom { bottom: 0; height: 50%; }
+
+    /* Podświetlenie zanika w strefie zygzaka (ostatnie/pierwsze 20px) */
     .hero-cat::before {
       content: ''; position: absolute; inset: 0; pointer-events: none;
-      background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.09) 35%);
       opacity: 0; transition: opacity 0.4s;
     }
     .hero-cat:hover::before { opacity: 1; }
+    .hero-cat-top::before {
+      background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.09) 35%);
+      -webkit-mask-image: linear-gradient(to bottom, black 0%, black calc(100% - 20px), transparent 100%);
+      mask-image: linear-gradient(to bottom, black 0%, black calc(100% - 20px), transparent 100%);
+    }
+    .hero-cat-bottom::before {
+      background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.09) 35%);
+      -webkit-mask-image: linear-gradient(to top, black 0%, black calc(100% - 20px), transparent 100%);
+      mask-image: linear-gradient(to top, black 0%, black calc(100% - 20px), transparent 100%);
+    }
 
     .hero-bolt-mob { display: none; }
 
@@ -1930,34 +1936,6 @@
     this.reset();
     document.getElementById('fs').classList.remove('filled');
   });
-
-  // Dopasowanie clip-path podświetlenia do zygzaka (px precision)
-  function updateCatClip() {
-    const hr = document.querySelector('.hero-right');
-    const top = document.querySelector('.hero-cat-top');
-    const bot = document.querySelector('.hero-cat-bottom');
-    if (!hr || !top || !bot) return;
-    const H = hr.offsetHeight;
-    // Zygzak SVG: 20px, centered at H/2
-    // y=42/64*20 = 13.125 → H/2 - 10 + 13 = H/2 + 3
-    // y=16/64*20 = 5     → H/2 - 10 + 5  = H/2 - 5
-    const lo = H / 2 + 3;   // niskie punkty (px od góry hr)
-    const hi = H / 2 - 5;   // wysokie punkty
-    // Górny panel: height = lo px, clip docina dolną krawędź wzdłuż zygzaka
-    top.style.height = lo + 'px';
-    top.style.clipPath =
-      `polygon(0 0, 100% 0, 100% ${hi}px, 67% ${lo}px, 33% ${hi}px, 0 ${lo}px)`;
-    // Dolny panel: zaczyna od hi, height = H-hi px
-    bot.style.top    = hi + 'px';
-    bot.style.bottom = 'auto';
-    bot.style.height = (H - hi) + 'px';
-    const amp = lo - hi; // 8px
-    bot.style.clipPath =
-      `polygon(0 ${amp}px, 33% 0, 67% ${amp}px, 100% 0, 100% 100%, 0 100%)`;
-  }
-  window.addEventListener('load',   updateCatClip);
-  window.addEventListener('resize', updateCatClip);
-  updateCatClip();
 
 </script>
 
