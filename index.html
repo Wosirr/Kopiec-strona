@@ -774,12 +774,6 @@
       .nav-inner { padding: 0 24px; }
 
       /* === Hero === */
-      .hero-left {
-        padding: 128px 28px 80px;
-        max-width: 100%;
-        align-items: center;
-        text-align: center;
-      }
       .hero-logo-bg { display: none; }
       .hero-eyebrow { justify-content: center; }
       .hero-eyebrow::before { display: none; }
@@ -787,7 +781,11 @@
       .hero-h1 br { display: none; }
       .hero-sub { max-width: 100%; color: rgba(255,255,255,0.90); font-size: 1.65rem; }
       .hero-actions { justify-content: center; flex-wrap: wrap; }
-      /* Zygzak — zanika u góry na mobilce */
+      /* Mobilka: układamy pionowo — nagłówek na górze, kategorie pod spodem */
+      .hero { flex-direction: column; }
+      .hero-left { padding: 128px 28px 32px; max-width: 100%; align-items: center; text-align: center; }
+      .hero-right { flex: 1; width: 100%; min-height: 280px; }
+      /* Zygzak — zanika u góry */
       .hero-bolt {
         -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 35%);
         mask-image: linear-gradient(to bottom, transparent 0%, black 35%);
@@ -796,7 +794,8 @@
       .hero-cat::before {
         background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.09) 40%);
       }
-      .hero-half-h { font-size: 1.4rem; margin-bottom: 10px; }
+      .hero-half-h { font-size: 1.2rem; margin-bottom: 8px; }
+      .hero-half-num { margin-bottom: 6px; }
       .hero-half-num { margin-bottom: 6px; }
       /* Adjust hero vignette for mobile */
       .hero-bg::after {
