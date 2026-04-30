@@ -141,20 +141,19 @@
       transform: scale(1.04);
       animation: heroImgIn 1.8s 0.1s var(--ease) forwards;
     }
-    /* winieta: ciemno z lewej (tekst), prześwit w centrum, ciemno z prawej (ukrywa ścianę) */
     .hero-bg::after {
       content: '';
       position: absolute; inset: 0;
       background:
         linear-gradient(to right,
-          var(--antracyt)              0%,
-          rgba(26,28,34,0.94)         22%,
-          rgba(26,28,34,0.38)         48%,
-          rgba(26,28,34,0.70)         74%,
-          var(--antracyt)             100%
+          rgba(26,28,34,0.92)          0%,
+          rgba(26,28,34,0.78)         28%,
+          rgba(26,28,34,0.28)         52%,
+          rgba(26,28,34,0.60)         76%,
+          rgba(26,28,34,0.88)         100%
         ),
-        linear-gradient(to top,  rgba(26,28,34,0.65) 0%, transparent 22%),
-        linear-gradient(to bottom, rgba(26,28,34,0.45) 0%, transparent 14%);
+        linear-gradient(to top,  rgba(26,28,34,0.70) 0%, transparent 25%),
+        linear-gradient(to bottom, rgba(26,28,34,0.50) 0%, transparent 16%);
       z-index: 1;
     }
     .hero-left {
@@ -186,13 +185,15 @@
       font-weight: 800; color: var(--white);
       line-height: 1.04; letter-spacing: -0.03em;
       margin-bottom: 28px;
+      text-shadow: 0 2px 32px rgba(0,0,0,0.6);
       opacity: 0; animation: fadeUp 0.8s 0.38s forwards;
     }
     .hero-h1 em { font-style: normal; color: var(--gold); }
     .hero-sub {
       font-size: 1.5rem; font-weight: 400; line-height: 1.8;
-      color: rgba(255,255,255,0.42); max-width: 360px;
+      color: rgba(255,255,255,0.72); max-width: 360px;
       margin-bottom: 48px;
+      text-shadow: 0 1px 16px rgba(0,0,0,0.5);
       opacity: 0; animation: fadeUp 0.8s 0.54s forwards;
     }
     .hero-actions {
