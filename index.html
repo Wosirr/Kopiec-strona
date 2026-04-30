@@ -262,8 +262,11 @@
       opacity: 0; transition: opacity 0.4s; pointer-events: none;
     }
     .hero-cat:hover::before { opacity: 1; }
-    .hero-cat-top  { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 26px), 67% 100%, 33% calc(100% - 26px), 0 100%); }
-    .hero-cat-bottom { clip-path: polygon(0 26px, 33% 0, 67% 26px, 100% 0, 100% 100%, 0 100%); }
+    /* Zygzak: dolne punkty (y=42/64) → 50%+10px hero = 100%+10px elementu (poza) → 100%
+       Górne punkty (y=16/64) → 50%−16px hero = 100%−16px elementu */
+    .hero-cat-top  { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), 67% 100%, 33% calc(100% - 16px), 0 100%); }
+    /* Dolny panel: górne punkty (y=42) = 10px od góry elementu, dolne (y=16) = −16px (poza górą) */
+    .hero-cat-bottom { clip-path: polygon(0 10px, 33% -16px, 67% 10px, 100% -16px, 100% 100%, 0 100%); }
 
     /* Wrapper treści — skaluje się przy hover */
     .hero-half-body {
