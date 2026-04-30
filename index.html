@@ -116,7 +116,7 @@
     .hero {
       min-height: 100vh;
       position: relative;
-      display: flex; align-items: center; justify-content: center;
+      display: flex; align-items: center;
       background: var(--antracyt);
       overflow: hidden;
     }
@@ -135,17 +135,23 @@
       content: '';
       position: absolute; inset: 0;
       background:
-        linear-gradient(to bottom, rgba(26,28,34,0.55) 0%, rgba(26,28,34,0.2) 40%, rgba(26,28,34,0.55) 100%),
-        linear-gradient(to right, var(--antracyt) 0%, transparent 18%, transparent 82%, var(--antracyt) 100%),
-        linear-gradient(to top, rgba(26,28,34,0.7) 0%, transparent 25%);
+        linear-gradient(to right,
+          var(--antracyt)              0%,
+          rgba(26,28,34,0.94)         22%,
+          rgba(26,28,34,0.38)         48%,
+          rgba(26,28,34,0.70)         74%,
+          var(--antracyt)             100%
+        ),
+        linear-gradient(to top,  rgba(26,28,34,0.65) 0%, transparent 22%),
+        linear-gradient(to bottom, rgba(26,28,34,0.45) 0%, transparent 14%);
       z-index: 1;
     }
     .hero-left {
       display: flex; flex-direction: column;
-      justify-content: center; align-items: center; text-align: center;
-      padding: 140px 48px 80px;
+      justify-content: center;
+      padding: 140px 40px 80px 88px;
       position: relative; z-index: 5;
-      max-width: 720px;
+      max-width: 800px;
     }
     /* Duży watermark logo w tle lewego panelu */
     .hero-logo-bg {
