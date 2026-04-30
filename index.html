@@ -799,8 +799,8 @@
         width: 64px; height: 30%;
         z-index: 4; pointer-events: none;
         filter: drop-shadow(0 0 8px rgba(176,184,192,0.4));
-        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%);
-        mask-image: linear-gradient(to bottom, transparent 0%, black 12%);
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.15) 40%, black 70%);
+        mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.15) 40%, black 70%);
       }
 
       /* Lewa i prawa połowa — pełna wysokość, treść na dole */
@@ -823,9 +823,9 @@
       .hero-cat-bottom::before {
         background: linear-gradient(to bottom, transparent 50%, rgba(255,255,255,0.13) 70%);
       }
-      .hero-half-h { font-size: 1.1rem; margin-bottom: 6px; }
-      .hero-half-num { margin-bottom: 4px; font-size: 0.55rem; }
-      .hero-half-num { margin-bottom: 6px; }
+      .hero-half-h { font-size: 1.4rem; margin-bottom: 8px; }
+      .hero-half-num { font-size: 0.62rem; margin-bottom: 8px; }
+      .hero-half-cta { font-size: 0.7rem; }
       /* Adjust hero vignette for mobile */
       .hero-bg::after {
         background:
