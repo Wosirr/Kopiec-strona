@@ -230,6 +230,39 @@
       to   { transform: scale(1.0); }
     }
 
+    /* Srebrna błyskawica dekoracyjna nad hero */
+    .hero-bolt {
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 64px; height: 100%;
+      z-index: 4; pointer-events: none; overflow: visible;
+      filter: drop-shadow(0 0 10px rgba(176,184,192,0.18));
+    }
+
+    /* Dolne etykiety — lewa i prawa połowa hero */
+    .hero-half {
+      position: absolute; bottom: 0; width: 50%;
+      padding: 40px 64px 52px;
+      display: flex; flex-direction: column;
+      text-decoration: none; z-index: 3;
+      transition: background 0.35s;
+    }
+    .hero-half:hover { background: rgba(255,255,255,0.04); }
+    .hero-half-left  { left: 0;  align-items: flex-end;   text-align: right; padding-right: 60px; }
+    .hero-half-right { right: 0; align-items: flex-start; text-align: left;  padding-left: 60px; }
+    .hero-half-num {
+      font-family: var(--ff-label); font-size: 0.58rem; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
+    }
+    .hero-half-h {
+      font-size: 1.6rem; font-weight: 800; color: var(--white);
+      line-height: 1.12; letter-spacing: -0.02em; margin-bottom: 12px;
+    }
+    .hero-half-cta {
+      font-family: var(--ff-label); font-size: 0.65rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(184,162,101,0.65); transition: color 0.2s;
+    }
+    .hero-half:hover .hero-half-cta { color: var(--gold); }
+
     /* ════════════════════════════════════════════
        SPLIT SECTIONS
     ════════════════════════════════════════════ */
@@ -710,6 +743,12 @@
       .hero-h1 br { display: none; }
       .hero-sub { max-width: 100%; color: rgba(255,255,255,0.90); font-size: 1.65rem; }
       .hero-actions { justify-content: center; flex-wrap: wrap; }
+      /* Half-labels on mobile */
+      .hero-half { padding: 24px 20px 32px; }
+      .hero-half-left  { padding-right: 38px; }
+      .hero-half-right { padding-left: 38px; }
+      .hero-half-h { font-size: 1.1rem; margin-bottom: 8px; }
+      .hero-half-num { margin-bottom: 6px; }
       /* Adjust hero vignette for mobile */
       .hero-bg::after {
         background:
@@ -1000,6 +1039,36 @@
   <div class="hero-bg">
     <img src="Assety marki/492509509_1218235170307253_8496262521151753292_n.jpg" alt="Złota dekoracyjna brama" />
   </div>
+
+  <!-- Srebrna błyskawica — nawiązanie do logo -->
+  <svg class="hero-bolt" viewBox="0 0 64 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="boltFade" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%"   stop-color="#B0B8C0" stop-opacity="0"/>
+        <stop offset="18%"  stop-color="#B0B8C0" stop-opacity="0.55"/>
+        <stop offset="82%"  stop-color="#B0B8C0" stop-opacity="0.55"/>
+        <stop offset="100%" stop-color="#B0B8C0" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <polyline points="42,0 16,33 42,67 16,100"
+      fill="none" stroke="url(#boltFade)" stroke-width="3"
+      vector-effect="non-scaling-stroke"
+      stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"/>
+  </svg>
+
+  <!-- Lewa połowa — Oferta dla domu -->
+  <a href="#offer" class="hero-half hero-half-left r" onclick="document.querySelector('#offer').scrollIntoView({behavior:'smooth'});return false;">
+    <span class="hero-half-num">01</span>
+    <span class="hero-half-h" data-i18n="hero.p1.h">Oferta<br>dla domu</span>
+    <span class="hero-half-cta"><span data-i18n="hero.p1.cta">Poznaj ofertę</span> →</span>
+  </a>
+
+  <!-- Prawa połowa — Obiekty komercyjne -->
+  <a href="#commercial" class="hero-half hero-half-right r r-d1" onclick="document.querySelector('#commercial').scrollIntoView({behavior:'smooth'});return false;">
+    <span class="hero-half-num">02</span>
+    <span class="hero-half-h" data-i18n="hero.p2.h">Obiekty komercyjne<br>i inwestycyjne</span>
+    <span class="hero-half-cta"><span data-i18n="hero.p2.cta">Sprawdź realizacje</span> →</span>
+  </a>
 </section>
 
 <!-- ══════ SPLIT 1 — O nas (photo left, text right) ══════ -->
@@ -1574,6 +1643,8 @@
       'hero.h1':'Ponadczasowe wyroby <br><em>klasyczne i nowoczesne.</em>',
       'hero.sub':'Balustrady, schody, pergole i meble ze stali nierdzewnej — od projektu po montaż.',
       'hero.btn1':'Poznaj ofertę','hero.btn2':'Wyceń projekt',
+      'hero.p1.h':'Oferta<br>dla domu','hero.p1.cta':'Poznaj ofertę',
+      'hero.p2.h':'Obiekty komercyjne<br>i inwestycyjne','hero.p2.cta':'Sprawdź realizacje',
       'about.label':'O nas','about.h2':'Metalowe rzemiosło<br><em>nowej generacji.</em>',
       'about.p1':'Kopiec Metal Design to polska pracownia specjalizująca się w produkcji wysokiej jakości wyrobów metalowych łączących estetykę industrialną z loftową elegancją.',
       'about.p2':'Pracownia wyposażona jest w nowoczesne maszyny CNC i urządzenia spawalnicze — tolerancje ±0,1 mm na każdym etapie produkcji.',
@@ -1621,6 +1692,8 @@
       'hero.h1':'Timeless products <br><em>classic &amp; modern.</em>',
       'hero.sub':'Railings, stairs, pergolas and metal furniture in stainless steel — from design to installation.',
       'hero.btn1':'Our offer','hero.btn2':'Get a quote',
+      'hero.p1.h':'Residential<br>offer','hero.p1.cta':'Explore offer',
+      'hero.p2.h':'Commercial &amp;<br>investment projects','hero.p2.cta':'View projects',
       'about.label':'About us','about.h2':'Metal craftsmanship<br><em>of a new generation.</em>',
       'about.p1':'Kopiec Metal Design is a Polish workshop specialising in the production of high-quality metal products combining industrial aesthetics with loft elegance.',
       'about.p2':'The workshop is equipped with modern CNC machines and welding equipment — tolerances of ±0.1 mm at every stage of production.',
@@ -1668,6 +1741,8 @@
       'hero.h1':'Zeitlose Produkte <br><em>klassisch &amp; modern.</em>',
       'hero.sub':'Geländer, Treppen, Pergolen und Metallmöbel aus Edelstahl — vom Entwurf bis zur Montage.',
       'hero.btn1':'Unser Angebot','hero.btn2':'Angebot anfragen',
+      'hero.p1.h':'Angebot für<br>Privatkunden','hero.p1.cta':'Angebot entdecken',
+      'hero.p2.h':'Gewerbe- &amp;<br>Investitionsprojekte','hero.p2.cta':'Projekte ansehen',
       'about.label':'Über uns','about.h2':'Metallhandwerk<br><em>der neuen Generation.</em>',
       'about.p1':'Kopiec Metal Design ist eine polnische Werkstatt, die sich auf die Herstellung hochwertiger Metallprodukte spezialisiert hat, die Industrieästhetik mit Loft-Eleganz verbinden.',
       'about.p2':'Die Werkstatt ist mit modernen CNC-Maschinen und Schweißgeräten ausgestattet — Toleranzen von ±0,1 mm in jeder Produktionsphase.',
