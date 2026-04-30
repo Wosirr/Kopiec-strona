@@ -116,7 +116,7 @@
     .hero {
       min-height: 100vh;
       position: relative;
-      display: flex; align-items: center;
+      display: flex; flex-direction: column;
       background: var(--antracyt);
       overflow: hidden;
     }
@@ -135,23 +135,16 @@
       content: '';
       position: absolute; inset: 0;
       background:
-        linear-gradient(to right,
-          var(--antracyt)              0%,
-          rgba(26,28,34,0.94)         22%,
-          rgba(26,28,34,0.38)         48%,
-          rgba(26,28,34,0.70)         74%,
-          var(--antracyt)             100%
-        ),
-        linear-gradient(to top,  rgba(26,28,34,0.65) 0%, transparent 22%),
-        linear-gradient(to bottom, rgba(26,28,34,0.45) 0%, transparent 14%);
+        linear-gradient(to bottom, rgba(26,28,34,0.82) 0%, rgba(26,28,34,0.3) 50%, rgba(26,28,34,0.55) 100%),
+        linear-gradient(to right, var(--antracyt) 0%, transparent 20%, transparent 80%, var(--antracyt) 100%);
       z-index: 1;
     }
     .hero-left {
       display: flex; flex-direction: column;
-      justify-content: center;
-      padding: 140px 40px 80px 88px;
+      align-items: center; text-align: center;
+      padding: 140px 48px 48px;
       position: relative; z-index: 5;
-      max-width: 800px;
+      width: 100%;
     }
     /* Duży watermark logo w tle lewego panelu */
     .hero-logo-bg {
@@ -239,13 +232,19 @@
       filter: drop-shadow(0 0 12px rgba(176,184,192,0.5));
     }
 
-    /* Połowy hero — rozszerzone żeby pokryć strefę zygzaka, clipowane do jego kształtu */
+    /* Kontener połów — zajmuje resztę hero */
+    .hero-panels {
+      position: relative; flex: 1;
+      display: flex; width: 100%;
+      z-index: 3; min-height: 0;
+    }
+
+    /* Połowy hero */
     .hero-half {
       position: absolute; top: 0; bottom: 0;
-      display: flex; flex-direction: column; justify-content: flex-end;
+      display: flex; flex-direction: column; justify-content: center;
       text-decoration: none; z-index: 3; cursor: pointer;
       background: transparent; transition: background 0.4s;
-      padding-bottom: 56px;
     }
     .hero-half:hover { background: rgba(255,255,255,0.08); }
 
@@ -1080,40 +1079,7 @@
     <img src="Assety marki/492509509_1218235170307253_8496262521151753292_n.jpg" alt="Złota dekoracyjna brama" />
   </div>
 
-  <!-- Dwie klikalne połowy z podświetleniem -->
-  <a href="#offer" class="hero-half hero-half-left" onclick="document.querySelector('#offer').scrollIntoView({behavior:'smooth'});return false;">
-    <div class="hero-half-body">
-      <span class="hero-half-num">01</span>
-      <span class="hero-half-h" data-i18n="hero.p1.h">Oferta<br>dla domu</span>
-      <span class="hero-half-cta"><span data-i18n="hero.p1.cta">Poznaj ofertę</span> →</span>
-    </div>
-  </a>
-
-  <a href="#commercial" class="hero-half hero-half-right" onclick="document.querySelector('#commercial').scrollIntoView({behavior:'smooth'});return false;">
-    <div class="hero-half-body">
-      <span class="hero-half-num">02</span>
-      <span class="hero-half-h" data-i18n="hero.p2.h">Obiekty komercyjne<br>i inwestycyjne</span>
-      <span class="hero-half-cta"><span data-i18n="hero.p2.cta">Sprawdź realizacje</span> →</span>
-    </div>
-  </a>
-
-  <!-- Srebrna błyskawica -->
-  <svg class="hero-bolt" viewBox="0 0 64 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <defs>
-      <linearGradient id="boltFade" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%"   stop-color="#B0B8C0" stop-opacity="0"/>
-        <stop offset="12%"  stop-color="#B0B8C0" stop-opacity="0.9"/>
-        <stop offset="88%"  stop-color="#B0B8C0" stop-opacity="0.9"/>
-        <stop offset="100%" stop-color="#B0B8C0" stop-opacity="0"/>
-      </linearGradient>
-    </defs>
-    <polyline points="42,0 16,33 42,67 16,100"
-      fill="none" stroke="url(#boltFade)" stroke-width="4"
-      vector-effect="non-scaling-stroke"
-      stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"/>
-  </svg>
-
-  <!-- Nagłówek (nad połowami) -->
+  <!-- Nagłówek (góra) -->
   <div class="hero-left">
     <img src="Assety marki/LogoBezTła.png" alt="" class="hero-logo-bg" aria-hidden="true">
     <p class="hero-eyebrow">Kopiec Metal Design — Mechnica</p>
@@ -1123,6 +1089,40 @@
       <a href="#offer" class="btn-primary" data-i18n="hero.btn1">Poznaj ofertę</a>
       <a href="#contact" class="btn-outline" data-i18n="hero.btn2">Wyceń projekt</a>
     </div>
+  </div>
+
+  <!-- Dół: dwie połowy + zygzak -->
+  <div class="hero-panels">
+    <a href="#offer" class="hero-half hero-half-left" onclick="document.querySelector('#offer').scrollIntoView({behavior:'smooth'});return false;">
+      <div class="hero-half-body">
+        <span class="hero-half-num">01</span>
+        <span class="hero-half-h" data-i18n="hero.p1.h">Oferta<br>dla domu</span>
+        <span class="hero-half-cta"><span data-i18n="hero.p1.cta">Poznaj ofertę</span> →</span>
+      </div>
+    </a>
+
+    <a href="#commercial" class="hero-half hero-half-right" onclick="document.querySelector('#commercial').scrollIntoView({behavior:'smooth'});return false;">
+      <div class="hero-half-body">
+        <span class="hero-half-num">02</span>
+        <span class="hero-half-h" data-i18n="hero.p2.h">Obiekty komercyjne<br>i inwestycyjne</span>
+        <span class="hero-half-cta"><span data-i18n="hero.p2.cta">Sprawdź realizacje</span> →</span>
+      </div>
+    </a>
+
+    <svg class="hero-bolt" viewBox="0 0 64 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="boltFade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#B0B8C0" stop-opacity="0"/>
+          <stop offset="12%"  stop-color="#B0B8C0" stop-opacity="0.9"/>
+          <stop offset="88%"  stop-color="#B0B8C0" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#B0B8C0" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <polyline points="42,0 16,33 42,67 16,100"
+        fill="none" stroke="url(#boltFade)" stroke-width="4"
+        vector-effect="non-scaling-stroke"
+        stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"/>
+    </svg>
   </div>
 
 </section>
