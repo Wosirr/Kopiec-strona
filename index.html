@@ -256,13 +256,19 @@
       background: transparent; transition: background 0.4s;
       overflow: hidden;
     }
-    .hero-cat:hover { background: rgba(255,255,255,0.08); }
+    .hero-cat::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.09) 40%);
+      opacity: 0; transition: opacity 0.4s; pointer-events: none;
+    }
+    .hero-cat:hover::before { opacity: 1; }
     .hero-cat-top  { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 26px), 67% 100%, 33% calc(100% - 26px), 0 100%); }
     .hero-cat-bottom { clip-path: polygon(0 26px, 33% 0, 67% 26px, 100% 0, 100% 100%, 0 100%); }
 
     /* Wrapper treści — skaluje się przy hover */
     .hero-half-body {
       display: flex; flex-direction: column;
+      position: relative; z-index: 1;
       transition: transform 0.45s var(--ease);
     }
     .hero-cat:hover .hero-half-body { transform: scale(1.04); }
