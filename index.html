@@ -114,24 +114,11 @@
        HERO — full-width photo + vignette overlay
     ════════════════════════════════════════════ */
     .hero {
-      height: 220vh;
+      min-height: 100vh;
       position: relative;
+      display: flex; align-items: center;
       background: var(--antracyt);
-    }
-    .hero-sticky {
-      position: sticky; top: 0;
-      height: 100vh; min-height: 620px;
       overflow: hidden;
-      display: flex; align-items: center;
-    }
-    .hero-phase1 {
-      position: absolute; inset: 0;
-      display: flex; align-items: center;
-      z-index: 2;
-    }
-    .hero-phase2 {
-      position: absolute; inset: 0;
-      opacity: 0; z-index: 3;
     }
     .hero-bg {
       position: absolute; inset: 0; z-index: 0;
@@ -163,7 +150,7 @@
       display: flex; flex-direction: column;
       justify-content: center;
       padding: 140px 40px 80px 88px;
-      position: relative; z-index: 2;
+      position: relative; z-index: 5;
       max-width: 800px;
     }
     /* Duży watermark logo w tle lewego panelu */
@@ -790,8 +777,6 @@
       .nav-inner { padding: 0 24px; }
 
       /* === Hero === */
-      .hero { height: 200svh; }
-      .hero-sticky { height: 100svh; min-height: 580px; }
       .hero-left {
         padding: 128px 28px 80px;
         max-width: 100%;
@@ -1089,62 +1074,56 @@
 
 <!-- ══════ HERO ══════ -->
 <section class="hero" id="hero">
-  <div class="hero-sticky">
 
-    <!-- Tło — zawsze widoczne -->
-    <div class="hero-bg">
-      <img src="Assety marki/492509509_1218235170307253_8496262521151753292_n.jpg" alt="Złota dekoracyjna brama" />
-    </div>
-
-    <!-- Faza 1: nagłówek + przyciski (zanika podczas scrollu) -->
-    <div class="hero-phase1" id="heroPhase1">
-      <div class="hero-left">
-        <img src="Assety marki/LogoBezTła.png" alt="" class="hero-logo-bg" aria-hidden="true">
-        <p class="hero-eyebrow">Kopiec Metal Design — Mechnica</p>
-        <h1 class="hero-h1" data-i18n="hero.h1">Ponadczasowe wyroby <br><em>klasyczne i nowoczesne.</em></h1>
-        <p class="hero-sub" data-i18n="hero.sub">Balustrady, schody, pergole i meble ze stali nierdzewnej — od projektu po montaż.</p>
-        <div class="hero-actions">
-          <a href="#offer" class="btn-primary" data-i18n="hero.btn1">Poznaj ofertę</a>
-          <a href="#contact" class="btn-outline" data-i18n="hero.btn2">Wyceń projekt</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Faza 2: błyskawica + kategorie (pojawia się podczas scrollu) -->
-    <div class="hero-phase2" id="heroPhase2">
-      <svg class="hero-bolt" viewBox="0 0 64 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs>
-          <linearGradient id="boltFade" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%"   stop-color="#B0B8C0" stop-opacity="0"/>
-            <stop offset="12%"  stop-color="#B0B8C0" stop-opacity="0.9"/>
-            <stop offset="88%"  stop-color="#B0B8C0" stop-opacity="0.9"/>
-            <stop offset="100%" stop-color="#B0B8C0" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
-        <polyline points="42,0 16,33 42,67 16,100"
-          fill="none" stroke="url(#boltFade)" stroke-width="4"
-          vector-effect="non-scaling-stroke"
-          stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"/>
-      </svg>
-
-      <a href="#offer" class="hero-half hero-half-left" onclick="document.querySelector('#offer').scrollIntoView({behavior:'smooth'});return false;">
-        <div class="hero-half-body">
-          <span class="hero-half-num">01</span>
-          <span class="hero-half-h" data-i18n="hero.p1.h">Oferta<br>dla domu</span>
-          <span class="hero-half-cta"><span data-i18n="hero.p1.cta">Poznaj ofertę</span> →</span>
-        </div>
-      </a>
-
-      <a href="#commercial" class="hero-half hero-half-right" onclick="document.querySelector('#commercial').scrollIntoView({behavior:'smooth'});return false;">
-        <div class="hero-half-body">
-          <span class="hero-half-num">02</span>
-          <span class="hero-half-h" data-i18n="hero.p2.h">Obiekty komercyjne<br>i inwestycyjne</span>
-          <span class="hero-half-cta"><span data-i18n="hero.p2.cta">Sprawdź realizacje</span> →</span>
-        </div>
-      </a>
-    </div>
-
+  <div class="hero-bg">
+    <img src="Assety marki/492509509_1218235170307253_8496262521151753292_n.jpg" alt="Złota dekoracyjna brama" />
   </div>
+
+  <!-- Dwie klikalne połowy z podświetleniem -->
+  <a href="#offer" class="hero-half hero-half-left" onclick="document.querySelector('#offer').scrollIntoView({behavior:'smooth'});return false;">
+    <div class="hero-half-body">
+      <span class="hero-half-num">01</span>
+      <span class="hero-half-h" data-i18n="hero.p1.h">Oferta<br>dla domu</span>
+      <span class="hero-half-cta"><span data-i18n="hero.p1.cta">Poznaj ofertę</span> →</span>
+    </div>
+  </a>
+
+  <a href="#commercial" class="hero-half hero-half-right" onclick="document.querySelector('#commercial').scrollIntoView({behavior:'smooth'});return false;">
+    <div class="hero-half-body">
+      <span class="hero-half-num">02</span>
+      <span class="hero-half-h" data-i18n="hero.p2.h">Obiekty komercyjne<br>i inwestycyjne</span>
+      <span class="hero-half-cta"><span data-i18n="hero.p2.cta">Sprawdź realizacje</span> →</span>
+    </div>
+  </a>
+
+  <!-- Srebrna błyskawica -->
+  <svg class="hero-bolt" viewBox="0 0 64 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="boltFade" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%"   stop-color="#B0B8C0" stop-opacity="0"/>
+        <stop offset="12%"  stop-color="#B0B8C0" stop-opacity="0.9"/>
+        <stop offset="88%"  stop-color="#B0B8C0" stop-opacity="0.9"/>
+        <stop offset="100%" stop-color="#B0B8C0" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <polyline points="42,0 16,33 42,67 16,100"
+      fill="none" stroke="url(#boltFade)" stroke-width="4"
+      vector-effect="non-scaling-stroke"
+      stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"/>
+  </svg>
+
+  <!-- Nagłówek (nad połowami) -->
+  <div class="hero-left">
+    <img src="Assety marki/LogoBezTła.png" alt="" class="hero-logo-bg" aria-hidden="true">
+    <p class="hero-eyebrow">Kopiec Metal Design — Mechnica</p>
+    <h1 class="hero-h1" data-i18n="hero.h1">Ponadczasowe wyroby <br><em>klasyczne i nowoczesne.</em></h1>
+    <p class="hero-sub" data-i18n="hero.sub">Balustrady, schody, pergole i meble ze stali nierdzewnej — od projektu po montaż.</p>
+    <div class="hero-actions">
+      <a href="#offer" class="btn-primary" data-i18n="hero.btn1">Poznaj ofertę</a>
+      <a href="#contact" class="btn-outline" data-i18n="hero.btn2">Wyceń projekt</a>
+    </div>
+  </div>
+
 </section>
 
 <!-- ══════ SPLIT 1 — O nas (photo left, text right) ══════ -->
@@ -1908,30 +1887,6 @@
     document.getElementById('fs').classList.remove('filled');
   });
 
-  // Hero scroll transition: phase1 fades out → phase2 fades in
-  (function () {
-    const hero   = document.getElementById('hero');
-    const phase1 = document.getElementById('heroPhase1');
-    const phase2 = document.getElementById('heroPhase2');
-    if (!hero || !phase1 || !phase2) return;
-
-    function clamp(v, lo, hi) { return Math.min(Math.max(v, lo), hi); }
-
-    function update() {
-      const scrolled  = -hero.getBoundingClientRect().top;
-      const scrollRoom = hero.offsetHeight - window.innerHeight;
-      if (scrollRoom <= 0) return;
-      const p = clamp(scrolled / scrollRoom, 0, 1);
-
-      // phase1: 0→0.5 progress  ⟶  opacity 1→0
-      phase1.style.opacity = clamp(1 - p * 2.2, 0, 1);
-      // phase2: 0.35→0.75 progress  ⟶  opacity 0→1
-      phase2.style.opacity = clamp((p - 0.35) * 2.5, 0, 1);
-    }
-
-    window.addEventListener('scroll', update, { passive: true });
-    update();
-  })();
 </script>
 
 </body>
