@@ -257,12 +257,44 @@
       position: absolute; top: 0; bottom: 0; width: 50%;
       display: flex; flex-direction: column; justify-content: center;
       text-decoration: none; z-index: 3;
-      transition: background 0.45s;
       cursor: pointer;
     }
-    .hero-half:hover { background: rgba(255,255,255,0.07); }
-    .hero-half-left  { left: 0;  align-items: flex-end;   text-align: right; padding-right: 72px; }
-    .hero-half-right { right: 0; align-items: flex-start; text-align: left;  padding-left: 72px; }
+    /* Podświetlenie clipowane wzdłuż zygzaka */
+    .hero-half::before {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(255,255,255,0.08);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .hero-half:hover::before { opacity: 1; }
+
+    /* Lewy — prawy bok obcięty wzdłuż zygzaka (prawe punkty: 50%+10px, lewe: 50%−16px) */
+    .hero-half-left {
+      left: 0; align-items: flex-end; text-align: right; padding-right: 72px;
+    }
+    .hero-half-left::before {
+      clip-path: polygon(
+        0 0,
+        calc(100% + 10px) 0,
+        calc(100% - 16px) 33%,
+        calc(100% + 10px) 67%,
+        calc(100% - 16px) 100%,
+        0 100%
+      );
+    }
+    /* Prawy — lewy bok obcięty wzdłuż zygzaka */
+    .hero-half-right {
+      right: 0; align-items: flex-start; text-align: left; padding-left: 72px;
+    }
+    .hero-half-right::before {
+      clip-path: polygon(
+        10px 0,
+        100% 0,
+        100% 100%,
+        -16px 100%,
+        10px 67%,
+        -16px 33%
+      );
+    }
 
     /* Wrapper treści — skaluje się przy hover */
     .hero-half-body {
