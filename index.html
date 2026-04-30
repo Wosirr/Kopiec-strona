@@ -240,13 +240,13 @@
     .hero-bolt {
       position: absolute; left: 0; right: 0;
       top: 50%; transform: translateY(-50%);
-      width: 100%; height: 40px;
+      width: 100%; height: 20px;
       z-index: 4; pointer-events: none;
       filter: drop-shadow(0 0 12px rgba(176,184,192,0.5));
     }
 
     /*
-      Zygzak: height 40px, centered → y=42→50%+6px, y=16→50%−10px, zakres 16px
+      Zygzak: height 20px, centered → y=42→50%+3px, y=16→50%−5px, zakres 8px
     */
     .hero-cat {
       position: absolute; left: 0; right: 0;
@@ -262,22 +262,22 @@
     }
     .hero-cat:hover::before { opacity: 1; }
 
-    /* Górny: sięga do dolnych punktów zygzaka (50%+6px) */
+    /* Górny: sięga do dolnych punktów zygzaka (50%+3px) */
     .hero-cat-top {
-      top: 0; height: calc(50% + 6px);
+      top: 0; height: calc(50% + 3px);
       clip-path: polygon(
         0 0, 100% 0,
-        100% calc(100% - 16px),
+        100% calc(100% - 8px),
         67% 100%,
-        33% calc(100% - 16px),
+        33% calc(100% - 8px),
         0 100%
       );
     }
-    /* Dolny: górna krawędź na wysokich punktach zygzaka (50%−10px) */
+    /* Dolny: górna krawędź na wysokich punktach zygzaka (50%−5px) */
     .hero-cat-bottom {
-      bottom: 0; height: calc(50% + 10px);
+      bottom: 0; height: calc(50% + 5px);
       clip-path: polygon(
-        0 16px, 33% 0, 67% 16px, 100% 0,
+        0 8px, 33% 0, 67% 8px, 100% 0,
         100% 100%, 0 100%
       );
     }
