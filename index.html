@@ -787,7 +787,7 @@
       .hero { min-height: 100svh; display: block; position: relative; }
       .hero-left {
         position: relative; z-index: 5;
-        padding: 110px 24px 40px;
+        padding: 110px 24px 24px;
         max-width: 100%; align-items: center; text-align: center;
       }
       /* hero-right pokrywa cały hero jako overlay */
@@ -802,8 +802,8 @@
         width: 64px; height: 100%;
         z-index: 4; pointer-events: none;
         filter: drop-shadow(0 0 10px rgba(176,184,192,0.4));
-        -webkit-mask-image: linear-gradient(to bottom, transparent 55%, black 72%);
-        mask-image: linear-gradient(to bottom, transparent 55%, black 72%);
+        -webkit-mask-image: linear-gradient(to bottom, transparent 42%, black 58%);
+        mask-image: linear-gradient(to bottom, transparent 42%, black 58%);
       }
 
       /* Pełna wysokość — clip-path % odpowiada % wysokości zygzaka */
@@ -812,7 +812,7 @@
         width: calc(50% + 10px);
         justify-content: flex-end;
         align-items: flex-end; text-align: right;
-        padding: 0 52px 48px 16px;
+        padding: 0 52px 36px 16px;
         clip-path: polygon(0 0, 100% 0, calc(100% - 26px) 33%, 100% 67%, calc(100% - 26px) 100%, 0 100%);
       }
       .hero-cat-bottom {
@@ -820,13 +820,13 @@
         width: calc(50% + 16px);
         justify-content: flex-end;
         align-items: flex-start; text-align: left;
-        padding: 0 16px 48px 52px;
+        padding: 0 16px 36px 52px;
         clip-path: polygon(26px 0, 100% 0, 100% 100%, 0 100%, 26px 67%, 0 33%);
       }
       /* Podświetlenie zanika u góry — pojawia się tam gdzie zygzak */
       .hero-cat-top::before,
       .hero-cat-bottom::before {
-        background: linear-gradient(to bottom, transparent 55%, rgba(255,255,255,0.09) 72%);
+        background: linear-gradient(to bottom, transparent 42%, rgba(255,255,255,0.09) 58%);
       }
       .hero-half-h { font-size: 1.1rem; margin-bottom: 6px; }
       .hero-half-num { margin-bottom: 4px; font-size: 0.55rem; }
