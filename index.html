@@ -285,6 +285,8 @@
       );
     }
 
+    .hero-bolt-mob { display: none; }
+
     /* Wrapper treści — skaluje się przy hover */
     .hero-half-body {
       display: flex; flex-direction: column;
@@ -781,21 +783,52 @@
       .hero-h1 br { display: none; }
       .hero-sub { max-width: 100%; color: rgba(255,255,255,0.90); font-size: 1.65rem; }
       .hero-actions { justify-content: center; flex-wrap: wrap; }
-      /* Mobilka: układamy pionowo — nagłówek na górze, kategorie pod spodem */
-      .hero { flex-direction: column; }
-      .hero-left { padding: 128px 28px 32px; max-width: 100%; align-items: center; text-align: center; }
-      .hero-right { flex: 1; width: 100%; min-height: 280px; }
-      /* Zygzak — zanika u góry */
-      .hero-bolt {
-        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 35%);
-        mask-image: linear-gradient(to bottom, transparent 0%, black 35%);
+      /* Mobilka: hero zajmuje 100svh, nagłówek wycentrowany, kategorie na dole */
+      .hero { min-height: 100svh; display: block; position: relative; }
+      .hero-left {
+        position: relative; z-index: 5;
+        padding: 110px 24px 40px;
+        max-width: 100%; align-items: center; text-align: center;
       }
-      /* Podświetlenie — zanika u góry */
-      .hero-cat::before {
-        background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.09) 40%);
+      /* hero-right pokrywa cały hero jako overlay */
+      .hero-right { position: absolute; inset: 0; }
+
+      /* Chowamy poziomy zygzak, pokazujemy pionowy */
+      .hero-bolt { display: none; }
+      .hero-bolt-mob {
+        display: block;
+        position: absolute; top: 0; bottom: 0; left: 50%;
+        transform: translateX(-50%);
+        width: 64px; height: 100%;
+        z-index: 4; pointer-events: none;
+        filter: drop-shadow(0 0 10px rgba(176,184,192,0.4));
       }
-      .hero-half-h { font-size: 1.2rem; margin-bottom: 8px; }
-      .hero-half-num { margin-bottom: 6px; }
+
+      /* Lewa połowa (hero-cat-top) — prawa krawędź wzdłuż pionowego zygzaka */
+      .hero-cat-top {
+        top: auto; bottom: 0; left: 0; right: auto;
+        width: calc(50% + 10px); height: 42%;
+        align-items: flex-end; text-align: right;
+        padding: 24px 52px 40px 16px;
+        clip-path: polygon(0 0, 100% 0, calc(100% - 26px) 33%, 100% 67%, calc(100% - 26px) 100%, 0 100%);
+      }
+      /* Prawa połowa (hero-cat-bottom) — lewa krawędź wzdłuż pionowego zygzaka */
+      .hero-cat-bottom {
+        top: auto; bottom: 0; right: 0; left: auto;
+        width: calc(50% + 16px); height: 42%;
+        align-items: flex-start; text-align: left;
+        padding: 24px 16px 40px 52px;
+        clip-path: polygon(26px 0, 100% 0, 100% 100%, 0 100%, 26px 67%, 0 33%);
+      }
+      /* Podświetlenie zanika u góry */
+      .hero-cat-top::before {
+        background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.09) 50%);
+      }
+      .hero-cat-bottom::before {
+        background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.09) 50%);
+      }
+      .hero-half-h { font-size: 1.1rem; margin-bottom: 6px; }
+      .hero-half-num { margin-bottom: 4px; font-size: 0.55rem; }
       .hero-half-num { margin-bottom: 6px; }
       /* Adjust hero vignette for mobile */
       .hero-bg::after {
@@ -1113,6 +1146,21 @@
       </defs>
       <polyline points="0,42 33,16 67,42 100,16"
         fill="none" stroke="url(#boltFade)" stroke-width="4"
+        vector-effect="non-scaling-stroke"
+        stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"/>
+    </svg>
+
+    <!-- Pionowy zygzak — tylko mobilka -->
+    <svg class="hero-bolt-mob" viewBox="0 0 64 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="boltFadeMob" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#B0B8C0" stop-opacity="0"/>
+          <stop offset="30%"  stop-color="#B0B8C0" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#B0B8C0" stop-opacity="0.9"/>
+        </linearGradient>
+      </defs>
+      <polyline points="42,0 16,33 42,67 16,100"
+        fill="none" stroke="url(#boltFadeMob)" stroke-width="4"
         vector-effect="non-scaling-stroke"
         stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"/>
     </svg>
