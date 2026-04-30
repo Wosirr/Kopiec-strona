@@ -266,32 +266,31 @@
       padding: 40px 64px 40px 40px;
       text-decoration: none; cursor: pointer;
     }
-    .hero-cat::before {
+    /* Górny — podświetlenie zanika przy dole (przy zygzaku) */
+    .hero-cat-top {
+      top: 0; height: 50%;
+    }
+    .hero-cat-top::before {
       content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.09) 40%);
+      background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.09) 35%),
+                  linear-gradient(to bottom, rgba(255,255,255,1) 70%, transparent 100%);
+      background-blend-mode: multiply;
       opacity: 0; transition: opacity 0.4s; pointer-events: none;
     }
-    .hero-cat:hover::before { opacity: 1; }
+    .hero-cat-top:hover::before { opacity: 1; }
 
-    /* Górny: sięga do dolnych punktów zygzaka (50%+3px) */
-    .hero-cat-top {
-      top: 0; height: calc(50% + 3px);
-      clip-path: polygon(
-        0 0, 100% 0,
-        100% calc(100% - 8px),
-        67% 100%,
-        33% calc(100% - 8px),
-        0 100%
-      );
-    }
-    /* Dolny: górna krawędź na wysokich punktach zygzaka (50%−5px) */
+    /* Dolny — podświetlenie zanika przy górze (przy zygzaku) */
     .hero-cat-bottom {
-      bottom: 0; height: calc(50% + 5px);
-      clip-path: polygon(
-        0 8px, 33% 0, 67% 8px, 100% 0,
-        100% 100%, 0 100%
-      );
+      bottom: 0; height: 50%;
     }
+    .hero-cat-bottom::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.09) 35%),
+                  linear-gradient(to top, rgba(255,255,255,1) 70%, transparent 100%);
+      background-blend-mode: multiply;
+      opacity: 0; transition: opacity 0.4s; pointer-events: none;
+    }
+    .hero-cat-bottom:hover::before { opacity: 1; }
 
     .hero-bolt-mob { display: none; }
 
