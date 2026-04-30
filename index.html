@@ -249,7 +249,7 @@
       transform: translateX(-50%);
       width: 64px; height: 100%;
       z-index: 4; pointer-events: none; overflow: visible;
-      filter: drop-shadow(0 0 10px rgba(176,184,192,0.18));
+      filter: drop-shadow(0 0 12px rgba(176,184,192,0.5));
     }
 
     /* Dolne etykiety — lewa i prawa połowa hero */
@@ -1072,13 +1072,13 @@
         <defs>
           <linearGradient id="boltFade" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%"   stop-color="#B0B8C0" stop-opacity="0"/>
-            <stop offset="18%"  stop-color="#B0B8C0" stop-opacity="0.55"/>
-            <stop offset="82%"  stop-color="#B0B8C0" stop-opacity="0.55"/>
+            <stop offset="12%"  stop-color="#B0B8C0" stop-opacity="0.9"/>
+            <stop offset="88%"  stop-color="#B0B8C0" stop-opacity="0.9"/>
             <stop offset="100%" stop-color="#B0B8C0" stop-opacity="0"/>
           </linearGradient>
         </defs>
         <polyline points="42,0 16,33 42,67 16,100"
-          fill="none" stroke="url(#boltFade)" stroke-width="3"
+          fill="none" stroke="url(#boltFade)" stroke-width="4"
           vector-effect="non-scaling-stroke"
           stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"/>
       </svg>
