@@ -784,7 +784,7 @@
       .hero { min-height: 100svh; display: block; position: relative; }
       .hero-left {
         position: relative; z-index: 5;
-        padding: 150px 24px 24px;
+        padding: 200px 24px 24px;
         max-width: 100%; align-items: center; text-align: center;
       }
       /* hero-right pokrywa cały hero jako overlay */
@@ -799,8 +799,8 @@
         width: 64px; height: 30%;
         z-index: 4; pointer-events: none;
         filter: drop-shadow(0 0 8px rgba(176,184,192,0.4));
-        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 30%);
-        mask-image: linear-gradient(to bottom, transparent 0%, black 30%);
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%);
+        mask-image: linear-gradient(to bottom, transparent 0%, black 12%);
       }
 
       /* Lewa i prawa połowa — pełna wysokość, treść na dole */
@@ -821,7 +821,7 @@
       /* Podświetlenie zanika u góry */
       .hero-cat-top::before,
       .hero-cat-bottom::before {
-        background: linear-gradient(to bottom, transparent 55%, rgba(255,255,255,0.09) 75%);
+        background: linear-gradient(to bottom, transparent 50%, rgba(255,255,255,0.13) 70%);
       }
       .hero-half-h { font-size: 1.1rem; margin-bottom: 6px; }
       .hero-half-num { margin-bottom: 4px; font-size: 0.55rem; }
