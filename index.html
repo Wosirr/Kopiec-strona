@@ -266,31 +266,37 @@
       padding: 40px 64px 40px 40px;
       text-decoration: none; cursor: pointer;
     }
-    /* Górny — podświetlenie zanika przy dole (przy zygzaku) */
+    /*
+      Zygzak 20px, centered at 50%:
+        y=42 → 50%+3px  (low points)
+        y=16 → 50%−5px  (high points)
+
+      Top panel (height:50%): low=100%+3px(poza)=100%, high=100%−5px
+      Bot panel (height:50%): low=3px, high=−5px(poza)=0
+    */
     .hero-cat-top {
       top: 0; height: 50%;
+      clip-path: polygon(
+        0 0, 100% 0,
+        100% calc(100% - 5px),
+        67% 100%,
+        33% calc(100% - 5px),
+        0 100%
+      );
     }
-    .hero-cat-top::before {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.09) 35%),
-                  linear-gradient(to bottom, rgba(255,255,255,1) 70%, transparent 100%);
-      background-blend-mode: multiply;
-      opacity: 0; transition: opacity 0.4s; pointer-events: none;
-    }
-    .hero-cat-top:hover::before { opacity: 1; }
-
-    /* Dolny — podświetlenie zanika przy górze (przy zygzaku) */
     .hero-cat-bottom {
       bottom: 0; height: 50%;
+      clip-path: polygon(
+        0 3px, 33% -5px, 67% 3px, 100% -5px,
+        100% 100%, 0 100%
+      );
     }
-    .hero-cat-bottom::before {
+    .hero-cat::before {
       content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.09) 35%),
-                  linear-gradient(to top, rgba(255,255,255,1) 70%, transparent 100%);
-      background-blend-mode: multiply;
+      background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.09) 35%);
       opacity: 0; transition: opacity 0.4s; pointer-events: none;
     }
-    .hero-cat-bottom:hover::before { opacity: 1; }
+    .hero-cat:hover::before { opacity: 1; }
 
     .hero-bolt-mob { display: none; }
 
