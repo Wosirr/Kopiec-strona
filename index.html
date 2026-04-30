@@ -252,47 +252,53 @@
       filter: drop-shadow(0 0 12px rgba(176,184,192,0.5));
     }
 
-    /* Połowy hero — każda pokrywa całą wysokość */
+    /* Połowy hero — rozszerzone żeby pokryć strefę zygzaka, clipowane do jego kształtu */
     .hero-half {
-      position: absolute; top: 0; bottom: 0; width: 50%;
+      position: absolute; top: 0; bottom: 0;
       display: flex; flex-direction: column; justify-content: center;
-      text-decoration: none; z-index: 3;
-      cursor: pointer;
+      text-decoration: none; z-index: 3; cursor: pointer;
+      background: transparent; transition: background 0.4s;
     }
-    /* Podświetlenie clipowane wzdłuż zygzaka */
-    .hero-half::before {
-      content: ''; position: absolute; inset: 0;
-      background: rgba(255,255,255,0.08);
-      opacity: 0; transition: opacity 0.4s;
-    }
-    .hero-half:hover::before { opacity: 1; }
+    .hero-half:hover { background: rgba(255,255,255,0.08); }
 
-    /* Lewy — prawy bok obcięty wzdłuż zygzaka (prawe punkty: 50%+10px, lewe: 50%−16px) */
+    /*
+      Zygzak SVG: 64px szeroki, wycentrowany na 50%.
+      Prawe punkty (x=42): 50% + 10px od lewej kontenera
+      Lewe punkty (x=16):  50% − 16px od lewej kontenera
+
+      Lewy panel: left:0, width = calc(50% + 10px) — sięga do prawego punktu zygzaka
+        W układzie panelu (100% = 50%+10px kontenera):
+          prawy punkt = 100%
+          lewy punkt  = 100% − 26px
+    */
     .hero-half-left {
-      left: 0; align-items: flex-end; text-align: right; padding-right: 72px;
-    }
-    .hero-half-left::before {
+      left: 0; width: calc(50% + 10px);
+      align-items: flex-end; text-align: right; padding-right: 82px;
       clip-path: polygon(
         0 0,
-        calc(100% + 10px) 0,
-        calc(100% - 16px) 33%,
-        calc(100% + 10px) 67%,
-        calc(100% - 16px) 100%,
+        100% 0,
+        calc(100% - 26px) 33%,
+        100% 67%,
+        calc(100% - 26px) 100%,
         0 100%
       );
     }
-    /* Prawy — lewy bok obcięty wzdłuż zygzaka */
+    /*
+      Prawy panel: right:0, width = calc(50% + 16px) — lewa krawędź na lewym punkcie zygzaka
+        W układzie panelu (0 = 50%−16px kontenera):
+          lewy punkt  = 0
+          prawy punkt = 26px
+    */
     .hero-half-right {
-      right: 0; align-items: flex-start; text-align: left; padding-left: 72px;
-    }
-    .hero-half-right::before {
+      right: 0; width: calc(50% + 16px);
+      align-items: flex-start; text-align: left; padding-left: 88px;
       clip-path: polygon(
-        10px 0,
+        26px 0,
         100% 0,
         100% 100%,
-        -16px 100%,
-        10px 67%,
-        -16px 33%
+        0 100%,
+        26px 67%,
+        0 33%
       );
     }
 
