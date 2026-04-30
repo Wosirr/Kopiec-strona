@@ -802,6 +802,8 @@
         width: 64px; height: 100%;
         z-index: 4; pointer-events: none;
         filter: drop-shadow(0 0 10px rgba(176,184,192,0.4));
+        -webkit-mask-image: linear-gradient(to bottom, transparent 55%, black 72%);
+        mask-image: linear-gradient(to bottom, transparent 55%, black 72%);
       }
 
       /* Pełna wysokość — clip-path % odpowiada % wysokości zygzaka */
@@ -821,10 +823,10 @@
         padding: 0 16px 48px 52px;
         clip-path: polygon(26px 0, 100% 0, 100% 100%, 0 100%, 26px 67%, 0 33%);
       }
-      /* Podświetlenie zanika u góry */
+      /* Podświetlenie zanika u góry — pojawia się tam gdzie zygzak */
       .hero-cat-top::before,
       .hero-cat-bottom::before {
-        background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.09) 55%);
+        background: linear-gradient(to bottom, transparent 55%, rgba(255,255,255,0.09) 72%);
       }
       .hero-half-h { font-size: 1.1rem; margin-bottom: 6px; }
       .hero-half-num { margin-bottom: 4px; font-size: 0.55rem; }
@@ -1153,9 +1155,7 @@
     <svg class="hero-bolt-mob" viewBox="0 0 64 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <defs>
         <linearGradient id="boltFadeMob" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%"   stop-color="#B0B8C0" stop-opacity="0"/>
-          <stop offset="62%"  stop-color="#B0B8C0" stop-opacity="0"/>
-          <stop offset="82%"  stop-color="#B0B8C0" stop-opacity="0.9"/>
+          <stop offset="0%"   stop-color="#B0B8C0" stop-opacity="0.9"/>
           <stop offset="100%" stop-color="#B0B8C0" stop-opacity="0.9"/>
         </linearGradient>
       </defs>
