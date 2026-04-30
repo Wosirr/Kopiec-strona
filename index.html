@@ -254,8 +254,9 @@
 
     /* Dolne etykiety — lewa i prawa połowa hero */
     .hero-half {
-      position: absolute; bottom: 0; width: 50%;
-      padding: 40px 64px 52px;
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 50%;
+      padding: 40px 64px;
       display: flex; flex-direction: column;
       text-decoration: none; z-index: 3;
       transition: background 0.35s;
