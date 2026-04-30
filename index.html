@@ -781,13 +781,12 @@
       .hero-sub { max-width: 100%; color: rgba(255,255,255,0.90); font-size: 1.65rem; }
       .hero-actions { justify-content: center; flex-wrap: wrap; }
       /* Mobilka: hero zajmuje 100svh, nagłówek wycentrowany, kategorie na dole */
-      .hero { min-height: 100svh; display: block; position: relative; }
+      .hero { height: 100svh; min-height: 580px; display: block; position: relative; }
       .hero-left {
-        position: relative; z-index: 5;
-        padding: 340px 24px 24px;
+        position: absolute; top: 0; left: 0; right: 0; z-index: 5;
+        padding: 110px 24px 0;
         max-width: 100%; align-items: center; text-align: center;
       }
-      /* hero-right pokrywa cały hero jako overlay */
       .hero-right { position: absolute; inset: 0; }
 
       /* Chowamy poziomy zygzak, pokazujemy pionowy */
