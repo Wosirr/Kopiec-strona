@@ -804,28 +804,27 @@
         filter: drop-shadow(0 0 10px rgba(176,184,192,0.4));
       }
 
-      /* Lewa połowa (hero-cat-top) — prawa krawędź wzdłuż pionowego zygzaka */
+      /* Pełna wysokość — clip-path % odpowiada % wysokości zygzaka */
       .hero-cat-top {
-        top: auto; bottom: 0; left: 0; right: auto;
-        width: calc(50% + 10px); height: 42%;
+        top: 0; bottom: 0; height: 100%; left: 0; right: auto;
+        width: calc(50% + 10px);
+        justify-content: flex-end;
         align-items: flex-end; text-align: right;
-        padding: 24px 52px 40px 16px;
+        padding: 0 52px 48px 16px;
         clip-path: polygon(0 0, 100% 0, calc(100% - 26px) 33%, 100% 67%, calc(100% - 26px) 100%, 0 100%);
       }
-      /* Prawa połowa (hero-cat-bottom) — lewa krawędź wzdłuż pionowego zygzaka */
       .hero-cat-bottom {
-        top: auto; bottom: 0; right: 0; left: auto;
-        width: calc(50% + 16px); height: 42%;
+        top: 0; bottom: 0; height: 100%; right: 0; left: auto;
+        width: calc(50% + 16px);
+        justify-content: flex-end;
         align-items: flex-start; text-align: left;
-        padding: 24px 16px 40px 52px;
+        padding: 0 16px 48px 52px;
         clip-path: polygon(26px 0, 100% 0, 100% 100%, 0 100%, 26px 67%, 0 33%);
       }
       /* Podświetlenie zanika u góry */
-      .hero-cat-top::before {
-        background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.09) 50%);
-      }
+      .hero-cat-top::before,
       .hero-cat-bottom::before {
-        background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.09) 50%);
+        background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.09) 55%);
       }
       .hero-half-h { font-size: 1.1rem; margin-bottom: 6px; }
       .hero-half-num { margin-bottom: 4px; font-size: 0.55rem; }
@@ -1155,7 +1154,7 @@
       <defs>
         <linearGradient id="boltFadeMob" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%"   stop-color="#B0B8C0" stop-opacity="0"/>
-          <stop offset="30%"  stop-color="#B0B8C0" stop-opacity="0.9"/>
+          <stop offset="15%"  stop-color="#B0B8C0" stop-opacity="0.9"/>
           <stop offset="100%" stop-color="#B0B8C0" stop-opacity="0.9"/>
         </linearGradient>
       </defs>
