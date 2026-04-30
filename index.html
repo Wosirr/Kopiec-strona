@@ -252,18 +252,25 @@
       filter: drop-shadow(0 0 12px rgba(176,184,192,0.5));
     }
 
-    /* Dolne etykiety — lewa i prawa połowa hero */
+    /* Połowy hero — każda pokrywa całą wysokość */
     .hero-half {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      width: 50%;
-      padding: 40px 64px;
-      display: flex; flex-direction: column;
+      position: absolute; top: 0; bottom: 0; width: 50%;
+      display: flex; flex-direction: column; justify-content: center;
       text-decoration: none; z-index: 3;
-      transition: background 0.35s;
+      transition: background 0.45s;
+      cursor: pointer;
     }
-    .hero-half:hover { background: rgba(255,255,255,0.04); }
-    .hero-half-left  { left: 0;  align-items: flex-end;   text-align: right; padding-right: 60px; }
-    .hero-half-right { right: 0; align-items: flex-start; text-align: left;  padding-left: 60px; }
+    .hero-half:hover { background: rgba(255,255,255,0.07); }
+    .hero-half-left  { left: 0;  align-items: flex-end;   text-align: right; padding-right: 72px; }
+    .hero-half-right { right: 0; align-items: flex-start; text-align: left;  padding-left: 72px; }
+
+    /* Wrapper treści — skaluje się przy hover */
+    .hero-half-body {
+      display: flex; flex-direction: column; align-items: inherit;
+      transition: transform 0.45s var(--ease);
+    }
+    .hero-half:hover .hero-half-body { transform: scale(1.05); }
+
     .hero-half-num {
       font-family: var(--ff-label); font-size: 0.68rem; letter-spacing: 0.3em;
       text-transform: uppercase; color: var(--gold); margin-bottom: 14px;
@@ -763,10 +770,9 @@
       /* Zigzag barely visible on mobile — buttons take priority */
       .hero-bolt { opacity: 0.32; }
       /* Half-labels on mobile */
-      .hero-half { padding: 24px 20px 32px; }
-      .hero-half-left  { padding-right: 38px; }
-      .hero-half-right { padding-left: 38px; }
-      .hero-half-h { font-size: 1.5rem; margin-bottom: 10px; }
+      .hero-half-left  { padding-right: 36px; }
+      .hero-half-right { padding-left: 36px; }
+      .hero-half-h { font-size: 1.4rem; margin-bottom: 10px; }
       .hero-half-num { margin-bottom: 6px; }
       /* Adjust hero vignette for mobile */
       .hero-bg::after {
@@ -1084,15 +1090,19 @@
       </svg>
 
       <a href="#offer" class="hero-half hero-half-left" onclick="document.querySelector('#offer').scrollIntoView({behavior:'smooth'});return false;">
-        <span class="hero-half-num">01</span>
-        <span class="hero-half-h" data-i18n="hero.p1.h">Oferta<br>dla domu</span>
-        <span class="hero-half-cta"><span data-i18n="hero.p1.cta">Poznaj ofertę</span> →</span>
+        <div class="hero-half-body">
+          <span class="hero-half-num">01</span>
+          <span class="hero-half-h" data-i18n="hero.p1.h">Oferta<br>dla domu</span>
+          <span class="hero-half-cta"><span data-i18n="hero.p1.cta">Poznaj ofertę</span> →</span>
+        </div>
       </a>
 
       <a href="#commercial" class="hero-half hero-half-right" onclick="document.querySelector('#commercial').scrollIntoView({behavior:'smooth'});return false;">
-        <span class="hero-half-num">02</span>
-        <span class="hero-half-h" data-i18n="hero.p2.h">Obiekty komercyjne<br>i inwestycyjne</span>
-        <span class="hero-half-cta"><span data-i18n="hero.p2.cta">Sprawdź realizacje</span> →</span>
+        <div class="hero-half-body">
+          <span class="hero-half-num">02</span>
+          <span class="hero-half-h" data-i18n="hero.p2.h">Obiekty komercyjne<br>i inwestycyjne</span>
+          <span class="hero-half-cta"><span data-i18n="hero.p2.cta">Sprawdź realizacje</span> →</span>
+        </div>
       </a>
     </div>
 
