@@ -246,6 +246,7 @@
       flex: 1; position: relative;
       z-index: 3; align-self: stretch;
     }
+    .hero-right::after { display: none; }
 
     /* Poziomy zygzak dzielący prawą kolumnę na pół */
     .hero-bolt {
@@ -764,10 +765,19 @@
       .hero-logo-bg { display: none; }
       .hero-eyebrow { justify-content: center; }
       .hero-eyebrow::before { display: none; }
-      .hero-h1 { font-size: 2.6rem; line-height: 1.15; }
+      .hero-h1 { font-size: 2.9rem; line-height: 1.08; }
       .hero-h1 br { display: none; }
-      .hero-sub { max-width: 100%; color: rgba(255,255,255,0.90); font-size: 1.65rem; }
+      .hero-sub { max-width: 100%; color: rgba(255,255,255,0.75); font-size: 1.5rem; line-height: 1.7; }
       .hero-actions { justify-content: center; flex-wrap: wrap; }
+      /* Złota linia nad strefą kategorii */
+      .hero-right::after {
+        content: ''; display: block;
+        position: absolute; bottom: 30%; left: 0; right: 0;
+        height: 1px;
+        background: linear-gradient(to right, transparent 0%, var(--gold) 20%, var(--gold) 80%, transparent 100%);
+        opacity: 0.45;
+        z-index: 5; pointer-events: none;
+      }
       /* Mobilka: hero zajmuje 100svh, nagłówek wycentrowany, kategorie na dole */
       .hero { min-height: 100svh; display: block; position: relative; }
       .hero-left {
@@ -811,15 +821,20 @@
       .hero-cat-bottom::before {
         background: linear-gradient(to bottom, transparent 50%, rgba(255,255,255,0.13) 70%);
       }
-      .hero-half-h { font-size: 1.4rem; margin-bottom: 8px; }
-      .hero-half-num { font-size: 0.62rem; margin-bottom: 8px; }
-      .hero-half-cta { font-size: 0.7rem; }
-      /* Adjust hero vignette for mobile */
+      .hero-half-h { font-size: 1.55rem; line-height: 1.1; margin-bottom: 10px; }
+      .hero-half-num { font-size: 0.6rem; margin-bottom: 10px; letter-spacing: 0.32em; }
+      .hero-half-cta { font-size: 0.72rem; color: var(--gold); }
+      .hero-cat-top  { padding: 32px 40px 44px 16px; }
+      .hero-cat-bottom { padding: 32px 16px 44px 40px; }
+      /* Lżejsza winieta — tło bardziej widoczne */
       .hero-bg::after {
         background:
-          linear-gradient(rgba(26,28,34,0.82), rgba(26,28,34,0.82)),
-          linear-gradient(to top,    rgba(26,28,34,0.95) 0%, transparent 30%),
-          linear-gradient(to bottom, rgba(26,28,34,0.6) 0%, transparent 14%);
+          linear-gradient(to bottom,
+            rgba(26,28,34,0.72) 0%,
+            rgba(26,28,34,0.45) 40%,
+            rgba(26,28,34,0.55) 70%,
+            rgba(26,28,34,0.88) 100%
+          );
       }
 
       /* === Split === */
