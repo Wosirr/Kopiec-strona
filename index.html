@@ -295,6 +295,13 @@
     }
     .hero-cat:hover .hero-half-body { transform: scale(1.04); }
 
+    .hero-cat-icon {
+      width: 52px; height: 44px; margin-bottom: 18px;
+      opacity: 0.85;
+    }
+    .hero-cat-top .hero-cat-icon { align-self: flex-end; }
+    .hero-cat-bottom .hero-cat-icon { align-self: flex-start; }
+
     .hero-half-num {
       font-family: var(--ff-label); font-size: 0.68rem; letter-spacing: 0.3em;
       text-transform: uppercase; color: var(--gold); margin-bottom: 14px;
@@ -1130,6 +1137,18 @@
 
     <a href="#offer" class="hero-cat hero-cat-top" onclick="document.querySelector('#offer').scrollIntoView({behavior:'smooth'});return false;">
       <div class="hero-half-body">
+        <!-- Ikona: schody z balustradą -->
+        <svg class="hero-cat-icon" viewBox="0 0 52 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polyline points="2,42 2,30 16,30 16,18 30,18 30,6 50,6" stroke="#B8A265" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <polyline points="2,27 16,27 16,15 30,15 30,3 50,3"       stroke="#B8A265" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="2"  y1="27" x2="2"  y2="42" stroke="#B8A265" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="9"  y1="27" x2="9"  y2="30" stroke="#B8A265" stroke-width="1.4" stroke-linecap="round"/>
+          <line x1="16" y1="15" x2="16" y2="30" stroke="#B8A265" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="23" y1="15" x2="23" y2="18" stroke="#B8A265" stroke-width="1.4" stroke-linecap="round"/>
+          <line x1="30" y1="3"  x2="30" y2="18" stroke="#B8A265" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="38" y1="3"  x2="38" y2="6"  stroke="#B8A265" stroke-width="1.4" stroke-linecap="round"/>
+          <line x1="46" y1="3"  x2="46" y2="6"  stroke="#B8A265" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
         <span class="hero-half-num">01</span>
         <span class="hero-half-h" data-i18n="hero.p1.h">Oferta<br>dla domu</span>
         <span class="hero-half-cta"><span data-i18n="hero.p1.cta">Poznaj ofertę</span> →</span>
@@ -1167,6 +1186,15 @@
 
     <a href="#commercial" class="hero-cat hero-cat-bottom" onclick="document.querySelector('#commercial').scrollIntoView({behavior:'smooth'});return false;">
       <div class="hero-half-body">
+        <!-- Ikona: budynek komercyjny -->
+        <svg class="hero-cat-icon" viewBox="0 0 52 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="8"  y="10" width="36" height="32" stroke="#B8A265" stroke-width="1.6" stroke-linejoin="round"/>
+          <polyline points="8,10 26,2 44,10" stroke="#B8A265" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="8"  y1="22" x2="44" y2="22" stroke="#B8A265" stroke-width="1.2"/>
+          <line x1="8"  y1="34" x2="44" y2="34" stroke="#B8A265" stroke-width="1.2"/>
+          <line x1="20" y1="10" x2="20" y2="42" stroke="#B8A265" stroke-width="1.2"/>
+          <line x1="32" y1="10" x2="32" y2="42" stroke="#B8A265" stroke-width="1.2"/>
+        </svg>
         <span class="hero-half-num">02</span>
         <span class="hero-half-h" data-i18n="hero.p2.h">Obiekty komercyjne<br>i inwestycyjne</span>
         <span class="hero-half-cta"><span data-i18n="hero.p2.cta">Sprawdź realizacje</span> →</span>
