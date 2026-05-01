@@ -909,6 +909,26 @@
       .split-photo { height: 280px; }
       .split-body { padding: 56px 28px; }
 
+      /* #about — zdjęcie i tekst obok siebie na tej samej wysokości */
+      #about {
+        grid-template-columns: 42% 58%;
+        min-height: auto;
+        align-items: start;
+      }
+      #about .split-photo {
+        height: 220px;
+      }
+      #about .split-body {
+        padding: 28px 20px 28px 16px;
+        justify-content: flex-start;
+      }
+      #about .split-body h2 {
+        font-size: 2rem;
+        margin-bottom: 0;
+      }
+      #about .split-body p,
+      #about .split-body .link-arrow { display: none; }
+
       /* === Offer === */
       .offer-header { flex-direction: column; align-items: flex-start; padding: 64px 28px 36px; }
       .offer-grid {
