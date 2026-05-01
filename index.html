@@ -771,47 +771,49 @@
       .hero-sub { max-width: 100%; color: rgba(255,255,255,0.75); font-size: 1.5rem; line-height: 1.7; }
       .hero-actions { justify-content: center; flex-wrap: wrap; }
       /* ══ MOBILE HERO ══ */
-      .hero { height: 100svh; min-height: 620px; display: block; position: relative; }
+      .hero { height: 100svh; min-height: 620px; display: block; position: relative; overflow: hidden; }
 
-      /* Nagłówek — wyśrodkowany pionowo w hero */
+      /* Nagłówek wyśrodkowany, padding-bottom zostawia miejsce na przyciski kategorii */
       .hero-left {
         position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 5;
-        display: flex; flex-direction: column;
-        justify-content: center;
-        padding: 100px 28px 140px;
+        display: flex; flex-direction: column; justify-content: center;
+        padding: 100px 28px 120px;
         align-items: center; text-align: center;
       }
 
-      /* Kategorie — dwa małe przyciski na dole hero */
+      /* Przyciski główne — obok siebie, nie zawijają tekstu */
+      .hero-actions { gap: 10px; flex-wrap: nowrap; }
+      .btn-primary  { font-size: 1rem; padding: 13px 22px; white-space: nowrap; }
+      .btn-outline  { font-size: 1rem; padding: 12px 18px; white-space: nowrap; }
+
+      /* Kategorie — dwa przyciski na dole, bez tła */
       .hero-right {
-        position: absolute; bottom: 32px; left: 28px; right: 28px; top: auto;
+        position: absolute; bottom: 28px; left: 24px; right: 24px; top: auto;
         height: auto; display: flex; flex-direction: row;
-        gap: 10px; z-index: 5; background: none;
+        gap: 12px; z-index: 5; background: none;
       }
       .hero-right::after { display: none; }
       .hero-bolt, .hero-bolt-mob { display: none; }
 
-      /* Małe przyciski kategorii */
       .hero-cat-top, .hero-cat-bottom {
         position: relative; top: auto; bottom: auto; left: auto; right: auto;
         width: auto; height: auto; flex: 1; clip-path: none;
         justify-content: center; align-items: center; text-align: center;
-        padding: 11px 12px;
-        background: rgba(255,255,255,0.08);
-        border: 1px solid rgba(255,255,255,0.18);
-        backdrop-filter: blur(4px);
+        padding: 12px 10px;
+        background: transparent;
+        border: 1px solid rgba(184,162,101,0.4);
       }
-      .hero-cat-top:active, .hero-cat-bottom:active { background: rgba(255,255,255,0.16); }
+      .hero-cat-top:active, .hero-cat-bottom:active { background: rgba(184,162,101,0.08); }
       .hero-half-num { display: none; }
-      .hero-half-h { font-size: 1rem; line-height: 1.2; margin-bottom: 0; font-weight: 700; }
+      .hero-half-h { font-size: 0.95rem; line-height: 1.2; margin-bottom: 0; font-weight: 700; }
       .hero-half-cta { display: none; }
 
       /* Winieta tła */
       .hero-bg::after {
         background: linear-gradient(to bottom,
           rgba(26,28,34,0.82) 0%,
-          rgba(26,28,34,0.55) 45%,
-          rgba(26,28,34,0.70) 100%
+          rgba(26,28,34,0.52) 45%,
+          rgba(26,28,34,0.72) 100%
         );
       }
 
