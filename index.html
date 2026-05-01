@@ -849,7 +849,12 @@
       /* Przyciski — tylko Wyceń projekt */
       .hero-actions { flex-direction: column; gap: 12px; width: 100%; }
       .btn-mob-only { display: none; }
-      .btn-hero-cta { width: 100%; justify-content: center; font-size: 0.78rem; padding: 16px 24px; }
+      .btn-hero-cta {
+        width: 100%; justify-content: center; font-size: 0.78rem; padding: 16px 24px;
+        background: var(--gold); color: var(--antracyt); border-color: var(--gold);
+      }
+      .btn-hero-cta::before { display: none; }
+      .btn-hero-cta:hover { background: var(--gold-lt); color: var(--antracyt); }
 
       /* Hero right — poziomy rząd na dole */
       .hero-right {
@@ -860,7 +865,7 @@
         width: 100%;
         height: 210px;
         border-right: none;
-        border-top: 1px solid rgba(255,255,255,0.12);
+        border-top: none;
         overflow: hidden;
         z-index: 6;
       }
@@ -872,7 +877,15 @@
         justify-content: flex-start;
         overflow: hidden;
       }
-      .hero-panel::after { left: 0; }
+      /* Panel 01 — treść do prawej (przy zygzaku) */
+      .hero-panel:first-child {
+        align-items: flex-end;
+      }
+      .hero-panel:first-child .hero-panel-num,
+      .hero-panel:first-child .hero-panel-title,
+      .hero-panel:first-child .hero-panel-cta { text-align: right; }
+      /* Podświetlenie clipowane do panelu — kończy się na zygzaku */
+      .hero-panel::after { left: 0; right: 0; }
       .hero-panel + .hero-panel {
         border-top: none;
         border-left: none;
@@ -1192,7 +1205,15 @@
       <span class="hero-panel-cta">Poznaj ofertę →</span>
     </a>
     <svg class="hero-panel-divider" viewBox="0 0 18 210" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <polyline points="9,0 0,52 18,105 0,157 9,210" stroke="rgba(255,255,255,0.28)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+      <defs>
+        <linearGradient id="zigGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#ffffff" stop-opacity="0"/>
+          <stop offset="25%"  stop-color="#ffffff" stop-opacity="0.32"/>
+          <stop offset="75%"  stop-color="#ffffff" stop-opacity="0.32"/>
+          <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <polyline points="16,0 2,105 16,210" stroke="url(#zigGrad)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
     </svg>
     <a href="#contact" class="hero-panel">
       <span class="hero-panel-num">02</span>
