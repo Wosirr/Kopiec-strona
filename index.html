@@ -956,6 +956,7 @@
     .offer-item:hover .offer-item-hint { opacity: 1; transform: none; }
 
   </style>
+  <script>document.documentElement.style.setProperty('--hero-h', window.innerHeight + 'px');</script>
 </head>
 <body>
 
@@ -1437,10 +1438,6 @@
 </div>
 
 <script>
-  // iOS Safari fix: window.innerHeight is the only reliable "visible viewport" value
-  (function setHeroH() {
-    document.documentElement.style.setProperty('--hero-h', window.innerHeight + 'px');
-  })();
   window.addEventListener('resize', function() {
     document.documentElement.style.setProperty('--hero-h', window.innerHeight + 'px');
   }, { passive: true });
