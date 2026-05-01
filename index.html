@@ -770,71 +770,69 @@
       .hero-h1 br { display: none; }
       .hero-sub { max-width: 100%; color: rgba(255,255,255,0.75); font-size: 1.5rem; line-height: 1.7; }
       .hero-actions { justify-content: center; flex-wrap: wrap; }
-      /* Złota linia nad strefą kategorii */
-      .hero-right::after {
-        content: ''; display: block;
-        position: absolute; bottom: 30%; left: 0; right: 0;
-        height: 1px;
-        background: linear-gradient(to right, transparent 0%, var(--gold) 20%, var(--gold) 80%, transparent 100%);
-        opacity: 0.45;
-        z-index: 5; pointer-events: none;
-      }
-      /* Mobilka: hero zajmuje 100svh, nagłówek wycentrowany, kategorie na dole */
-      .hero { min-height: 100svh; display: block; position: relative; }
+      /* ══ MOBILE HERO REDESIGN ══
+         Górne 55%: nagłówek wyśrodkowany
+         Dolne 45%: dwie kategorie pionowo z poziomym zygzakiem między nimi */
+      .hero { height: 100svh; min-height: 680px; display: block; position: relative; }
+
+      /* Nagłówek wypełnia górne 55% */
       .hero-left {
-        position: relative; z-index: 5;
-        padding: 340px 24px 24px;
-        max-width: 100%; align-items: center; text-align: center;
-      }
-      /* hero-right pokrywa cały hero jako overlay */
-      .hero-right { position: absolute; inset: 0; }
-
-      /* Chowamy poziomy zygzak, pokazujemy pionowy */
-      .hero-bolt { display: none; }
-      .hero-bolt-mob {
-        display: block;
-        position: absolute; bottom: 0; left: 50%;
-        transform: translateX(-50%);
-        width: 64px; height: 30%;
-        z-index: 4; pointer-events: none;
-        filter: drop-shadow(0 0 8px rgba(176,184,192,0.4));
-        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.15) 40%, black 70%);
-        mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.15) 40%, black 70%);
+        position: absolute; top: 0; left: 0; right: 0;
+        bottom: 45%; z-index: 5;
+        display: flex; flex-direction: column;
+        justify-content: center;
+        padding: 80px 28px 20px;
+        align-items: center; text-align: center;
       }
 
-      /* Lewa i prawa połowa — pełna wysokość, treść na dole */
+      /* Kategorie: dolne 45%, ciemna warstwa, flex pionowo */
+      .hero-right {
+        position: absolute; bottom: 0; left: 0; right: 0; top: auto;
+        height: 45%; display: flex; flex-direction: column; z-index: 3;
+        background: linear-gradient(to bottom, rgba(26,28,34,0.45) 0%, rgba(26,28,34,0.88) 100%);
+      }
+      .hero-right::after { display: none; }
+
+      /* Poziomy zygzak jako separator */
+      .hero-bolt {
+        display: block !important;
+        position: relative; top: auto; left: auto; right: auto; bottom: auto;
+        transform: none; width: 100%; height: 16px; flex-shrink: 0;
+        order: 2; z-index: 4; pointer-events: none;
+        opacity: 0.75;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+        mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+        filter: drop-shadow(0 0 6px rgba(176,184,192,0.6));
+      }
+      .hero-bolt-mob { display: none; }
+
+      /* Kategoria górna — flex item, pełna szerokość */
       .hero-cat-top {
-        top: 0; bottom: 0; height: 100%; left: 0; right: auto;
-        width: 50%; justify-content: flex-end;
-        align-items: flex-end; text-align: right;
-        padding: 0 40px 36px 16px;
-        clip-path: none;
+        position: relative; top: auto; bottom: auto; left: auto; right: auto;
+        width: 100%; height: auto; flex: 1; order: 1;
+        justify-content: center; align-items: flex-start; text-align: left;
+        padding: 16px 28px 10px; clip-path: none;
       }
+      /* Kategoria dolna — flex item */
       .hero-cat-bottom {
-        top: 0; bottom: 0; height: 100%; right: 0; left: auto;
-        width: 50%; justify-content: flex-end;
-        align-items: flex-start; text-align: left;
-        padding: 0 16px 36px 40px;
-        clip-path: none;
+        position: relative; top: auto; bottom: auto; left: auto; right: auto;
+        width: 100%; height: auto; flex: 1; order: 3;
+        justify-content: center; align-items: flex-start; text-align: left;
+        padding: 10px 28px 28px; clip-path: none;
       }
-      /* Podświetlenie zanika u góry */
-      .hero-cat-top::before,
-      .hero-cat-bottom::before {
-        background: linear-gradient(to bottom, transparent 50%, rgba(255,255,255,0.13) 70%);
-      }
-      .hero-half-h { font-size: 1.55rem; line-height: 1.1; margin-bottom: 10px; }
-      .hero-half-num { font-size: 0.6rem; margin-bottom: 10px; letter-spacing: 0.32em; }
-      .hero-half-cta { font-size: 0.72rem; color: var(--gold); }
-      .hero-cat-top  { padding: 32px 40px 44px 16px; }
-      .hero-cat-bottom { padding: 32px 16px 44px 40px; }
+
+      .hero-half-h { font-size: 1.65rem; line-height: 1.08; margin-bottom: 6px; }
+      .hero-half-num { font-size: 0.6rem; margin-bottom: 8px; letter-spacing: 0.32em; }
+      .hero-half-cta { font-size: 0.7rem; color: var(--gold); }
+
+      /* Winieta tła */
       .hero-bg::after {
-        background:
-          linear-gradient(to bottom,
-            rgba(26,28,34,0.85) 0%,
-            rgba(26,28,34,0.65) 40%,
-            rgba(26,28,34,0.72) 70%,
-            rgba(26,28,34,0.95) 100%
-          );
+        background: linear-gradient(to bottom,
+          rgba(26,28,34,0.82) 0%,
+          rgba(26,28,34,0.55) 40%,
+          rgba(26,28,34,0.62) 68%,
+          rgba(26,28,34,0.30) 100%
+        );
       }
 
       /* === Split === */
@@ -915,9 +913,9 @@
 
     @media (max-width: 480px) {
       /* === Hero === */
-      .hero-left { padding: 112px 20px 64px; }
-      .hero-actions { flex-direction: column; width: 100%; }
-      .btn-primary, .btn-outline { width: 100%; text-align: center; justify-content: center; }
+      .hero-actions { flex-direction: row; gap: 10px; }
+      .btn-primary { font-size: 1.1rem; padding: 12px 20px; flex: 1; }
+      .btn-outline  { font-size: 1.1rem; padding: 12px 16px; flex: 1; }
 
       /* === Offer === */
       .offer-grid { grid-template-columns: 1fr; grid-auto-rows: 220px; }
