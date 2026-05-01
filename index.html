@@ -718,7 +718,7 @@
       .hero-sub { max-width: 100%; color: rgba(255,255,255,0.75); font-size: 1.5rem; line-height: 1.7; }
       .hero-actions { justify-content: center; flex-wrap: wrap; }
       /* ══ MOBILE HERO ══ */
-      .hero { height: 100dvh; min-height: 620px; display: block; position: relative; overflow: hidden; }
+      .hero { height: var(--hero-h, 100dvh); min-height: 620px; display: block; position: relative; overflow: hidden; }
 
       /* Nagłówek wyśrodkowany, padding-bottom zostawia miejsce na przyciski kategorii */
       .hero-left {
@@ -1437,6 +1437,14 @@
 </div>
 
 <script>
+  // iOS Safari fix: window.innerHeight is the only reliable "visible viewport" value
+  (function setHeroH() {
+    document.documentElement.style.setProperty('--hero-h', window.innerHeight + 'px');
+  })();
+  window.addEventListener('resize', function() {
+    document.documentElement.style.setProperty('--hero-h', window.innerHeight + 'px');
+  }, { passive: true });
+
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 30);
