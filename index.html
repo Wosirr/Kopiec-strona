@@ -242,59 +242,6 @@
       to   { transform: scale(1.0); }
     }
 
-    /* Prawa kolumna — kategorie */
-    .hero-right {
-      flex: 1; position: relative;
-      z-index: 3; align-self: stretch;
-    }
-    .hero-right::after { display: none; }
-
-    /* Poziomy zygzak dzielący prawą kolumnę na pół */
-    .hero-bolt {
-      position: absolute; left: 0; right: 0;
-      top: 50%; transform: translateY(-50%);
-      width: 100%; height: 20px;
-      z-index: 4; pointer-events: none;
-      filter: drop-shadow(0 0 12px rgba(176,184,192,0.5));
-    }
-
-    /*
-      Zygzak: height 20px, centered → y=42→50%+3px, y=16→50%−5px, zakres 8px
-    */
-    .hero-cat {
-      position: absolute; left: 0; right: 0;
-      display: flex; flex-direction: column; justify-content: center;
-      align-items: flex-end; text-align: right;
-      padding: 40px 64px 40px 40px;
-      text-decoration: none; cursor: pointer;
-    }
-    .hero-cat-top    { top: 0;    height: 50%; }
-    .hero-cat-bottom { bottom: 0; height: 50%; }
-
-
-    .hero-bolt-mob { display: none; }
-
-    /* Wrapper treści — skaluje się przy hover */
-    .hero-half-body {
-      display: flex; flex-direction: column;
-      position: relative; z-index: 1;
-      transition: transform 0.45s var(--ease);
-    }
-    .hero-cat:hover .hero-half-body { transform: scale(1.04); }
-
-    .hero-half-num {
-      font-family: var(--ff-label); font-size: 0.68rem; letter-spacing: 0.3em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 14px;
-    }
-    .hero-half-h {
-      font-size: 2.6rem; font-weight: 800; color: var(--white);
-      line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 16px;
-    }
-    .hero-half-cta {
-      font-family: var(--ff-label); font-size: 0.65rem; letter-spacing: 0.2em;
-      text-transform: uppercase; color: rgba(184,162,101,0.65); transition: color 0.2s;
-    }
-    .hero-half:hover .hero-half-cta { color: var(--gold); }
 
     /* ════════════════════════════════════════════
        SPLIT SECTIONS
@@ -786,28 +733,6 @@
       .btn-primary  { font-size: 1rem; padding: 13px 22px; white-space: nowrap; }
       .btn-outline  { font-size: 1rem; padding: 12px 18px; white-space: nowrap; }
 
-      /* Kategorie — dwa przyciski na dole, bez tła */
-      .hero-right {
-        position: absolute; bottom: 28px; left: 24px; right: 24px; top: auto;
-        height: auto; display: flex; flex-direction: row;
-        gap: 12px; z-index: 5; background: none;
-      }
-      .hero-right::after { display: none; }
-      .hero-bolt, .hero-bolt-mob { display: none; }
-
-      .hero-cat-top, .hero-cat-bottom {
-        position: relative; top: auto; bottom: auto; left: auto; right: auto;
-        width: auto; height: auto; flex: 1; clip-path: none;
-        justify-content: center; align-items: center; text-align: center;
-        padding: 12px 10px;
-        background: transparent;
-        border: 1px solid rgba(184,162,101,0.4);
-      }
-      .hero-cat-top:active, .hero-cat-bottom:active { background: rgba(184,162,101,0.08); }
-      .hero-half-num { display: none; }
-      .hero-half-h { font-size: 0.95rem; line-height: 1.2; margin-bottom: 0; font-weight: 700; }
-      .hero-half-cta { display: none; }
-
       /* Winieta tła */
       .hero-bg::after {
         background: linear-gradient(to bottom,
@@ -1103,55 +1028,6 @@
     </div>
   </div>
 
-  <!-- Prawa strona: dwie kategorie z poziomym zygzakiem -->
-  <div class="hero-right">
-
-    <a href="#offer" class="hero-cat hero-cat-top" onclick="document.querySelector('#offer').scrollIntoView({behavior:'smooth'});return false;">
-      <div class="hero-half-body">
-        <span class="hero-half-num">01</span>
-        <span class="hero-half-h" data-i18n="hero.p1.h">Oferta<br>dla domu</span>
-        <span class="hero-half-cta"><span data-i18n="hero.p1.cta">Poznaj ofertę</span> →</span>
-      </div>
-    </a>
-
-    <!-- Poziomy zygzak -->
-    <svg class="hero-bolt" viewBox="0 0 100 64" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <defs>
-        <linearGradient id="boltFade" x1="1" y1="0" x2="0" y2="0">
-          <stop offset="0%"   stop-color="#B0B8C0" stop-opacity="0.9"/>
-          <stop offset="70%"  stop-color="#B0B8C0" stop-opacity="0.9"/>
-          <stop offset="100%" stop-color="#B0B8C0" stop-opacity="0"/>
-        </linearGradient>
-      </defs>
-      <polyline points="0,42 33,16 67,42 100,16"
-        fill="none" stroke="url(#boltFade)" stroke-width="4"
-        vector-effect="non-scaling-stroke"
-        stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"/>
-    </svg>
-
-    <!-- Pionowy zygzak — tylko mobilka -->
-    <svg class="hero-bolt-mob" viewBox="0 0 64 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <defs>
-        <linearGradient id="boltFadeMob" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%"   stop-color="#B0B8C0" stop-opacity="0.9"/>
-          <stop offset="100%" stop-color="#B0B8C0" stop-opacity="0.9"/>
-        </linearGradient>
-      </defs>
-      <polyline points="42,0 16,33 42,67 16,100"
-        fill="none" stroke="url(#boltFadeMob)" stroke-width="4"
-        vector-effect="non-scaling-stroke"
-        stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"/>
-    </svg>
-
-    <a href="#commercial" class="hero-cat hero-cat-bottom" onclick="document.querySelector('#commercial').scrollIntoView({behavior:'smooth'});return false;">
-      <div class="hero-half-body">
-        <span class="hero-half-num">02</span>
-        <span class="hero-half-h" data-i18n="hero.p2.h">Obiekty komercyjne<br>i inwestycyjne</span>
-        <span class="hero-half-cta"><span data-i18n="hero.p2.cta">Sprawdź realizacje</span> →</span>
-      </div>
-    </a>
-
-  </div>
 
 </section>
 
