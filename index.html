@@ -850,7 +850,7 @@
       .hero-actions { flex-direction: column; gap: 12px; width: 100%; }
       .btn-mob-only { display: none; }
       .btn-hero-cta {
-        width: 100%; justify-content: center; font-size: 0.78rem; padding: 16px 24px;
+        width: 100%; justify-content: center; font-size: 0.68rem; padding: 13px 20px;
         background: var(--gold); color: var(--antracyt); border-color: var(--gold);
       }
       .btn-hero-cta::before { display: none; }
@@ -884,8 +884,8 @@
       .hero-panel:first-child .hero-panel-num,
       .hero-panel:first-child .hero-panel-title,
       .hero-panel:first-child .hero-panel-cta { text-align: right; }
-      /* Podświetlenie clipowane do panelu — kończy się na zygzaku */
-      .hero-panel::after { left: 0; right: 0; }
+      /* Bez podświetlenia na mobilce */
+      .hero-panel::after { display: none; }
       .hero-panel + .hero-panel {
         border-top: none;
         border-left: none;
@@ -893,13 +893,13 @@
       }
       .hero-panel-divider {
         flex-shrink: 0;
-        width: 18px;
+        width: 24px;
         height: 100%;
         align-self: stretch;
       }
       .hero-panel-num { text-align: left; margin-bottom: 10px; }
-      .hero-panel-title { font-size: 1.45rem; text-align: left; margin-bottom: 10px; }
-      .hero-panel-cta { text-align: left; font-size: 0.55rem; }
+      .hero-panel-title { font-size: 1.75rem; text-align: left; margin-bottom: 10px; }
+      .hero-panel-cta { text-align: left; font-size: 0.58rem; }
 
       /* Winieta tła */
       .hero-bg::after {
@@ -1204,16 +1204,16 @@
       <h2 class="hero-panel-title">Oferta<br>dla domu</h2>
       <span class="hero-panel-cta">Poznaj ofertę →</span>
     </a>
-    <svg class="hero-panel-divider" viewBox="0 0 18 210" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <svg class="hero-panel-divider" viewBox="0 0 24 420" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
       <defs>
         <linearGradient id="zigGrad" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%"   stop-color="#ffffff" stop-opacity="0"/>
-          <stop offset="25%"  stop-color="#ffffff" stop-opacity="0.32"/>
-          <stop offset="75%"  stop-color="#ffffff" stop-opacity="0.32"/>
+          <stop offset="20%"  stop-color="#ffffff" stop-opacity="0.30"/>
+          <stop offset="80%"  stop-color="#ffffff" stop-opacity="0.30"/>
           <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
         </linearGradient>
       </defs>
-      <polyline points="16,0 2,105 16,210" stroke="url(#zigGrad)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+      <polyline points="22,0 2,210 22,420" stroke="url(#zigGrad)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
     </svg>
     <a href="#contact" class="hero-panel">
       <span class="hero-panel-num">02</span>
