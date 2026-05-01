@@ -299,7 +299,7 @@
       text-decoration: none;
       cursor: pointer;
     }
-    .hero-panel + .hero-panel {
+    .hero-panel ~ .hero-panel {
       justify-content: flex-start;
       padding-top: 52px;
     }
@@ -878,7 +878,7 @@
       .hero-panel:first-child .hero-panel-cta { text-align: right; }
       /* Bez podświetlenia na mobilce */
       .hero-panel::after { display: none; }
-      .hero-panel + .hero-panel {
+      .hero-panel ~ .hero-panel {
         border-top: none;
         border-left: none;
         justify-content: flex-start;
