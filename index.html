@@ -718,7 +718,7 @@
       .hero-sub { max-width: 100%; color: rgba(255,255,255,0.75); font-size: 1.5rem; line-height: 1.7; }
       .hero-actions { justify-content: center; flex-wrap: wrap; }
       /* ══ MOBILE HERO ══ */
-      .hero { height: var(--hero-h, 100dvh); min-height: 620px; display: block; position: relative; overflow: hidden; }
+      .hero { height: 100vh; height: 100dvh; height: var(--hero-h, 100dvh); min-height: 620px; display: block; position: relative; overflow: hidden; transform: translateZ(0); }
 
       /* Nagłówek wyśrodkowany, padding-bottom zostawia miejsce na przyciski kategorii */
       .hero-left {
@@ -1438,9 +1438,15 @@
 </div>
 
 <script>
-  window.addEventListener('resize', function() {
-    document.documentElement.style.setProperty('--hero-h', window.innerHeight + 'px');
-  }, { passive: true });
+  function fixHeroH() {
+    var h = window.innerHeight + 'px';
+    document.documentElement.style.setProperty('--hero-h', h);
+    var hero = document.getElementById('hero');
+    if (hero) hero.style.height = h;
+  }
+  window.addEventListener('resize', fixHeroH, { passive: true });
+  window.addEventListener('load', fixHeroH);
+  document.addEventListener('DOMContentLoaded', fixHeroH);
 
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
