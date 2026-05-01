@@ -86,11 +86,11 @@
       padding: 0 80px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-logo { display: flex; align-items: center; gap: 12px; height: 44px; }
-    .nav-logo img { height: 40px; width: 40px; object-fit: contain; }
-    .nav-logo-text { line-height: 1.2; }
-    .nav-logo-text strong { font-family: var(--ff-label); font-size: 1rem; letter-spacing: 0.1em; color: var(--white); display: block; }
-    .nav-logo-text span  { font-family: var(--ff-label); font-size: 0.6rem; letter-spacing: 0.26em; color: var(--silver); opacity: 0.55; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; height: 52px; }
+    .nav-logo img { height: 48px; width: 48px; object-fit: contain; }
+    .nav-logo-text { line-height: 0.9; }
+    .nav-logo-text strong { font-family: var(--ff-label); font-size: 1.15rem; letter-spacing: 0.1em; color: var(--white); display: block; }
+    .nav-logo-text span  { font-family: var(--ff-label); font-size: 0.7rem; letter-spacing: 0.2em; color: var(--white); opacity: 0.9; }
 
     .nav-links { display: flex; gap: 32px; align-items: center; }
     .nav-links a {
@@ -146,14 +146,14 @@
       position: absolute; inset: 0;
       background:
         linear-gradient(to right,
-          rgba(26,28,34,0.92)          0%,
-          rgba(26,28,34,0.78)         28%,
-          rgba(26,28,34,0.28)         52%,
-          rgba(26,28,34,0.60)         76%,
-          rgba(26,28,34,0.88)         100%
+          rgba(26,28,34,0.97)          0%,
+          rgba(26,28,34,0.88)         28%,
+          rgba(26,28,34,0.52)         52%,
+          rgba(26,28,34,0.78)         76%,
+          rgba(26,28,34,0.96)         100%
         ),
-        linear-gradient(to top,  rgba(26,28,34,0.70) 0%, transparent 25%),
-        linear-gradient(to bottom, rgba(26,28,34,0.50) 0%, transparent 16%);
+        linear-gradient(to top,  rgba(26,28,34,0.82) 0%, transparent 30%),
+        linear-gradient(to bottom, rgba(26,28,34,0.65) 0%, transparent 20%);
       z-index: 1;
     }
     .hero-left {
@@ -180,6 +180,10 @@
       content: ''; display: block;
       width: 32px; height: 1px; background: var(--gold); flex-shrink: 0;
     }
+    .hero-eyebrow::after {
+      content: ''; display: block;
+      width: 32px; height: 1px; background: var(--gold); flex-shrink: 0;
+    }
     .hero-h1 {
       font-size: clamp(2.6rem, 3vw, 4rem);
       font-weight: 800; color: var(--white);
@@ -197,8 +201,17 @@
       opacity: 0; animation: fadeUp 0.8s 0.54s forwards;
     }
     .hero-actions {
-      display: flex; gap: 16px; align-items: center;
+      display: flex; gap: 20px; align-items: center;
       opacity: 0; animation: fadeUp 0.8s 0.68s forwards;
+    }
+    .hero-bolt {
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 46%;
+      width: 260px;
+      z-index: 2;
+      pointer-events: none;
+      filter: drop-shadow(0 0 28px rgba(176,184,192,0.22)) drop-shadow(0 0 60px rgba(176,184,192,0.10));
     }
     .btn-primary {
       font-family: var(--ff); font-size: 1.3rem; font-weight: 600;
@@ -216,6 +229,34 @@
     }
     .btn-outline:hover { border-color: rgba(255,255,255,0.6); color: var(--white); }
 
+    .btn-hero-cta {
+      display: inline-flex; align-items: center; gap: 14px;
+      font-family: var(--ff-label); font-size: 0.8rem;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--white);
+      padding: 18px 36px;
+      border: 1.5px solid var(--gold);
+      position: relative; overflow: hidden;
+      transition: color 0.3s var(--ease);
+    }
+    .btn-hero-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: var(--gold);
+      transform: translateX(-101%);
+      transition: transform 0.35s var(--ease);
+    }
+    .btn-hero-cta::after {
+      content: '→';
+      font-size: 1em;
+      transition: transform 0.3s var(--ease);
+      position: relative; z-index: 1;
+    }
+    .btn-hero-cta span { position: relative; z-index: 1; }
+    .btn-hero-cta:hover::before { transform: translateX(0); }
+    .btn-hero-cta:hover { color: var(--antracyt); }
+    .btn-hero-cta:hover::after { transform: translateX(4px); }
+
     .hero-stats {
       display: flex; gap: 48px; margin-top: 64px;
       padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.08);
@@ -232,6 +273,80 @@
       color: var(--silver); opacity: 0.5;
     }
 
+
+    /* ── HERO RIGHT PANELS ──────────────────────── */
+    .hero-right {
+      position: absolute;
+      top: 0; right: 0; bottom: 0;
+      width: 36%;
+      display: flex;
+      flex-direction: column;
+      z-index: 5;
+      border-right: 1px solid rgba(255,255,255,0.14);
+      overflow: visible;
+    }
+    /* Pasek separatora — rozciąga się w lewo poza panel */
+    .hero-right::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: -380px; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.22) 18%, rgba(255,255,255,0.32) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .hero-panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
+      padding: 44px 52px 44px 24px;
+      position: relative;
+      overflow: visible;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .hero-panel + .hero-panel {
+      justify-content: flex-start;
+    }
+    .hero-panel::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0; right: 0;
+      left: -380px;
+      background: linear-gradient(to left, rgba(184,162,101,0.13) 0%, rgba(184,162,101,0.05) 50%, rgba(184,162,101,0.01) 100%);
+      opacity: 0;
+      transition: opacity 0.4s var(--ease);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-panel:hover::after { opacity: 1; }
+    .hero-panel-num {
+      font-family: var(--ff-label);
+      font-size: 0.6rem; letter-spacing: 0.32em;
+      color: rgba(255,255,255,0.22); text-align: right;
+      margin-bottom: 18px; display: block;
+      position: relative; z-index: 2;
+    }
+    .hero-panel-title {
+      font-size: clamp(1.7rem, 2.2vw, 2.6rem);
+      font-weight: 800; color: var(--white);
+      text-align: right; line-height: 1.08;
+      letter-spacing: -0.02em; margin-bottom: 18px;
+      transition: color 0.3s var(--ease);
+      position: relative; z-index: 2;
+    }
+    .hero-panel:hover .hero-panel-title { color: var(--gold-lt); }
+    .hero-panel-cta {
+      font-family: var(--ff-label);
+      font-size: 0.72rem; letter-spacing: 0.24em;
+      color: rgba(255,255,255,0.28); text-align: right;
+      text-transform: uppercase;
+      transition: color 0.25s var(--ease);
+      position: relative; z-index: 2;
+    }
+    .hero-panel:hover .hero-panel-cta { color: var(--gold); }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(22px); }
@@ -692,6 +807,8 @@
     ════════════════════════════════════════════ */
     @media (max-width: 1024px) {
       .hero-left { padding: 140px 48px 80px; }
+      .hero-right { width: 40%; }
+      .hero-panel { padding: 32px 32px 32px 16px; }
       .feat-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .footer-grid .footer-brand { grid-column: span 2; }
@@ -699,6 +816,8 @@
     }
 
     @media (max-width: 768px) {
+      .hero-right { display: none; }
+
       /* === Base === */
       .wrap { padding: 0 24px; }
 
@@ -1020,15 +1139,27 @@
   <!-- Lewa strona: nagłówek -->
   <div class="hero-left">
     <img src="Assety marki/LogoBezTła.png" alt="" class="hero-logo-bg" aria-hidden="true">
-    <p class="hero-eyebrow">Kopiec Metal Design — Mechnica</p>
+    <p class="hero-eyebrow">Kopiec Metal Design</p>
     <h1 class="hero-h1" data-i18n="hero.h1">Ponadczasowe wyroby <br><em>klasyczne i nowoczesne.</em></h1>
     <p class="hero-sub" data-i18n="hero.sub">Balustrady, schody, pergole i meble ze stali nierdzewnej — od projektu po montaż.</p>
     <div class="hero-actions">
-      <a href="#offer" class="btn-primary" data-i18n="hero.btn1">Poznaj ofertę</a>
-      <a href="#contact" class="btn-outline" data-i18n="hero.btn2">Wyceń projekt</a>
+      <a href="#contact" class="btn-hero-cta" data-i18n="hero.btn2"><span>Wyceń projekt</span></a>
     </div>
   </div>
 
+  <!-- Prawe panele kategorii -->
+  <div class="hero-right">
+    <a href="#offer" class="hero-panel">
+      <span class="hero-panel-num">01</span>
+      <h2 class="hero-panel-title">Oferta<br>dla domu</h2>
+      <span class="hero-panel-cta">Poznaj ofertę →</span>
+    </a>
+    <a href="#contact" class="hero-panel">
+      <span class="hero-panel-num">02</span>
+      <h2 class="hero-panel-title">Obiekty komercyjne<br>i inwestycyjne</h2>
+      <span class="hero-panel-cta">Sprawdź realizacje →</span>
+    </a>
+  </div>
 
 </section>
 
