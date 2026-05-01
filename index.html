@@ -825,7 +825,8 @@
 
       .hero-logo-bg { display: none; }
       .hero-eyebrow { justify-content: center; }
-      .hero-eyebrow::before, .hero-eyebrow::after { display: none; }
+      .hero-eyebrow::before { display: block; width: 20px; }
+      .hero-eyebrow::after  { display: block; width: 20px; }
       .hero-h1 { font-size: 2.9rem; line-height: 1.08; }
       .hero-h1 br { display: none; }
       .hero-sub { max-width: 100%; color: rgba(255,255,255,0.75); font-size: 1.5rem; line-height: 1.7; }
@@ -843,6 +844,7 @@
       .btn-mob-only { display: none; }
       .btn-hero-cta {
         width: auto; justify-content: center;
+        font-size: 0.62rem; padding: 11px 18px;
       }
 
       /* Hero right — poziomy rząd na dole */
@@ -879,6 +881,7 @@
         border-top: none;
         border-left: none;
         justify-content: flex-start;
+        padding-top: 22px;
       }
       .hero-panel-divider {
         display: block;
