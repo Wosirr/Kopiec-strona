@@ -770,68 +770,48 @@
       .hero-h1 br { display: none; }
       .hero-sub { max-width: 100%; color: rgba(255,255,255,0.75); font-size: 1.5rem; line-height: 1.7; }
       .hero-actions { justify-content: center; flex-wrap: wrap; }
-      /* ══ MOBILE HERO REDESIGN ══
-         Górne 55%: nagłówek wyśrodkowany
-         Dolne 45%: dwie kategorie pionowo z poziomym zygzakiem między nimi */
-      .hero { height: 100svh; min-height: 680px; display: block; position: relative; }
+      /* ══ MOBILE HERO ══ */
+      .hero { height: 100svh; min-height: 620px; display: block; position: relative; }
 
-      /* Nagłówek wypełnia górne 55% */
+      /* Nagłówek — wyśrodkowany pionowo w hero */
       .hero-left {
-        position: absolute; top: 0; left: 0; right: 0;
-        bottom: 45%; z-index: 5;
+        position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 5;
         display: flex; flex-direction: column;
         justify-content: center;
-        padding: 80px 28px 20px;
+        padding: 100px 28px 140px;
         align-items: center; text-align: center;
       }
 
-      /* Kategorie: dolne 45%, ciemna warstwa, flex pionowo */
+      /* Kategorie — dwa małe przyciski na dole hero */
       .hero-right {
-        position: absolute; bottom: 0; left: 0; right: 0; top: auto;
-        height: 45%; display: flex; flex-direction: column; z-index: 3;
-        background: linear-gradient(to bottom, rgba(26,28,34,0.45) 0%, rgba(26,28,34,0.88) 100%);
+        position: absolute; bottom: 32px; left: 28px; right: 28px; top: auto;
+        height: auto; display: flex; flex-direction: row;
+        gap: 10px; z-index: 5; background: none;
       }
       .hero-right::after { display: none; }
+      .hero-bolt, .hero-bolt-mob { display: none; }
 
-      /* Poziomy zygzak jako separator */
-      .hero-bolt {
-        display: block !important;
-        position: relative; top: auto; left: auto; right: auto; bottom: auto;
-        transform: none; width: 100%; height: 16px; flex-shrink: 0;
-        order: 2; z-index: 4; pointer-events: none;
-        opacity: 0.75;
-        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-        mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-        filter: drop-shadow(0 0 6px rgba(176,184,192,0.6));
-      }
-      .hero-bolt-mob { display: none; }
-
-      /* Kategoria górna — flex item, pełna szerokość */
-      .hero-cat-top {
+      /* Małe przyciski kategorii */
+      .hero-cat-top, .hero-cat-bottom {
         position: relative; top: auto; bottom: auto; left: auto; right: auto;
-        width: 100%; height: auto; flex: 1; order: 1;
-        justify-content: center; align-items: flex-start; text-align: left;
-        padding: 16px 28px 10px; clip-path: none;
+        width: auto; height: auto; flex: 1; clip-path: none;
+        justify-content: center; align-items: center; text-align: center;
+        padding: 11px 12px;
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.18);
+        backdrop-filter: blur(4px);
       }
-      /* Kategoria dolna — flex item */
-      .hero-cat-bottom {
-        position: relative; top: auto; bottom: auto; left: auto; right: auto;
-        width: 100%; height: auto; flex: 1; order: 3;
-        justify-content: center; align-items: flex-start; text-align: left;
-        padding: 10px 28px 28px; clip-path: none;
-      }
-
-      .hero-half-h { font-size: 1.65rem; line-height: 1.08; margin-bottom: 6px; }
-      .hero-half-num { font-size: 0.6rem; margin-bottom: 8px; letter-spacing: 0.32em; }
-      .hero-half-cta { font-size: 0.7rem; color: var(--gold); }
+      .hero-cat-top:active, .hero-cat-bottom:active { background: rgba(255,255,255,0.16); }
+      .hero-half-num { display: none; }
+      .hero-half-h { font-size: 1rem; line-height: 1.2; margin-bottom: 0; font-weight: 700; }
+      .hero-half-cta { display: none; }
 
       /* Winieta tła */
       .hero-bg::after {
         background: linear-gradient(to bottom,
           rgba(26,28,34,0.82) 0%,
-          rgba(26,28,34,0.55) 40%,
-          rgba(26,28,34,0.62) 68%,
-          rgba(26,28,34,0.30) 100%
+          rgba(26,28,34,0.55) 45%,
+          rgba(26,28,34,0.70) 100%
         );
       }
 
