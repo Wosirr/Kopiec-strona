@@ -808,7 +808,7 @@
     ════════════════════════════════════════════ */
     @media (max-width: 1024px) {
       .hero-left { padding: 140px 48px 80px; }
-      .hero-right { width: 40%; }
+      .hero-right { width: 40%; top: 0; }
       .hero-panel { padding: 32px 32px 32px 16px; }
       .feat-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -846,16 +846,18 @@
         align-items: center; text-align: center;
       }
 
-      /* Przyciski — pełna szerokość, jeden pod drugim */
+      /* Przyciski — tylko Wyceń projekt */
       .hero-actions { flex-direction: column; gap: 12px; width: 100%; }
-      .btn-mob-only { display: block; width: 100%; text-align: center; font-size: 1.15rem; padding: 16px 24px; }
+      .btn-mob-only { display: none; }
       .btn-hero-cta { width: 100%; justify-content: center; font-size: 0.78rem; padding: 16px 24px; }
 
       /* Hero right — poziomy rząd na dole */
       .hero-right {
         display: flex;
         flex-direction: row;
-        position: absolute; bottom: 0; left: 0; right: 0;
+        position: absolute;
+        top: auto; bottom: 0; left: 0; right: 0;
+        width: 100%;
         height: 210px;
         border-right: none;
         border-top: 1px solid rgba(255,255,255,0.12);
@@ -873,8 +875,14 @@
       .hero-panel::after { left: 0; }
       .hero-panel + .hero-panel {
         border-top: none;
-        border-left: 1px solid rgba(255,255,255,0.16);
+        border-left: none;
         justify-content: flex-start;
+      }
+      .hero-panel-divider {
+        flex-shrink: 0;
+        width: 18px;
+        height: 100%;
+        align-self: stretch;
       }
       .hero-panel-num { text-align: left; margin-bottom: 10px; }
       .hero-panel-title { font-size: 1.45rem; text-align: left; margin-bottom: 10px; }
@@ -1183,6 +1191,9 @@
       <h2 class="hero-panel-title">Oferta<br>dla domu</h2>
       <span class="hero-panel-cta">Poznaj ofertę →</span>
     </a>
+    <svg class="hero-panel-divider" viewBox="0 0 18 210" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <polyline points="9,0 0,52 18,105 0,157 9,210" stroke="rgba(255,255,255,0.28)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+    </svg>
     <a href="#contact" class="hero-panel">
       <span class="hero-panel-num">02</span>
       <h2 class="hero-panel-title">Obiekty komercyjne<br>i inwestycyjne</h2>
