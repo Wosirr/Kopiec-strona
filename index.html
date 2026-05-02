@@ -831,6 +831,7 @@
       .hero-eyebrow::after  { display: block; width: 20px; }
       .hero-h1 { font-size: 2.9rem; line-height: 1.08; }
       .hero-h1 br { display: none; }
+      .hero-h1 em { white-space: nowrap; font-size: 0.88em; }
       .hero-sub { max-width: 100%; color: rgba(255,255,255,0.75); font-size: 1.5rem; line-height: 1.7; }
 
       /* Hero left — wyśrodkowany, zostawia miejsce na dolne panele */
@@ -866,17 +867,20 @@
       .hero-panel {
         flex: 1;
         padding: 28px 18px 16px;
-        align-items: flex-start;
+        align-items: center;
         justify-content: flex-start;
         overflow: hidden;
       }
-      /* Panel 01 — treść do prawej (przy zygzaku) */
+      /* Oba panele — treść wyśrodkowana */
       .hero-panel:first-child {
-        align-items: flex-end;
+        align-items: center;
       }
       .hero-panel:first-child .hero-panel-num,
       .hero-panel:first-child .hero-panel-title,
-      .hero-panel:first-child .hero-panel-cta { text-align: right; }
+      .hero-panel:first-child .hero-panel-cta { text-align: center; }
+      .hero-panel-num { text-align: center; }
+      .hero-panel-title { text-align: center; }
+      .hero-panel-cta { text-align: center; }
       /* Bez podświetlenia na mobilce */
       .hero-panel::after { display: none; }
       .hero-panel ~ .hero-panel {
