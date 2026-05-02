@@ -277,15 +277,15 @@
       border-right: 1px solid rgba(255,255,255,0.14);
       overflow: visible;
     }
-    /* Pasek separatora — rozciąga się w lewo poza panel */
-    .hero-right::before {
+    /* Pasek separatora — na górze drugiego panelu, idealnie na granicy flex */
+    .hero-panel ~ .hero-panel::before {
       content: '';
       position: absolute;
-      top: 50%; left: -380px; right: 0;
+      top: 0; left: -380px; right: 0;
       height: 2px;
       background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.22) 18%, rgba(255,255,255,0.32) 100%);
       pointer-events: none;
-      z-index: 1;
+      z-index: 10;
     }
     .hero-panel {
       flex: 1;
@@ -864,6 +864,7 @@
         z-index: 6;
       }
       .hero-right::before { display: none; }
+      .hero-panel ~ .hero-panel::before { display: none; }
       .hero-panel {
         flex: 1;
         padding: 28px 18px 16px;
