@@ -871,24 +871,26 @@
         justify-content: flex-start;
         overflow: hidden;
       }
-      /* Oba panele — treść wyśrodkowana */
+      /* Panel 01 — tekst przy prawej krawędzi (zygzak) */
       .hero-panel:first-child {
-        align-items: center;
+        align-items: flex-end;
+        padding-right: 10px;
       }
       .hero-panel:first-child .hero-panel-num,
       .hero-panel:first-child .hero-panel-title,
-      .hero-panel:first-child .hero-panel-cta { text-align: center; }
-      .hero-panel-num { text-align: center; }
-      .hero-panel-title { text-align: center; }
-      .hero-panel-cta { text-align: center; }
+      .hero-panel:first-child .hero-panel-cta { text-align: right; }
+      .hero-panel-num { text-align: right; }
+      .hero-panel-title { text-align: right; }
+      .hero-panel-cta { text-align: right; }
       /* Bez podświetlenia na mobilce */
       .hero-panel::after { display: none; }
       .hero-panel ~ .hero-panel {
         border-top: none;
         border-left: none;
-        align-items: center;
+        align-items: flex-start;
         justify-content: flex-start;
         padding-top: 28px;
+        padding-left: 10px;
       }
       .hero-panel-divider {
         display: block;
@@ -897,9 +899,9 @@
         height: 100%;
         align-self: stretch;
       }
-      .hero-panel-num { text-align: center; margin-bottom: 6px; }
-      .hero-panel-title { font-size: 1.45rem; text-align: center; margin-bottom: 6px; }
-      .hero-panel-cta { text-align: center; font-size: 0.56rem; }
+      .hero-panel-num { margin-bottom: 6px; }
+      .hero-panel-title { font-size: 1.45rem; margin-bottom: 6px; }
+      .hero-panel-cta { font-size: 0.56rem; }
 
       /* Winieta tła */
       .hero-bg::after {
