@@ -1974,13 +1974,17 @@
     if (lang !== 'pl') setLanguage(lang);
   })();
 
-  document.getElementById('cForm').addEventListener('submit', function(e) {
+  document.getElementById('cForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const name  = this.name.value.trim();
-    const email = this.email.value.trim();
-    const msg   = this.message.value.trim();
-    const fb    = document.getElementById('fMsg');
-    if (!name || !email || !msg) {
+    const name    = this.name.value.trim();
+    const email   = this.email.value.trim();
+    const phone   = this.phone.value.trim();
+    const service = this.service.value.trim();
+    const message = this.message.value.trim();
+    const fb      = document.getElementById('fMsg');
+    const btn     = this.querySelector('.submit-btn');
+
+    if (!name || !email || !message) {
       fb.textContent = 'Uzupełnij pola: Imię, Email i Opis projektu.';
       fb.className = 'form-msg err show'; return;
     }
@@ -1988,10 +1992,33 @@
       fb.textContent = 'Podaj poprawny adres email.';
       fb.className = 'form-msg err show'; return;
     }
-    fb.textContent = 'Dziękujemy! Odezwiemy się w ciągu 24 godzin roboczych.';
+
+    btn.disabled = true;
+    fb.textContent = 'Wysyłanie...';
     fb.className = 'form-msg show';
-    this.reset();
-    document.getElementById('fs').classList.remove('filled');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, phone, service, message }),
+      });
+
+      if (res.ok) {
+        fb.textContent = 'Dziękujemy! Odezwiemy się w ciągu 24 godzin roboczych.';
+        fb.className = 'form-msg show';
+        this.reset();
+        document.getElementById('fs').classList.remove('filled');
+      } else {
+        fb.textContent = 'Wystąpił błąd. Spróbuj ponownie lub napisz na kopiecmd@gmail.com';
+        fb.className = 'form-msg err show';
+      }
+    } catch {
+      fb.textContent = 'Brak połączenia. Spróbuj ponownie.';
+      fb.className = 'form-msg err show';
+    } finally {
+      btn.disabled = false;
+    }
   });
 
 </script>
